@@ -1,0 +1,10 @@
+/* 
+   MetaCast.strings
+   MetaCast
+
+   Created by Ashley Steigerwalt on 1/13/11.
+   Copyright 2011 __MyCompanyName__. All rights reserved.
+ */
+"ApplicationName" = "MetaCast"
+"BroadcastersMenuItem" = "MetaCasters"
+"NoBroadcastersMenuItem" = "No MetaCasters Found

@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1172, 474}}";
+			sepNavSelRange = "{45, 0}";
+			sepNavVisRange = "{0, 45}";
+		};
+	};
+	256AC3D80F4B6AC300CF3369 /* MetaCastAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1172, 691}}";
+			sepNavSelRange = "{246, 0}";
+			sepNavVisRange = "{0, 283}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* MetaCastAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1172, 494}}";
+			sepNavSelRange = "{862, 0}";
+			sepNavVisRange = "{0, 1171}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 2F7723DE12DFF97B00FAC35D /* MetaCast */;
+		activeTarget = 8D1107260486CEB800E47090 /* MetaCast */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* MetaCast */,
+		);
+		codeSenseManager = 2F7723F212DFF97F00FAC35D /* Code sense */;
+		executables = (
+			2F7723DE12DFF97B00FAC35D /* MetaCast */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					994,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					954,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 316675190;
+			PBXWorkspaceStateSaveDate = 316675190;
+		};
+		perUserProjectItems = {
+			2FB83D9712E010D200A9E754 /* PBXTextBookmark */ = 2FB83D9712E010D200A9E754 /* PBXTextBookmark */;
+			2FB83D9912E010D200A9E754 /* PlistBookmark */ = 2FB83D9912E010D200A9E754 /* PlistBookmark */;
+			2FB83DBE12E0147100A9E754 /* PBXTextBookmark */ = 2FB83DBE12E0147100A9E754 /* PBXTextBookmark */;
+			2FB83DEA12E0150C00A9E754 /* PBXTextBookmark */ = 2FB83DEA12E0150C00A9E754 /* PBXTextBookmark */;
+			2FB83DF712E0157700A9E754 /* PBXTextBookmark */ = 2FB83DF712E0157700A9E754 /* PBXTextBookmark */;
+			2FB83DFA12E0159900A9E754 /* PBXTextBookmark */ = 2FB83DFA12E0159900A9E754 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 2F7723F112DFF97F00FAC35D /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2F7723DE12DFF97B00FAC35D /* MetaCast */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = MetaCast;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	2F7723F112DFF97F00FAC35D /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	2F7723F212DFF97F00FAC35D /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2FB83D9112E00F0C00A9E754 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1172, 468}}";
+			sepNavSelRange = "{262, 0}";
+			sepNavVisRange = "{0, 262}";
+			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
+		};
+	};
+	2FB83D9712E010D200A9E754 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* MetaCastAppDelegate.h */;
+		name = "MetaCastAppDelegate.h: 11";
+		rLen = 0;
+		rLoc = 246;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 0;
+	};
+	2FB83D9912E010D200A9E754 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* MetaCast-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/ashleys/Development/iTunes-Metadata-Broadcaster/MetaCast-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	2FB83DBE12E0147100A9E754 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 3";
+		rLen = 0;
+		rLoc = 45;
+		rType = 0;
+		vrLen = 45;
+		vrLoc = 0;
+	};
+	2FB83DEA12E0150C00A9E754 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* MetaCastAppDelegate.m */;
+		name = "MetaCastAppDelegate.m: 28";
+		rLen = 0;
+		rLoc = 862;
+		rType = 0;
+		vrLen = 1171;
+		vrLoc = 0;
+	};
+	2FB83DF712E0157700A9E754 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2FB83D9112E00F0C00A9E754 /* English */;
+		name = "Localizable.strings: 10";
+		rLen = 0;
+		rLoc = 262;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 0;
+	};
+	2FB83DFA12E0159900A9E754 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2FB83D9112E00F0C00A9E754 /* English */;
+		name = "Localizable.strings: 10";
+		rLen = 0;
+		rLoc = 262;
+		rType = 0;
+		vrLen = 262;
+		vrLoc = 0;
+	};
+	8D1107260486CEB800E47090 /* MetaCast */ = {
+		activeExec = 0;
+		executables = (
+			2F7723DE12DFF97B00FAC35D /* MetaCast */,
+		);
+	};
+}
