@@ -12,4 +12,6 @@
 	NSStatusItem *statusItem;	
 }
 
+- (NSMenu*)metacastersMenu;
+
 @end
