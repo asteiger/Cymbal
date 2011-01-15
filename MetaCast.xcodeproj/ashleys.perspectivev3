@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -270,19 +268,25 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>089C165CFE840E0CC02AAC07</string>
+								<string>1DDD58140DA1D0A300B32029</string>
 								<string>2FB83DB512E0142300A9E754</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>2FB83DCC12E0147600A9E754</string>
-								<string>2FB83DF612E0157700A9E754</string>
+								<string>2F232D6B12E2165500E14DF9</string>
+								<string>2F232D8912E219E900E14DF9</string>
+								<string>089C165CFE840E0CC02AAC07</string>
+								<string>1DDD58140DA1D0A300B32029</string>
 								<string>2FB83DB512E0142300A9E754</string>
+								<string>2F232D8A12E219E900E14DF9</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>0</integer>
+									<integer>19</integer>
+									<integer>18</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -319,7 +323,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>2F7723EB12DFF97F00FAC35D</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Localizable.strings</string>
+								<string>MetaCast-Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,18 +331,18 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>2F7723EC12DFF97F00FAC35D</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Localizable.strings</string>
+										<string>MetaCast-Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2FB83DFA12E0159900A9E754</string>
+										<string>2F232DAA12E21CAC00E14DF9</string>
 										<key>history</key>
 										<array>
-											<string>2FB83D9712E010D200A9E754</string>
-											<string>2FB83D9912E010D200A9E754</string>
-											<string>2FB83DBE12E0147100A9E754</string>
-											<string>2FB83DEA12E0150C00A9E754</string>
-											<string>2FB83DF712E0157700A9E754</string>
+											<string>2F232D7512E216F400E14DF9</string>
+											<string>2F232D8B12E219E900E14DF9</string>
+											<string>2F232DA312E21C9E00E14DF9</string>
+											<string>2F232DA412E21C9E00E14DF9</string>
+											<string>2F232DA512E21C9E00E14DF9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -352,18 +356,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1233, 500}}</string>
+								<string>{{0, 0}, {1233, 494}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 109 1440 769 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>500pt</string>
+							<string>494pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>223pt</string>
+							<string>229pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -377,9 +381,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1233, 196}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 109 1440 769 0 0 1440 878 </string>
+										<string>{{10, 27}, {1233, 202}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -433,7 +435,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 31}, {603, 297}}</string>
+										<string>{{10, 27}, {1233, 202}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 109 1440 769 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -461,11 +465,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2FB83DD512E0148700A9E754</string>
+				<string>2F232D7112E2167A00E14DF9</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>2FB83DD612E0148700A9E754</string>
+				<string>2F232D7212E2167A00E14DF9</string>
 				<string>2F7723EB12DFF97F00FAC35D</string>
-				<string>2FB83DD712E0148700A9E754</string>
+				<string>2F232D7312E2167A00E14DF9</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -614,14 +618,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2FB83DD812E0148700A9E754</string>
+				<string>2F232D8F12E219E900E14DF9</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>2FB83DD912E0148700A9E754</string>
-				<string>2FB83DDA12E0148700A9E754</string>
-				<string>2FB83DDB12E0148700A9E754</string>
-				<string>2FB83DDC12E0148700A9E754</string>
-				<string>2FB83DDD12E0148700A9E754</string>
+				<string>2F232D9012E219E900E14DF9</string>
+				<string>2F232D9112E219E900E14DF9</string>
+				<string>2F232D9212E219E900E14DF9</string>
+				<string>2F232D9312E219E900E14DF9</string>
+				<string>2F232D9412E219E900E14DF9</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -655,8 +659,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>2FB83DDF12E0148700A9E754</string>
-		<string>2FB83DE012E0148700A9E754</string>
+		<string>2F232DA812E21C9E00E14DF9</string>
+		<string>2F232DA912E21C9E00E14DF9</string>
 		<string>/Users/ashleys/Development/iTunes-Metadata-Broadcaster/MetaCast.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
