@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MediaListener.h"
 
 @interface MetaCastAppDelegate : NSObject <NSApplicationDelegate> {
-	NSStatusItem *statusItem;	
+	NSStatusItem *statusItem;
+	MediaListener *mediaListener;
 }
 
 - (NSMenu*)metacastersMenu;
