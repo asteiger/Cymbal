@@ -13,6 +13,6 @@
 
 }
 
-- (void)receivedItunesNotification;
+- (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 
 @end

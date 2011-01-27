@@ -11,33 +11,22 @@
 @implementation MetaCastAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	// Insert code here to initialize your application 
+	mcServer = [[MCServer alloc] init];
+	[mcServer startService];
 }
 
 - (void)awakeFromNib {
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain]; 
-	[statusItem setTitle:NSLocalizedString(@"MC", NULL)];
-	[statusItem setHighlightMode:YES];
-	
-	NSMenu *statusMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
-	
-	NSMenuItem *menuItem = [statusMenu addItemWithTitle:NSLocalizedString(@"Metacasters", NULL) action:nil keyEquivalent:@""];
-	[menuItem setSubmenu:[self metacastersMenu]];
-	
-	[statusItem setMenu:statusMenu];
 	mediaListener = [[MediaListener alloc] init];
 }
 
-- (NSMenu*)metacastersMenu {
-	NSMenu *metacastersMenu = [[[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:NSLocalizedString(@"Metacasters", NULL)] autorelease];
-	[metacastersMenu addItemWithTitle:NSLocalizedString(@"No Metacasters Found", NULL) action:nil keyEquivalent:@""];
 
-	return metacastersMenu;
-}
 
 - (void)dealloc {
-	[super dealloc];
+	[mcServer stopService];
+	[mcServer release];
 	[mediaListener release];
+	[super dealloc];
+
 }
 
 @end

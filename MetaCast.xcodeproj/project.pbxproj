@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MetaCastAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MetaCastAppDelegate.m */; };
-		2F232D9612E21A4400E14DF9 /* MetaCast-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F232D9512E21A4400E14DF9 /* MetaCast-Info.plist */; };
 		2F232E2C12E2542000E14DF9 /* MediaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* MediaListener.m */; };
+		2F37DFFF12F2163800DBBCBB /* MCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37DFFE12F2163800DBBCBB /* MCServer.m */; };
+		2F37E00212F2164E00DBBCBB /* MCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E00112F2164E00DBBCBB /* MCConnection.m */; };
+		2F37E00512F2168900DBBCBB /* MCBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E00412F2168900DBBCBB /* MCBrowser.m */; };
+		2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -31,6 +34,14 @@
 		2F232D9512E21A4400E14DF9 /* MetaCast-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MetaCast-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* MediaListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaListener.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* MediaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaListener.m; sourceTree = "<group>"; };
+		2F37DFFD12F2163800DBBCBB /* MCServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCServer.h; sourceTree = "<group>"; };
+		2F37DFFE12F2163800DBBCBB /* MCServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCServer.m; sourceTree = "<group>"; };
+		2F37E00012F2164E00DBBCBB /* MCConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCConnection.h; sourceTree = "<group>"; };
+		2F37E00112F2164E00DBBCBB /* MCConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCConnection.m; sourceTree = "<group>"; };
+		2F37E00312F2168900DBBCBB /* MCBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCBrowser.h; sourceTree = "<group>"; };
+		2F37E00412F2168900DBBCBB /* MCBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBrowser.m; sourceTree = "<group>"; };
+		2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCStatusMenu.h; sourceTree = "<group>"; };
+		2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCStatusMenu.m; sourceTree = "<group>"; };
 		2FB83D9112E00F0C00A9E754 /* English */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 4; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MetaCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -50,10 +61,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2F37E01812F21B5D00DBBCBB /* UI */,
+				2F37E00612F2170900DBBCBB /* Media */,
+				2F37DFF712F2159300DBBCBB /* Net */,
 				256AC3D80F4B6AC300CF3369 /* MetaCastAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* MetaCastAppDelegate.m */,
-				2F232E2A12E2542000E14DF9 /* MediaListener.h */,
-				2F232E2B12E2542000E14DF9 /* MediaListener.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -125,6 +137,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F37DFF712F2159300DBBCBB /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				2F37DFFD12F2163800DBBCBB /* MCServer.h */,
+				2F37DFFE12F2163800DBBCBB /* MCServer.m */,
+				2F37E00012F2164E00DBBCBB /* MCConnection.h */,
+				2F37E00112F2164E00DBBCBB /* MCConnection.m */,
+				2F37E00312F2168900DBBCBB /* MCBrowser.h */,
+				2F37E00412F2168900DBBCBB /* MCBrowser.m */,
+			);
+			name = Net;
+			sourceTree = "<group>";
+		};
+		2F37E00612F2170900DBBCBB /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				2F232E2A12E2542000E14DF9 /* MediaListener.h */,
+				2F232E2B12E2542000E14DF9 /* MediaListener.m */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		2F37E01812F21B5D00DBBCBB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */,
+				2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,7 +221,6 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */,
-				2F232D9612E21A4400E14DF9 /* MetaCast-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +234,10 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* MetaCastAppDelegate.m in Sources */,
 				2F232E2C12E2542000E14DF9 /* MediaListener.m in Sources */,
+				2F37DFFF12F2163800DBBCBB /* MCServer.m in Sources */,
+				2F37E00212F2164E00DBBCBB /* MCConnection.m in Sources */,
+				2F37E00512F2168900DBBCBB /* MCBrowser.m in Sources */,
+				2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
