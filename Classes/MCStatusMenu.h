@@ -11,8 +11,14 @@
 
 @interface MCStatusMenu : NSObject {
 	NSStatusItem *statusItem;
+	
+	NSMenuItem *appStatus;
 }
 
-- (NSMenu*)metacastersMenu;
++ (MCStatusMenu*)sharedMCStatusMenu;
+
+- (void)updateAppStatus:(NSString*)status;
+- (void)addMetacaster:(NSString*)name;
+
 
 @end

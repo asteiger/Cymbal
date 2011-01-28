@@ -10,19 +10,21 @@
 
 @implementation MetaCastAppDelegate
 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	mcServer = [[MCServer alloc] init];
-	[mcServer startService];
+	[mcServer startMetacasting];
 }
 
 - (void)awakeFromNib {
+	[MCStatusMenu sharedMCStatusMenu];
 	mediaListener = [[MediaListener alloc] init];
 }
 
 
 
 - (void)dealloc {
-	[mcServer stopService];
+	[mcServer stopMetacasting];
 	[mcServer release];
 	[mediaListener release];
 	[super dealloc];

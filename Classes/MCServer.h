@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Server.h"
 
 
-@interface MCServer : NSObject <NSNetServiceDelegate> {
-	NSNetService *netService;
+@interface MCServer : NSObject <ServerDelegate> {
+	Server *server;
 }
 
--(void)startService;
--(void)stopService;
+-(void)startMetacasting;
+-(void)stopMetacasting;
 
 @end

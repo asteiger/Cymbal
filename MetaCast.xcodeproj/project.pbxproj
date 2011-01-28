@@ -14,6 +14,7 @@
 		2F37E00212F2164E00DBBCBB /* MCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E00112F2164E00DBBCBB /* MCConnection.m */; };
 		2F37E00512F2168900DBBCBB /* MCBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E00412F2168900DBBCBB /* MCBrowser.m */; };
 		2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */; };
+		2F6B5ECC12F339AA00F51919 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B5ECB12F339AA00F51919 /* Server.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -42,6 +43,8 @@
 		2F37E00412F2168900DBBCBB /* MCBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBrowser.m; sourceTree = "<group>"; };
 		2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCStatusMenu.h; sourceTree = "<group>"; };
 		2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCStatusMenu.m; sourceTree = "<group>"; };
+		2F6B5ECA12F339AA00F51919 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		2F6B5ECB12F339AA00F51919 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		2FB83D9112E00F0C00A9E754 /* English */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 4; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MetaCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetaCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -140,6 +143,8 @@
 		2F37DFF712F2159300DBBCBB /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				2F6B5ECA12F339AA00F51919 /* Server.h */,
+				2F6B5ECB12F339AA00F51919 /* Server.m */,
 				2F37DFFD12F2163800DBBCBB /* MCServer.h */,
 				2F37DFFE12F2163800DBBCBB /* MCServer.m */,
 				2F37E00012F2164E00DBBCBB /* MCConnection.h */,
@@ -238,6 +243,7 @@
 				2F37E00212F2164E00DBBCBB /* MCConnection.m in Sources */,
 				2F37E00512F2168900DBBCBB /* MCBrowser.m in Sources */,
 				2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */,
+				2F6B5ECC12F339AA00F51919 /* Server.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

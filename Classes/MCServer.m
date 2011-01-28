@@ -7,38 +7,65 @@
 //
 
 #import "MCServer.h"
+#import "MCStatusMenu.h"
 
 @implementation MCServer
 
 - (id)init {
 	if (self = [super init]) {
-		
+		server = [[Server alloc] initWithDomainName:@"" protocol:@"_metacast._tcp." name:@""];
+		server.delegate = self;
 	}
 	
 	return self;
 }
 
--(void)startService {
-    netService = [[NSNetService alloc] initWithDomain:@"" type:@"_metacast._tcp." 
-												 name:@"" port:7865];
-    netService.delegate = self;
-    [netService publish];
+-(void)startMetacasting {
+	NSError **error;
+	if ([server start:error]) {
+		[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:@"Metacasting"];
+	}
 }
 
--(void)stopService {
-    [netService stop];
-    [netService release]; 
-    netService = nil;
+-(void)stopMetacasting {
+	[server stop];
 }
+	 
+- (void)serverRemoteConnectionComplete:(Server *)server {
+	
+}
+
+- (void)serverStopped:(Server *)server {
+	
+}
+
+- (void)server:(Server *)server didNotStart:(NSDictionary *)errorDict {
+	
+}
+
+- (void)server:(Server *)server didAcceptData:(NSData *)data {
+	
+}
+
+- (void)server:(Server *)server lostConnection:(NSDictionary *)errorDict {
+	
+}
+
+- (void)serviceAdded:(NSNetService *)service moreComing:(BOOL)more {
+	
+}
+
+- (void)serviceRemoved:(NSNetService *)service moreComing:(BOOL)more {
+	
+}
+
 
 -(void)dealloc {
-    [self stopService];
+    [server release]; server = nil;
+	
     [super dealloc];
 }
 
-#pragma mark Net Service Delegate Methods
--(void)netService:(NSNetService *)aNetService didNotPublish:(NSDictionary *)dict {
-    NSLog(@"Failed to publish: %@", dict);
-}
+
 
 @end

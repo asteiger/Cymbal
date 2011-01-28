@@ -7,6 +7,7 @@
 //
 
 #import "MediaListener.h"
+#import "MCStatusMenu.h"
 
 
 @implementation MediaListener
@@ -25,6 +26,8 @@
 	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Player State"] description]);
 	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Locations"] description]);
 	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Name"] description]);
+	
+	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:[[[mediaNotification userInfo] objectForKey:@"Name"] description]];
 }
 
 - (void)dealloc {

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MediaListener.h"
 #import "MCServer.h"
+#import "MCStatusMenu.h"
 
 @interface MetaCastAppDelegate : NSObject <NSApplicationDelegate> {
 	MCServer *mcServer;
