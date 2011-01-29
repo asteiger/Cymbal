@@ -10,6 +10,10 @@
 
 @implementation MetaCastAppDelegate
 
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
+	// TODO: check to valid license
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[[MCServer sharedMCServer] startMetacasting];
 }

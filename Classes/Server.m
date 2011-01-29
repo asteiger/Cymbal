@@ -210,23 +210,29 @@ static void SocketAcceptedConnectionCallBack(CFSocketRef socket,
         NSInteger len = [self.outputStream write:[data bytes] maxLength:[data length]];
         if(-1 == len) {
             // error occured
+			if (error != NULL) {
             *error = [[NSError alloc] 
                       initWithDomain:ServerErrorDomain
                       code:kServerNoSpaceOnOutputStream
                       userInfo:[[self.outputStream streamError] userInfo]];
+			}
         } else if(0 == len) {
             // stream has reached capacity
+			if (error != NULL) {
             *error = [[NSError alloc] 
                       initWithDomain:ServerErrorDomain
                       code:kServerOutputStreamReachedCapacity
                       userInfo:[[self.outputStream streamError] userInfo]];
+			}
         } else {
             successful = YES;
         }
     } else {
+		if (error != NULL) {
         *error = [[NSError alloc] initWithDomain:ServerErrorDomain
                                             code:kServerNoSpaceOnOutputStream
                                         userInfo:nil];
+		}
     }
     return successful;
 }

@@ -8,15 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Server.h"
+#import "MCMetacaster.h"
 
 
 @interface MCServer : NSObject <ServerDelegate> {
 	Server *server;
+	NSMutableArray *metacasters;
 }
 
 + (MCServer*)sharedMCServer;
 
--(void)startMetacasting;
--(void)stopMetacasting;
+- (void)startMetacasting;
+- (void)stopMetacasting;
+- (void)connectToMetacaster:(MCMetacaster*)metacaster;
 
 @end

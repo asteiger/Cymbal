@@ -8,8 +8,11 @@
 
 #import "MCStatusMenu.h"
 #import "MCServer.h"
+#import "MCMetacaster.h"
 
 @interface MCStatusMenu(Private)
+
+- (void)didSelectMetacasterMenuItem:(NSMenuItem*)sender;
 
 - (NSMenu*)metacastersMenu;
 
@@ -39,7 +42,10 @@ static MCStatusMenu *sharedInstance = nil;
 		
 		appMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
 		
-		[[appMenu addItemWithTitle:NSLocalizedString(@"Idle.", NULL) action:nil keyEquivalent:@""] setTag:kApplicationStatus];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Status", NULL) action:nil keyEquivalent:@""] setTag:kApplicationStatus];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Listeners", NULL) action:nil keyEquivalent:@""] setTag:kListeners];
+		[[appMenu itemWithTag:kListeners] setHidden:YES];
+		[[appMenu itemWithTag:kListeners] setSubmenu:[[[NSMenu alloc] initWithTitle:@"Listeners"] autorelease]];
 		
 		[appMenu addItem:[NSMenuItem separatorItem]];
 
@@ -89,12 +95,34 @@ static MCStatusMenu *sharedInstance = nil;
 	[[appMenu itemWithTag:kCurrentSong] setTitle:song];
 }
 
-- (void)updateAppStatus:(NSString*)status {
-	[[appMenu itemWithTag:kApplicationStatus] setTitle:status];
+- (void)updateAppStatus:(MCApplicationStatus)status {
+	NSString *statusText = nil;
+	switch (status) {
+		case kIdle:
+			statusText = NSLocalizedString(@"Idle", NULL);
+			break;
+			
+		case kMetacasting:
+			statusText = NSLocalizedString(@"Metacasting", NULL);
+			break;
+			
+		case kListening:
+			statusText = NSLocalizedString(@"Listening", NULL);
+			break;
+
+		default:
+			break;
+	}
+	
+	[[appMenu itemWithTag:kApplicationStatus] setTitle:statusText];
 }
 
-- (void)addMetacaster:(NSString*)name {
-	// add a listenable source
+- (void)addMetacaster:(MCMetacaster*)metacaster {
+	NSMenu *metacastersMenu = [[appMenu itemWithTag:kMetacasters] submenu];
+	NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[metacaster.service name] action:@selector(didSelectMetacasterMenuItem:) keyEquivalent:@""];
+	
+	[metacasterItem setTarget:self];
+	[metacasterItem setRepresentedObject:metacaster];
 }
 
 - (void)dealloc {
@@ -105,6 +133,13 @@ static MCStatusMenu *sharedInstance = nil;
 @end
 
 @implementation MCStatusMenu(Private)
+
+- (void)didSelectMetacasterMenuItem:(NSMenuItem*)sender {
+	
+	MCMetacaster *metacaster = [sender representedObject];
+	metacaster.connected = YES;
+	// TODO: connect to metacaster for listening
+}
 
 - (NSMenu*)metacastersMenu {
 	NSMenu *metacastersMenu = [[[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:NSLocalizedString(@"Metacasters", NULL)] autorelease];
@@ -119,11 +154,11 @@ static MCStatusMenu *sharedInstance = nil;
 	if ([item state] != NSOnState) {
 		[item setState:NSOnState];
 		[[MCServer sharedMCServer] startMetacasting];
-		[self updateAppStatus:NSLocalizedString(@"Metacasting", NULL)];
+		[self updateAppStatus:kMetacasting];
 	} else {
 		[item setState:NSOffState];
 		[[MCServer sharedMCServer] stopMetacasting];
-		[self updateAppStatus:NSLocalizedString(@"Idle.", NULL)];
+		[self updateAppStatus:kIdle];
 	}
 }
 
