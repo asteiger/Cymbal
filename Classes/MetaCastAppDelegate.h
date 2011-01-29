@@ -12,9 +12,7 @@
 #import "MCStatusMenu.h"
 
 @interface MetaCastAppDelegate : NSObject <NSApplicationDelegate> {
-	MCServer *mcServer;
 	MediaListener *mediaListener;
 }
-
 
 @end

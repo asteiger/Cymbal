@@ -23,11 +23,17 @@
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got notification");
-	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Player State"] description]);
-	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Locations"] description]);
-	NSLog(@"%@", [[[mediaNotification userInfo] objectForKey:@"Name"] description]);
 	
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:[[[mediaNotification userInfo] objectForKey:@"Name"] description]];
+	NSString *playerStatus = [[[mediaNotification userInfo] objectForKey:@"Player State"] description];
+	
+	if ([playerStatus isEqualToString:@"Paused"]) {
+		[[MCStatusMenu sharedMCStatusMenu] setNoMediaInfo];
+	} else {
+		NSString *artist = [[[mediaNotification userInfo] objectForKey:@"Artist"] description];
+		NSString *song = [[[mediaNotification userInfo] objectForKey:@"Name"] description];
+		
+		[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:artist Song:song];
+	}
 }
 
 - (void)dealloc {

@@ -14,6 +14,8 @@
 	Server *server;
 }
 
++ (MCServer*)sharedMCServer;
+
 -(void)startMetacasting;
 -(void)stopMetacasting;
 

@@ -7,10 +7,14 @@
 //
 
 #import "MCStatusMenu.h"
+#import "MCServer.h"
 
 @interface MCStatusMenu(Private)
 
 - (NSMenu*)metacastersMenu;
+
+- (void)toggleMetacasting;
+- (void)showPreferences;
 - (void)exitApplication;
 
 @end
@@ -33,26 +37,60 @@ static MCStatusMenu *sharedInstance = nil;
 		[statusItem setTitle:NSLocalizedString(@"MC", NULL)];
 		[statusItem setHighlightMode:YES];
 		
-		NSMenu *statusMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
+		appMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
 		
-		appStatus = [statusMenu addItemWithTitle:NSLocalizedString(@"Idle.", NULL) action:nil keyEquivalent:@""];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Idle.", NULL) action:nil keyEquivalent:@""] setTag:kApplicationStatus];
 		
-		[statusMenu addItem:[NSMenuItem separatorItem]];
+		[appMenu addItem:[NSMenuItem separatorItem]];
+
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Nothing playing", NULL) action:nil keyEquivalent:@""] setTag:kNothingPlaying];
 		
-		NSMenuItem *menuItem = [statusMenu addItemWithTitle:NSLocalizedString(@"Metacasters", NULL) action:nil keyEquivalent:@""];
-		[menuItem setSubmenu:[self metacastersMenu]];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Current Artist", NULL) action:nil keyEquivalent:@""] setTag:kCurrentArtist];
+		[[appMenu itemWithTag:kCurrentArtist] setHidden:YES];
 		
-		[[statusMenu addItemWithTitle:NSLocalizedString(@"Quit", NULL) action:@selector(exitApplication) keyEquivalent:@""] setTarget:self];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Current Song", NULL) action:nil keyEquivalent:@""] setTag:kCurrentSong];
+		[[appMenu itemWithTag:kCurrentSong] setHidden:YES];
+		
+		[appMenu addItem:[NSMenuItem separatorItem]];
+
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Allow Broadcast", NULL) action:@selector(toggleMetacasting) keyEquivalent:@""] setTag:kMetacastToggle];
+		[[appMenu itemWithTag:kMetacastToggle] setTarget:self];
+		
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Metacasters", NULL) action:nil keyEquivalent:@""] setTag:kMetacasters];
+		[[appMenu itemWithTag:kMetacasters] setSubmenu:[self metacastersMenu]];
+		
+		[appMenu addItem:[NSMenuItem separatorItem]];
+		
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Preferences", NULL) action:@selector(showPreferences) keyEquivalent:@","] setTag:kPreferences];
+		[[appMenu itemWithTag:kPreferences] setTarget:self];
+		
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Quit", NULL) action:@selector(exitApplication) keyEquivalent:@"Q"] setTag:kQuit];
+		[[appMenu itemWithTag:kQuit] setTarget:self];
 		
 		
-		[statusItem setMenu:statusMenu];
+		[statusItem setMenu:appMenu];
 	}
 	
 	return self;
 }
 
+- (void)setNoMediaInfo {
+	[[appMenu itemWithTag:kNothingPlaying] setHidden:NO];
+	[[appMenu itemWithTag:kCurrentArtist] setHidden:YES];
+	[[appMenu itemWithTag:kCurrentSong] setHidden:YES];
+}
+
+- (void)updateCurrentArtist:(NSString*)artist Song:(NSString*)song {
+	[[appMenu itemWithTag:kNothingPlaying] setHidden:YES];
+	[[appMenu itemWithTag:kCurrentArtist] setHidden:NO];
+	[[appMenu itemWithTag:kCurrentSong] setHidden:NO];
+	
+	[[appMenu itemWithTag:kCurrentArtist] setTitle:artist];
+	[[appMenu itemWithTag:kCurrentSong] setTitle:song];
+}
+
 - (void)updateAppStatus:(NSString*)status {
-	[appStatus setTitle:status];
+	[[appMenu itemWithTag:kApplicationStatus] setTitle:status];
 }
 
 - (void)addMetacaster:(NSString*)name {
@@ -73,6 +111,24 @@ static MCStatusMenu *sharedInstance = nil;
 	[metacastersMenu addItemWithTitle:NSLocalizedString(@"No Metacasters Found", NULL) action:nil keyEquivalent:@""];
 	
 	return metacastersMenu;
+}
+
+- (void)toggleMetacasting {
+	NSMenuItem *item = [appMenu itemWithTag:kMetacastToggle];
+	
+	if ([item state] != NSOnState) {
+		[item setState:NSOnState];
+		[[MCServer sharedMCServer] startMetacasting];
+		[self updateAppStatus:NSLocalizedString(@"Metacasting", NULL)];
+	} else {
+		[item setState:NSOffState];
+		[[MCServer sharedMCServer] stopMetacasting];
+		[self updateAppStatus:NSLocalizedString(@"Idle.", NULL)];
+	}
+}
+
+- (void)showPreferences {
+	
 }
 
 - (void)exitApplication {
