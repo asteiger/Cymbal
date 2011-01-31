@@ -1,6 +1,6 @@
 //
-//  Metacaster.h
-//  MetaCast
+//  Djinner.h
+//  Djinn
 //
 //  Created by Ashley Steigerwalt on 1/28/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.

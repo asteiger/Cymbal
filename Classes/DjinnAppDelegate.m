@@ -1,12 +1,12 @@
 //
-//  MetaCastAppDelegate.m
-//  MetaCast
+//  DjinnAppDelegate.m
+//  Djinn
 //
 //  Created by Ashley Steigerwalt on 1/13/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MetaCastAppDelegate.h"
+#import "DjinnAppDelegate.h"
 
 @implementation MetaCastAppDelegate
 

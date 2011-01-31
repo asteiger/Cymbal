@@ -1,6 +1,6 @@
 //
 //  MCStatusMenu.m
-//  MetaCast
+//  Djinn
 //
 //  Created by Ashley Steigerwalt on 1/27/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -37,7 +37,7 @@ static MCStatusMenu *sharedInstance = nil;
 - (id)init {
 	if (self = [super init]) {
 		statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain]; 
-		[statusItem setTitle:NSLocalizedString(@"MC", NULL)];
+		[statusItem setTitle:NSLocalizedString(@"Djinn", NULL)];
 		[statusItem setHighlightMode:YES];
 		
 		appMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
