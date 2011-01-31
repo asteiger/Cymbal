@@ -13,6 +13,8 @@
 		2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* MCGrowlController.m */; };
 		2F1DA73412F67D2F00CAF45E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
 		2F1DA73C12F67D4400CAF45E /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
+		2F1DA77512F6824600CAF45E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77412F6824600CAF45E /* icon.png */; };
+		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
 		2F232E2C12E2542000E14DF9 /* MediaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* MediaListener.m */; };
 		2F27ACE012F3D069008E1BDD /* MCMetacaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27ACDF12F3D069008E1BDD /* MCMetacaster.m */; };
 		2F37DFFF12F2163800DBBCBB /* MCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37DFFE12F2163800DBBCBB /* MCServer.m */; };
@@ -54,6 +56,8 @@
 		2F1DA6E712F676A600CAF45E /* MCGrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCGrowlController.h; sourceTree = "<group>"; };
 		2F1DA6E812F676A600CAF45E /* MCGrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCGrowlController.m; sourceTree = "<group>"; };
 		2F1DA73312F67D2F00CAF45E /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = ../Djinn/Classes/Growl.framework; sourceTree = SOURCE_ROOT; };
+		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		2F1DA77812F682B900CAF45E /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		2F232D9512E21A4400E14DF9 /* Djinn-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Djinn-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* MediaListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaListener.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* MediaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaListener.m; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F1DA77112F6821200CAF45E /* Images */,
 				2F232D9512E21A4400E14DF9 /* Djinn-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -165,6 +170,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F1DA77112F6821200CAF45E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2F1DA77812F682B900CAF45E /* icon-small.png */,
+				2F1DA77412F6824600CAF45E /* icon.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		2F27ACDB12F3D03F008E1BDD /* Model */ = {
@@ -275,6 +289,8 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */,
 				2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */,
+				2F1DA77512F6824600CAF45E /* icon.png in Resources */,
+				2F1DA77912F682B900CAF45E /* icon-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

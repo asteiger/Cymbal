@@ -37,8 +37,9 @@ static MCStatusMenu *sharedInstance = nil;
 - (id)init {
 	if (self = [super init]) {
 		statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain]; 
-		[statusItem setTitle:NSLocalizedString(@"Djinn", NULL)];
+		//[statusItem setTitle:NSLocalizedString(@"Djinn", NULL)];
 		[statusItem setHighlightMode:YES];
+		[statusItem setImage:[NSImage imageNamed:@"icon-small.png"]];
 		
 		appMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"MetaCast"];
 		
