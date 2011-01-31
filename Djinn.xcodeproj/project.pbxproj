@@ -23,6 +23,7 @@
 		2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */; };
 		2F6B5ECC12F339AA00F51919 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B5ECB12F339AA00F51919 /* Server.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
+		2FE5EB6412F743DD0085F07C /* djinn.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5EB6312F743DD0085F07C /* djinn.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -74,6 +75,7 @@
 		2F6B5ECA12F339AA00F51919 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
 		2F6B5ECB12F339AA00F51919 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		2FB83D9112E00F0C00A9E754 /* English */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 4; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2FE5EB6312F743DD0085F07C /* djinn.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = djinn.icns; path = ../Djinn/Resources/djinn.icns; sourceTree = SOURCE_ROOT; };
 		8D1107320486CEB800E47090 /* Djinn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Djinn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 		2F1DA77112F6821200CAF45E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2FE5EB6312F743DD0085F07C /* djinn.icns */,
 				2F1DA77812F682B900CAF45E /* icon-small.png */,
 				2F1DA77412F6824600CAF45E /* icon.png */,
 			);
@@ -291,6 +294,7 @@
 				2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */,
 				2F1DA77512F6824600CAF45E /* icon.png in Resources */,
 				2F1DA77912F682B900CAF45E /* icon-small.png in Resources */,
+				2FE5EB6412F743DD0085F07C /* djinn.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

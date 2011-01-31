@@ -71,7 +71,7 @@ static MCStatusMenu *sharedInstance = nil;
 		[[appMenu addItemWithTitle:NSLocalizedString(@"Preferences", NULL) action:@selector(showPreferences) keyEquivalent:@","] setTag:kPreferences];
 		[[appMenu itemWithTag:kPreferences] setTarget:self];
 		
-		[[appMenu addItemWithTitle:NSLocalizedString(@"Quit", NULL) action:@selector(exitApplication) keyEquivalent:@"Q"] setTag:kQuit];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Quit Djinn", NULL) action:@selector(exitApplication) keyEquivalent:@""] setTag:kQuit];
 		[[appMenu itemWithTag:kQuit] setTarget:self];
 		
 		
