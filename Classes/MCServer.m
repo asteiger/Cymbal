@@ -9,6 +9,7 @@
 #import "MCServer.h"
 #import "MCStatusMenu.h"
 #import "MCMetacaster.h"
+#import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
 @implementation MCServer
 
@@ -67,8 +68,15 @@ static MCServer *sharedInstance = nil;
 }
 
 - (void)server:(Server *)server didAcceptData:(NSData *)data {
-	NSLog(@"Got data: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kMetacasting];
+	NSString *stringData = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSLog(@"Got data: %@", stringData);
+	
+	NSArray *dataParts = [stringData componentsSeparatedByString:@"::::"];
+	
+	[GrowlApplicationBridge notifyWithTitle:[dataParts objectAtIndex:1] description:[dataParts objectAtIndex:0] notificationName:@"SongNotification" iconData:nil priority:0 isSticky:NO clickContext:nil];
+	
+	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kListening];
+	[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:[dataParts objectAtIndex:1] Song:[dataParts objectAtIndex:0]];
 }
 
 - (void)server:(Server *)server lostConnection:(NSDictionary *)errorDict {

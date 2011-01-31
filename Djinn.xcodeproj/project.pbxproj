@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* DjinnAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* DjinnAppDelegate.m */; };
+		2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */; };
+		2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* MCGrowlController.m */; };
+		2F1DA73412F67D2F00CAF45E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
+		2F1DA73C12F67D4400CAF45E /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
 		2F232E2C12E2542000E14DF9 /* MediaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* MediaListener.m */; };
 		2F27ACE012F3D069008E1BDD /* MCMetacaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27ACDF12F3D069008E1BDD /* MCMetacaster.m */; };
 		2F37DFFF12F2163800DBBCBB /* MCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37DFFE12F2163800DBBCBB /* MCServer.m */; };
@@ -22,6 +26,19 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2F1DA6AF12F6723600CAF45E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2F1DA73C12F67D4400CAF45E /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -33,6 +50,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		2F1DA6E712F676A600CAF45E /* MCGrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCGrowlController.h; sourceTree = "<group>"; };
+		2F1DA6E812F676A600CAF45E /* MCGrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCGrowlController.m; sourceTree = "<group>"; };
+		2F1DA73312F67D2F00CAF45E /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = ../Djinn/Classes/Growl.framework; sourceTree = SOURCE_ROOT; };
 		2F232D9512E21A4400E14DF9 /* Djinn-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Djinn-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* MediaListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaListener.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* MediaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaListener.m; sourceTree = "<group>"; };
@@ -58,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				2F1DA73412F67D2F00CAF45E /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +101,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F1DA73312F67D2F00CAF45E /* Growl.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -130,6 +153,7 @@
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				2FB83DB512E0142300A9E754 /* Localizable.strings */,
+				2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -157,6 +181,8 @@
 			children = (
 				2F37DFF712F2159300DBBCBB /* Net */,
 				2F37E01812F21B5D00DBBCBB /* UI */,
+				2F1DA6E712F676A600CAF45E /* MCGrowlController.h */,
+				2F1DA6E812F676A600CAF45E /* MCGrowlController.m */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -204,6 +230,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				2F1DA6AF12F6723600CAF45E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -247,6 +274,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */,
+				2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +294,7 @@
 				2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */,
 				2F6B5ECC12F339AA00F51919 /* Server.m in Sources */,
 				2F27ACE012F3D069008E1BDD /* MCMetacaster.m in Sources */,
+				2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +333,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Djinn\"",
+					"\"$(SRCROOT)/../Djinn/Classes\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -324,6 +358,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Djinn\"",
+					"\"$(SRCROOT)/../Djinn/Classes\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Djinn_Prefix.pch;

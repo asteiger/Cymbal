@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MediaListener.h"
-#import "MCServer.h"
-#import "MCStatusMenu.h"
+#import "MCGrowlController.h"
 
 @interface MetaCastAppDelegate : NSObject <NSApplicationDelegate> {
+	MCGrowlController *growlController;
 	MediaListener *mediaListener;
 }
 

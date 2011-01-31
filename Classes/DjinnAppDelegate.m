@@ -7,6 +7,10 @@
 //
 
 #import "DjinnAppDelegate.h"
+#import "MCServer.h"
+#import "MCStatusMenu.h"
+#import "Growl.framework/Headers/GrowlApplicationBridge.h"
+
 
 @implementation MetaCastAppDelegate
 
@@ -15,6 +19,9 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	growlController = [[MCGrowlController alloc] init];
+	[GrowlApplicationBridge setGrowlDelegate:@""];
+	
 	[[MCServer sharedMCServer] startMetacasting];
 }
 
@@ -24,6 +31,7 @@
 }
 
 - (void)dealloc {
+	[growlController release];
 	[mediaListener release];
 	[super dealloc];
 
