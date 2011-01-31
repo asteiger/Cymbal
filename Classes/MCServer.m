@@ -54,26 +54,29 @@ static MCServer *sharedInstance = nil;
 
 	 
 - (void)serverRemoteConnectionComplete:(Server *)server {
-	
+	NSLog(@"Connected");
 }
 
 - (void)serverStopped:(Server *)server {
+	NSLog(@"Server stopped");
 	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kIdle];
 }
 
 - (void)server:(Server *)server didNotStart:(NSDictionary *)errorDict {
-	
+	NSLog(@"Start failed.");
 }
 
 - (void)server:(Server *)server didAcceptData:(NSData *)data {
+	NSLog(@"Got data: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
 	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kMetacasting];
 }
 
 - (void)server:(Server *)server lostConnection:(NSDictionary *)errorDict {
-	
+	NSLog(@"Lost connection");
 }
 
 - (void)serviceAdded:(NSNetService *)service moreComing:(BOOL)more {
+	NSLog(@"Service added");
 	MCMetacaster *metacaster = [[[MCMetacaster alloc] initWithService:service] autorelease];
 	
 	[metacasters addObject:metacaster];
@@ -81,7 +84,7 @@ static MCServer *sharedInstance = nil;
 }
 
 - (void)serviceRemoved:(NSNetService *)service moreComing:(BOOL)more {
-	
+	NSLog(@"Service removed");	
 }
 
 
