@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MCMetacaster.h"
+#import "MCBroadcaster.h"
 #import "MCApplicationController.h"
 
 typedef enum {
@@ -32,7 +32,7 @@ typedef enum {
 - (void)setNoMediaInfo;
 - (void)updateCurrentArtist:(NSString*)artist Song:(NSString*)song;
 - (void)updateAppStatusMenuItem;
-- (void)addBroadcaster:(MCMetacaster*)name;
+- (void)addBroadcaster:(MCBroadcaster*)name;
 
 
 @end

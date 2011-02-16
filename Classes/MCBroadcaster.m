@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MCMetacaster.h"
+#import "MCBroadcaster.h"
 
-@implementation MCMetacaster
+@implementation MCBroadcaster
 
 @synthesize service, connected;
 

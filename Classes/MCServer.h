@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Server.h"
-#import "MCMetacaster.h"
+#import "MCBroadcaster.h"
 
 
 @interface MCServer : NSObject <ServerDelegate> {
@@ -20,6 +20,6 @@
 
 - (void)startMetacasting;
 - (void)stopMetacasting;
-- (void)connectToMetacaster:(MCMetacaster*)metacaster;
+- (void)connectToMetacaster:(MCBroadcaster*)metacaster;
 
 @end

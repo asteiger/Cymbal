@@ -8,7 +8,7 @@
 
 #import "MCServer.h"
 #import "MCStatusMenu.h"
-#import "MCMetacaster.h"
+#import "MCBroadcaster.h"
 #import "MCGrowlController.h"
 #import "MCSongData.h"
 
@@ -47,8 +47,8 @@ static MCServer *sharedInstance = nil;
 	[server stop];
 }
 
-- (void)connectToMetacaster:(MCMetacaster*)metacaster {
-	[server connectToRemoteService:metacaster.service];
+- (void)connectToMetacaster:(MCBroadcaster*)broadcaster {
+	[server connectToRemoteService:broadcaster.service];
 }
 
 
@@ -83,10 +83,10 @@ static MCServer *sharedInstance = nil;
 
 - (void)serviceAdded:(NSNetService *)service moreComing:(BOOL)more {
 	NSLog(@"Service added");
-	MCMetacaster *metacaster = [[[MCMetacaster alloc] initWithService:service] autorelease];
+	MCBroadcaster *broadcaster = [[[MCBroadcaster alloc] initWithService:service] autorelease];
 	
-	[metacasters addObject:metacaster];
-	[[MCStatusMenu sharedMCStatusMenu] addMetacaster:metacaster];
+	[metacasters addObject:broadcaster];
+	[[MCStatusMenu sharedMCStatusMenu] addBroadcaster:broadcaster];
 }
 
 - (void)serviceRemoved:(NSNetService *)service moreComing:(BOOL)more {

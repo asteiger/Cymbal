@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface MCMetacaster : NSObject {
+@interface MCBroadcaster : NSObject {
 	NSNetService *service;
 	BOOL connected;
 }

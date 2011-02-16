@@ -8,7 +8,7 @@
 
 #import "MCStatusMenu.h"
 #import "MCServer.h"
-#import "MCMetacaster.h"
+#import "MCBroadcaster.h"
 #import "MCGrowlController.h"
 
 @interface MCStatusMenu(Private)
@@ -124,7 +124,7 @@ static MCStatusMenu *sharedInstance = nil;
 	[[appMenu itemWithTag:kApplicationStatus] setTitle:statusText];
 }
 
-- (void)addBroadcaster:(MCMetacaster*)metacaster {
+- (void)addBroadcaster:(MCBroadcaster*)metacaster {
 	NSMenu *metacastersMenu = [[appMenu itemWithTag:kMetacasters] submenu];
 	NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[metacaster.service name] action:@selector(didSelectMetacasterMenuItem:) keyEquivalent:@""];
 	
@@ -143,7 +143,7 @@ static MCStatusMenu *sharedInstance = nil;
 
 - (void)didSelectMetacasterMenuItem:(NSMenuItem*)sender {
 	
-	MCMetacaster *metacaster = [sender representedObject];
+	MCBroadcaster *metacaster = [sender representedObject];
 	metacaster.connected = YES;
 	// TODO: connect to metacaster for listening
 }
