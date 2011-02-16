@@ -124,7 +124,7 @@ static MCStatusMenu *sharedInstance = nil;
 	[[appMenu itemWithTag:kApplicationStatus] setTitle:statusText];
 }
 
-- (void)addMetacaster:(MCMetacaster*)metacaster {
+- (void)addBroadcaster:(MCMetacaster*)metacaster {
 	NSMenu *metacastersMenu = [[appMenu itemWithTag:kMetacasters] submenu];
 	NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[metacaster.service name] action:@selector(didSelectMetacasterMenuItem:) keyEquivalent:@""];
 	
