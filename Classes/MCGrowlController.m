@@ -8,9 +8,38 @@
 
 #import "MCGrowlController.h"
 
-
 @implementation MCGrowlController
 
++ (void)postNotificationWithSong:(MCSongData*)songData {
+	[GrowlApplicationBridge notifyWithTitle:songData.artist
+								description:songData.songTitle
+						   notificationName:@"Song Information"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+}
 
++ (void)postNotificationWithTitle:(NSString*)title Description:(NSString*)description NotificationName:(NSString*)notificationName {
+	[GrowlApplicationBridge notifyWithTitle:title
+								description:description
+						   notificationName:notificationName
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+}
+
++ (void)postBroadcastEnabledNotificationWithState:(int)state {
+	NSString *stateMessage = state == NSOnState ? @"Broadcast Enabled" : @"Broadcast Disabled";
+	
+	[GrowlApplicationBridge notifyWithTitle:@"Djinn"
+								description:stateMessage
+						   notificationName:@"Broadcast Enabled Status"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+}
 
 @end

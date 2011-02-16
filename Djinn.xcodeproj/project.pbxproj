@@ -22,6 +22,8 @@
 		2F37E00512F2168900DBBCBB /* MCBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E00412F2168900DBBCBB /* MCBrowser.m */; };
 		2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */; };
 		2F6B5ECC12F339AA00F51919 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B5ECB12F339AA00F51919 /* Server.m */; };
+		2F9A96E112F92CF200CF4CB3 /* MCApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */; };
+		2FB40CE012F89163004A0363 /* MCSongData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB40CDF12F89163004A0363 /* MCSongData.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
 		2FE5EB6412F743DD0085F07C /* djinn.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5EB6312F743DD0085F07C /* djinn.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -74,6 +76,10 @@
 		2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCStatusMenu.m; sourceTree = "<group>"; };
 		2F6B5ECA12F339AA00F51919 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
 		2F6B5ECB12F339AA00F51919 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		2F9A96DF12F92CF200CF4CB3 /* MCApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCApplicationController.h; sourceTree = "<group>"; };
+		2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCApplicationController.m; sourceTree = "<group>"; };
+		2FB40CDE12F89163004A0363 /* MCSongData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSongData.h; sourceTree = "<group>"; };
+		2FB40CDF12F89163004A0363 /* MCSongData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSongData.m; sourceTree = "<group>"; };
 		2FB83D9112E00F0C00A9E754 /* English */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 4; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2FE5EB6312F743DD0085F07C /* djinn.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = djinn.icns; path = ../Djinn/Resources/djinn.icns; sourceTree = SOURCE_ROOT; };
 		8D1107320486CEB800E47090 /* Djinn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Djinn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +195,8 @@
 			children = (
 				2F27ACDE12F3D069008E1BDD /* MCMetacaster.h */,
 				2F27ACDF12F3D069008E1BDD /* MCMetacaster.m */,
+				2FB40CDE12F89163004A0363 /* MCSongData.h */,
+				2FB40CDF12F89163004A0363 /* MCSongData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -200,6 +208,8 @@
 				2F37E01812F21B5D00DBBCBB /* UI */,
 				2F1DA6E712F676A600CAF45E /* MCGrowlController.h */,
 				2F1DA6E812F676A600CAF45E /* MCGrowlController.m */,
+				2F9A96DF12F92CF200CF4CB3 /* MCApplicationController.h */,
+				2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -315,6 +325,8 @@
 				2F6B5ECC12F339AA00F51919 /* Server.m in Sources */,
 				2F27ACE012F3D069008E1BDD /* MCMetacaster.m in Sources */,
 				2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */,
+				2FB40CE012F89163004A0363 /* MCSongData.m in Sources */,
+				2F9A96E112F92CF200CF4CB3 /* MCApplicationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +376,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Djinn_Prefix.pch;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = "Resources/Djinn-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -386,7 +398,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Djinn_Prefix.pch;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = "Resources/Djinn-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;

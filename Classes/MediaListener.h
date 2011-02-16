@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "MCApplicationController.h"
+#import "MCStatusMenu.h"
 
 @interface MediaListener : NSObject {
-
+	NSString *_playerState;
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;

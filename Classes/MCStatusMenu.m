@@ -9,6 +9,7 @@
 #import "MCStatusMenu.h"
 #import "MCServer.h"
 #import "MCMetacaster.h"
+#import "MCGrowlController.h"
 
 @interface MCStatusMenu(Private)
 
@@ -60,8 +61,9 @@ static MCStatusMenu *sharedInstance = nil;
 		
 		[appMenu addItem:[NSMenuItem separatorItem]];
 
-		[[appMenu addItemWithTitle:NSLocalizedString(@"Allow Broadcast", NULL) action:@selector(toggleMetacasting) keyEquivalent:@""] setTag:kMetacastToggle];
+		[[appMenu addItemWithTitle:NSLocalizedString(@"Toggle Broadcast", NULL) action:@selector(toggleMetacasting) keyEquivalent:@""] setTag:kMetacastToggle];
 		[[appMenu itemWithTag:kMetacastToggle] setTarget:self];
+		[[appMenu itemWithTag:kMetacastToggle] setState:NSOnState];
 		
 		[[appMenu addItemWithTitle:NSLocalizedString(@"Metacasters", NULL) action:nil keyEquivalent:@""] setTag:kMetacasters];
 		[[appMenu itemWithTag:kMetacasters] setSubmenu:[self metacastersMenu]];
@@ -76,6 +78,8 @@ static MCStatusMenu *sharedInstance = nil;
 		
 		
 		[statusItem setMenu:appMenu];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAppStatusMenuItem:) name:@"ApplicationStateChanged" object:nil];
 	}
 	
 	return self;
@@ -96,15 +100,17 @@ static MCStatusMenu *sharedInstance = nil;
 	[[appMenu itemWithTag:kCurrentSong] setTitle:song];
 }
 
-- (void)updateAppStatus:(MCApplicationStatus)status {
+- (void)updateAppStatusMenuItem {
 	NSString *statusText = nil;
-	switch (status) {
+	MCApplicationController *stateController = [MCApplicationController sharedApplicationController];
+											 
+	switch ([stateController applicationState]) {
 		case kIdle:
 			statusText = NSLocalizedString(@"Idle", NULL);
 			break;
 			
-		case kMetacasting:
-			statusText = NSLocalizedString(@"Metacasting", NULL);
+		case kPlaying:
+			statusText = [stateController isBroadcastingEnabled] ? NSLocalizedString(@"Broadcasting", NULL) : NSLocalizedString(@"Playing", NULL);
 			break;
 			
 		case kListening:
@@ -154,13 +160,13 @@ static MCStatusMenu *sharedInstance = nil;
 	
 	if ([item state] != NSOnState) {
 		[item setState:NSOnState];
-		[[MCServer sharedMCServer] startMetacasting];
-		[self updateAppStatus:kMetacasting];
+		
 	} else {
 		[item setState:NSOffState];
-		[[MCServer sharedMCServer] stopMetacasting];
-		[self updateAppStatus:kIdle];
+		
 	}
+	
+	[MCGrowlController postBroadcastEnabledNotificationWithState:[item state]];
 }
 
 - (void)showPreferences {

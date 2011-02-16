@@ -7,10 +7,12 @@
 //
 
 #import "MediaListener.h"
-#import "MCStatusMenu.h"
-
 
 @implementation MediaListener
+
+static NSString *ItunesStopped = @"Stopped";
+static NSString *ItunesPaused = @"Paused";
+static NSString *ItunesPlaying = @"Playing";
 
 - (id)init {
 	if (self = [super init]) {
@@ -24,14 +26,15 @@
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got notification");
 	
-	NSString *playerStatus = [[[mediaNotification userInfo] objectForKey:@"Player State"] description];
+	NSString *playerState = [[[mediaNotification userInfo] objectForKey:@"Player State"] description];
+	NSString *artist = [[[mediaNotification userInfo] objectForKey:@"Artist"] description];
+	NSString *song = [[[mediaNotification userInfo] objectForKey:@"Name"] description];
 	
-	if ([playerStatus isEqualToString:@"Paused"]) {
+	if ([playerState isEqualToString:ItunesStopped] || [playerState isEqualToString:ItunesPaused]) {
+		[[MCApplicationController sharedApplicationController] setApplicationState:kIdle];
 		[[MCStatusMenu sharedMCStatusMenu] setNoMediaInfo];
 	} else {
-		NSString *artist = [[[mediaNotification userInfo] objectForKey:@"Artist"] description];
-		NSString *song = [[[mediaNotification userInfo] objectForKey:@"Name"] description];
-		
+		[[MCApplicationController sharedApplicationController] setApplicationState:kPlaying];
 		[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:artist Song:song];
 	}
 }

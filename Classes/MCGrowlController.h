@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MCSongData.h"
 #import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
 
@@ -14,5 +15,8 @@
 
 }
 
++ (void)postNotificationWithSong:(MCSongData*)songData;
++ (void)postNotificationWithTitle:(NSString*)title Description:(NSString*)description NotificationName:(NSString*)notificationName;
++ (void)postBroadcastEnabledNotificationWithState:(int)state;
 
 @end

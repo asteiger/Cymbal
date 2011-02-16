@@ -9,7 +9,8 @@
 #import "MCServer.h"
 #import "MCStatusMenu.h"
 #import "MCMetacaster.h"
-#import "Growl.framework/Headers/GrowlApplicationBridge.h"
+#import "MCGrowlController.h"
+#import "MCSongData.h"
 
 @implementation MCServer
 
@@ -40,12 +41,10 @@ static MCServer *sharedInstance = nil;
 		return;
 	}
 	
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kMetacasting];
 }
 
 - (void)stopMetacasting {
 	[server stop];
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kIdle];
 }
 
 - (void)connectToMetacaster:(MCMetacaster*)metacaster {
@@ -60,7 +59,6 @@ static MCServer *sharedInstance = nil;
 
 - (void)serverStopped:(Server *)server {
 	NSLog(@"Server stopped");
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kIdle];
 }
 
 - (void)server:(Server *)server didNotStart:(NSDictionary *)errorDict {
@@ -73,9 +71,9 @@ static MCServer *sharedInstance = nil;
 	
 	NSArray *dataParts = [stringData componentsSeparatedByString:@"::::"];
 	
-	[GrowlApplicationBridge notifyWithTitle:[dataParts objectAtIndex:1] description:[dataParts objectAtIndex:0] notificationName:@"SongNotification" iconData:nil priority:0 isSticky:NO clickContext:nil];
+	MCSongData *songData = [[[MCSongData alloc] initWithArtist:[dataParts objectAtIndex:1] SongTitle:[dataParts objectAtIndex:0]] autorelease];
+	[MCGrowlController postNotificationWithSong:songData];
 	
-	[[MCStatusMenu sharedMCStatusMenu] updateAppStatus:kListening];
 	[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:[dataParts objectAtIndex:1] Song:[dataParts objectAtIndex:0]];
 }
 

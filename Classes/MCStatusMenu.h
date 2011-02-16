@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MCMetacaster.h"
+#import "MCApplicationController.h"
 
 typedef enum {
 	kApplicationStatus = 1,
@@ -21,12 +22,6 @@ typedef enum {
 	kQuit = 9
 } MCMenuItemType;
 
-typedef enum {
-	kIdle = 1,
-	kMetacasting = 2,
-	kListening = 3
-} MCApplicationStatus;
-
 @interface MCStatusMenu : NSObject {
 	NSStatusItem *statusItem;
 	NSMenu *appMenu;
@@ -36,7 +31,7 @@ typedef enum {
 
 - (void)setNoMediaInfo;
 - (void)updateCurrentArtist:(NSString*)artist Song:(NSString*)song;
-- (void)updateAppStatus:(MCApplicationStatus)status;
+- (void)updateAppStatusMenuItem;
 - (void)addMetacaster:(MCMetacaster*)name;
 
 

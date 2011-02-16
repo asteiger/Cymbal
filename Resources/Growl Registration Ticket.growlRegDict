@@ -6,11 +6,21 @@
 	<integer>1</integer>
 	<key>AllNotifications</key>
 	<array>
-		<string>SongNotification</string>
+		<string>Song Information</string>
+		<string>Connect to Broadcaster</string>
+		<string>Listener Connected</string>
+		<string>Connection Lost</string>
+		<string>Broadcast Enabled Status</string>
+		<string>Application Status</string>
 	</array>
 	<key>DefaultNotifications</key>
 	<array>
 		<string>SongNotification</string>
+		<string>Connect to Broadcaster</string>
+		<string>Listener Connected</string>
+		<string>Connection Lost</string>
+		<string>Broadcast Enabled Status</string>
+		<string>Application Status</string>
 	</array>
 </dict>
 </plist>

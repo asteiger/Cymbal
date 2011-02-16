@@ -20,7 +20,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	growlController = [[MCGrowlController alloc] init];
-	[GrowlApplicationBridge setGrowlDelegate:@""];
+	[GrowlApplicationBridge setGrowlDelegate:growlController];
 	
 	[[MCServer sharedMCServer] startMetacasting];
 }
