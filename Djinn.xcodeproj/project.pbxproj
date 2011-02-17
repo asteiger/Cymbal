@@ -104,11 +104,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2FF1D10F130CD6200001628E /* Libraries */,
-				2F27ACDD12F3D04B008E1BDD /* Control */,
 				2F27ACDB12F3D03F008E1BDD /* Model */,
-				256AC3D80F4B6AC300CF3369 /* DjinnAppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* DjinnAppDelegate.m */,
+				2F27ACDD12F3D04B008E1BDD /* Control */,
+				2FF1D10F130CD6200001628E /* Libraries */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -207,15 +205,42 @@
 		2F27ACDD12F3D04B008E1BDD /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				2F3567DA130D82FB000EC787 /* App */,
+				2F3567DB130D830A000EC787 /* Growl */,
 				2F37E00612F2170900DBBCBB /* Media */,
 				2F37DFF712F2159300DBBCBB /* Net */,
-				2F37E01812F21B5D00DBBCBB /* UI */,
-				2F1DA6E712F676A600CAF45E /* MCGrowlController.h */,
-				2F1DA6E812F676A600CAF45E /* MCGrowlController.m */,
-				2F9A96DF12F92CF200CF4CB3 /* MCApplicationController.h */,
-				2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */,
+				2F3567DC130D8386000EC787 /* UI */,
 			);
 			name = Control;
+			sourceTree = "<group>";
+		};
+		2F3567DA130D82FB000EC787 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2F9A96DF12F92CF200CF4CB3 /* MCApplicationController.h */,
+				2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */,
+				256AC3D80F4B6AC300CF3369 /* DjinnAppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* DjinnAppDelegate.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		2F3567DB130D830A000EC787 /* Growl */ = {
+			isa = PBXGroup;
+			children = (
+				2F1DA6E712F676A600CAF45E /* MCGrowlController.h */,
+				2F1DA6E812F676A600CAF45E /* MCGrowlController.m */,
+			);
+			name = Growl;
+			sourceTree = "<group>";
+		};
+		2F3567DC130D8386000EC787 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */,
+				2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		2F37DFF712F2159300DBBCBB /* Net */ = {
@@ -238,15 +263,6 @@
 				2F232E2B12E2542000E14DF9 /* MediaListener.m */,
 			);
 			name = Media;
-			sourceTree = "<group>";
-		};
-		2F37E01812F21B5D00DBBCBB /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */,
-				2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */,
-			);
-			name = UI;
 			sourceTree = "<group>";
 		};
 		2FF1D10F130CD6200001628E /* Libraries */ = {
