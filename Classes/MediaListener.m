@@ -10,8 +10,8 @@
 
 @implementation MediaListener
 
-static NSString *ItunesStopped = @"Stopped";
-static NSString *ItunesPaused = @"Paused";
+static const NSString *ItunesStopped = @"Stopped";
+static const NSString *ItunesPaused = @"Paused";
 
 - (id)init {
 	if (self = [super init]) {
