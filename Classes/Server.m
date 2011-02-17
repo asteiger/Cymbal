@@ -29,10 +29,12 @@
 	}
 	
 	NSLog(@"Server started on port %hu", [serverSocket localPort]);
+	isRunning = YES;
 }
 
 - (void)stop {
 	[serverSocket disconnect];
+	isRunning = NO;
 	
 	for(int i = 0; i < [connectedSockets count]; i++) {
 		[[connectedSockets objectAtIndex:i] disconnect];
@@ -74,6 +76,20 @@
 		AsyncSocket *client = [connectedSockets objectAtIndex:i];
 		[client writeData:[@"hello\r\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:0];
 	}
+}
+
+- (BOOL)isRunning {
+	return isRunning;
+}
+
+- (void)dealloc {
+	[serverSocket release];
+	serverSocket = nil;
+	
+	[connectedSockets release];
+	connectedSockets = nil;
+	
+	[super dealloc];
 }
 
 @end

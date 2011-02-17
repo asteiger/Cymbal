@@ -13,10 +13,12 @@
 @interface Server : NSObject {
 	AsyncSocket *serverSocket;
 	NSMutableArray *connectedSockets;
+	BOOL isRunning;
 }
 
 - (void)start;
 - (void)stop;
 - (void)broadcastSongData:(MCSongData*)songData;
+- (BOOL)isRunning;
 
 @end
