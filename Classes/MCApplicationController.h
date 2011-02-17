@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MCServer.h"
-#import "MCConnection.h"
+#import "Server.h"
 
 typedef enum {
 	kIdle = 1,
@@ -17,10 +16,9 @@ typedef enum {
 } MCApplicationState;
 
 @interface MCApplicationController : NSObject {
+	Server *server;
 	MCApplicationState _appState;
 	BOOL _broadcastingEnabled;
-	MCServer *server;
-	MCConnection *listeningConnection;
 }
 
 + (MCApplicationController*)sharedApplicationController;
@@ -31,5 +29,7 @@ typedef enum {
 - (BOOL)isBroadcastingEnabled;
 - (BOOL)isConnectedToBroadcaster;
 - (MCApplicationState)applicationState;
+
+- (void)broadcast;
 
 @end

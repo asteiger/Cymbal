@@ -15,10 +15,18 @@ static MCApplicationController *sharedInstance;
 + (MCApplicationController*)sharedApplicationController {
 	if (nil == sharedInstance) {
 		sharedInstance = [[self alloc] init];
-		
 	}
 	
 	return sharedInstance;
+}
+
+- (id)init {
+	if (self = [super init]) {
+		server = [[Server alloc] init];
+		[server start];
+	}
+	
+	return self;
 }
 
 - (void)setApplicationState:(MCApplicationState)state {
@@ -38,6 +46,14 @@ static MCApplicationController *sharedInstance;
 
 - (BOOL)isBroadcastingEnabled {
 	return _broadcastingEnabled;
+}
+
+- (BOOL)isConnectedToBroadcaster {
+	return NO;
+}
+
+- (void)broadcast {
+	[server broadcastSongData:nil];
 }
 
 @end

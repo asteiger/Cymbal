@@ -7,7 +7,6 @@
 //
 
 #import "MCStatusMenu.h"
-#import "MCServer.h"
 #import "MCBroadcaster.h"
 #import "MCGrowlController.h"
 

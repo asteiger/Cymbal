@@ -12,19 +12,18 @@
 
 static NSString *ItunesStopped = @"Stopped";
 static NSString *ItunesPaused = @"Paused";
-static NSString *ItunesPlaying = @"Playing";
 
 - (id)init {
 	if (self = [super init]) {
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
-		NSLog(@"Registered listener");
+		NSLog(@"Registered iTunes listener");
 	}
 	
 	return self;
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
-	NSLog(@"Got notification");
+	NSLog(@"Got iTunes notification");
 	
 	NSString *playerState = [[[mediaNotification userInfo] objectForKey:@"Player State"] description];
 	NSString *artist = [[[mediaNotification userInfo] objectForKey:@"Artist"] description];
@@ -36,6 +35,7 @@ static NSString *ItunesPlaying = @"Playing";
 	} else {
 		[[MCApplicationController sharedApplicationController] setApplicationState:kPlaying];
 		[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:artist Song:song];
+		[[MCApplicationController sharedApplicationController] broadcast];
 	}
 }
 

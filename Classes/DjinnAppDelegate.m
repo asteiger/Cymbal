@@ -7,7 +7,6 @@
 //
 
 #import "DjinnAppDelegate.h"
-#import "MCServer.h"
 #import "MCStatusMenu.h"
 #import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
@@ -22,7 +21,7 @@
 	growlController = [[MCGrowlController alloc] init];
 	[GrowlApplicationBridge setGrowlDelegate:growlController];
 	
-	[[MCServer sharedMCServer] startMetacasting];
+	[MCApplicationController sharedApplicationController];
 }
 
 - (void)awakeFromNib {
