@@ -22,7 +22,6 @@
 - (NSString*)toJson;
 
 - (NSNumber*)protocolVersion;
-- (void)setProtocolVersion:(NSNumber*)protocolVersion;
 
 - (NSString*)messageType;
 - (void)setMessageType:(NSString*)messageType;

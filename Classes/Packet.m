@@ -8,6 +8,12 @@
 
 #import "Packet.h"
 
+@interface Packet (Private)
+
+- (id)initWithSongData:(MCSongData*)songData;
+
+@end
+
 
 @implementation Packet
 
@@ -42,19 +48,52 @@
 	return self;
 }
 
+- (id)initWithSongData:(MCSongData*)songData {
+	if (self = [super init]) {
+		[packetData setValue:SongDataMessage forKey:KMessageType];
+		[packetData setValue:songData.songTitle forKey:KSongTitle];
+		[packetData setValue:songData.album forKey:KAlbumName];
+		[packetData setValue:songData.artist forKey:KArtistName];
+	}
+	
+	return self;
+}
+
 + (Packet*)packetWithSongData:(MCSongData *)songData {
-	self = [[Packet alloc] init];
-	
-	[packetData setValue:SongDataMessage forKey:KMessageType];
-	[packetData setValue:songData.songTitle forKey:KSongTitle];
-	[packetData setValue:songData.album forKey:KAlbumName];
-	[packetData setValue:songData.artist forKey:KArtistName];
-	
-	return [self autorelease];
+	return [[[self alloc] initWithSongData:songData] autorelease];
+}
+
++ (Packet*)packetWithJson:(id)json {
+	return [[[self alloc] initWithJson:json] autorelease];
 }
 
 - (NSString*)toJson {
 	return [NSString stringWithObjectAsJSON:packetData];
+}
+
+- (NSNumber*)protocolVersion {
+	return [NSNumber numberWithFloat:ProtocolVersion];
+}
+
+- (NSString*)messageType {
+	return [packetData objectForKey:KMessageType];
+}
+
+- (void)setMessageType:(NSString*)messageType {
+	[packetData setValue:messageType forKey:KMessageType];
+}
+
+- (MCSongData*)songData {
+	MCSongData* songData = nil;
+	
+	if ([(NSString*)[packetData objectForKey:KMessageType] isEqualToString:SongDataMessage]) {
+		NSString *artist = [packetData objectForKey:KArtistName];
+		NSString *songTitle = [packetData objectForKey:KSongTitle];
+		
+		songData = [[MCSongData alloc] initWithArtist:artist SongTitle:songTitle];
+	}
+	
+	return [songData autorelease];
 }
 
 - (void)dealloc {
