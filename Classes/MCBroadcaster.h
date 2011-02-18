@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "Connection.h"
 
 @interface MCBroadcaster : NSObject {
 	NSNetService *service;
+	Connection *connection;
 	BOOL connected;
 }
 

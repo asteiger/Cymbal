@@ -17,6 +17,7 @@
 		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
 		2F232E2C12E2542000E14DF9 /* MediaListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* MediaListener.m */; };
 		2F27ACE012F3D069008E1BDD /* MCBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */; };
+		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F37E01712F21B5600DBBCBB /* MCStatusMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */; };
 		2F9A96E112F92CF200CF4CB3 /* MCApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A96E012F92CF200CF4CB3 /* MCApplicationController.m */; };
 		2FB40CE012F89163004A0363 /* MCSongData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB40CDF12F89163004A0363 /* MCSongData.m */; };
@@ -67,6 +68,9 @@
 		2F232E2B12E2542000E14DF9 /* MediaListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaListener.m; sourceTree = "<group>"; };
 		2F27ACDE12F3D069008E1BDD /* MCBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCBroadcaster.h; sourceTree = "<group>"; };
 		2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBroadcaster.m; sourceTree = "<group>"; };
+		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
+		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
 		2F37E01512F21B5600DBBCBB /* MCStatusMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCStatusMenu.h; sourceTree = "<group>"; };
 		2F37E01612F21B5600DBBCBB /* MCStatusMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCStatusMenu.m; sourceTree = "<group>"; };
 		2F9A96DF12F92CF200CF4CB3 /* MCApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCApplicationController.h; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				2FB83DB512E0142300A9E754 /* Localizable.strings */,
 				2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */,
+				2F356841130DCBA0000EC787 /* PacketSample.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -252,6 +257,8 @@
 				2FF1D096130CBCA20001628E /* Connection.m */,
 				2FF1D098130CBCAD0001628E /* Browser.h */,
 				2FF1D099130CBCAD0001628E /* Browser.m */,
+				2F35683E130DCB6A000EC787 /* Packet.h */,
+				2F35683F130DCB6A000EC787 /* Packet.m */,
 			);
 			name = Net;
 			sourceTree = "<group>";
@@ -357,6 +364,7 @@
 				2FF1D097130CBCA20001628E /* Connection.m in Sources */,
 				2FF1D09A130CBCAD0001628E /* Browser.m in Sources */,
 				2FF1D112130CD64E0001628E /* JSONKit.m in Sources */,
+				2F356840130DCB6A000EC787 /* Packet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

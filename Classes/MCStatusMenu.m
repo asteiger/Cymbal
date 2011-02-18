@@ -123,12 +123,19 @@ static MCStatusMenu *sharedInstance = nil;
 	[[appMenu itemWithTag:kApplicationStatus] setTitle:statusText];
 }
 
-- (void)addBroadcaster:(MCBroadcaster*)metacaster {
+- (void)addAvailableService:(NSNetService*)service {
 	NSMenu *metacastersMenu = [[appMenu itemWithTag:kMetacasters] submenu];
-	NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[metacaster.service name] action:@selector(didSelectMetacasterMenuItem:) keyEquivalent:@""];
+	NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacasterMenuItem:) keyEquivalent:@""];
 	
 	[metacasterItem setTarget:self];
-	[metacasterItem setRepresentedObject:metacaster];
+	[metacasterItem setRepresentedObject:service];
+}
+
+- (void)removeAvailableService:(NSNetService*)service {
+	NSMenu *metacastersMenu = [[appMenu itemWithTag:kMetacasters] submenu];
+	NSMenuItem *metacasterItem = [metacastersMenu itemWithTitle:[service name]];
+	
+	[metacastersMenu removeItem:metacasterItem];
 }
 
 - (void)dealloc {

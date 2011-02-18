@@ -12,6 +12,7 @@
 
 @synthesize artist = _artist;
 @synthesize songTitle = _songTitle;
+@synthesize album = _album;
 
 - (id)initWithArtist:(NSString*)artist SongTitle:(NSString*)songTitle {
 	if (self = [super init]) {
@@ -25,6 +26,7 @@
 - (void)dealloc {
 	self.artist = nil;
 	self.songTitle = nil;
+	self.album = nil;
 	
 	[super dealloc];
 }

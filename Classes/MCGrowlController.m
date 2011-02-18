@@ -42,4 +42,16 @@
 							   clickContext:nil];
 }
 
++ (void)postConnectedToBroadcasterWithName:(NSString*)name {
+	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+	
+	[GrowlApplicationBridge notifyWithTitle:@"Connected"
+								description:message
+						   notificationName:@"Connect to Broadcaster"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+}
+
 @end

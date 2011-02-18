@@ -32,7 +32,8 @@ typedef enum {
 - (void)setNoMediaInfo;
 - (void)updateCurrentArtist:(NSString*)artist Song:(NSString*)song;
 - (void)updateAppStatusMenuItem;
-- (void)addBroadcaster:(MCBroadcaster*)name;
 
+- (void)addAvailableService:(NSNetService*)service;
+- (void)removeAvailableService:(NSNetService*)service;
 
 @end

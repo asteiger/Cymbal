@@ -1,0 +1,9 @@
+{
+	appVersion: 1.0,
+	messageType:'SongData'
+	message: {
+		artistName:'ArtistName',
+		albumName:'AlbumName',
+		songTitle:'SongName'
+	}
+}
