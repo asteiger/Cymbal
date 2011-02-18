@@ -41,6 +41,7 @@
 		
 		[[MCApplicationController sharedApplicationController] broadcast];
 	}
+
 }
 
 - (void)dealloc {

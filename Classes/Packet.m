@@ -97,7 +97,7 @@
 		songData = [[MCSongData alloc] initWithArtist:artist SongTitle:songTitle];
 	}
 	
-	return songData;// autorelease];
+	return [songData autorelease];
 }
 
 - (void)dealloc {
