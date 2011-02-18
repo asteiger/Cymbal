@@ -11,7 +11,7 @@
 #import "MCSongData.h"
 
 @interface Packet : NSObject {
-	NSDictionary *packetData;
+	NSMutableDictionary *packetData;
 }
 
 - (id)init;

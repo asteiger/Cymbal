@@ -32,7 +32,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		packetData = [[NSDictionary alloc] init];
+		packetData = [[NSMutableDictionary alloc] init];
 		
 		[packetData setValue:[NSNumber numberWithFloat:ProtocolVersion] forKey:KProtocolVersion];
 	}
@@ -42,7 +42,7 @@
 
 - (id)initWithJson:(id)json {
 	if (self = [super init]) {
-		packetData = [[NSDictionary dictionaryWithJSON:json] retain];
+		packetData = [[NSMutableDictionary dictionaryWithJSON:json] retain];
 	}
 	
 	return self;
@@ -50,7 +50,11 @@
 
 - (id)initWithSongData:(MCSongData*)songData {
 	if (self = [super init]) {
+		packetData = [[NSMutableDictionary alloc] init];
+		
+		[packetData setValue:[NSNumber numberWithFloat:ProtocolVersion] forKey:KProtocolVersion];
 		[packetData setValue:SongDataMessage forKey:KMessageType];
+		
 		[packetData setValue:songData.songTitle forKey:KSongTitle];
 		[packetData setValue:songData.album forKey:KAlbumName];
 		[packetData setValue:songData.artist forKey:KArtistName];
@@ -93,7 +97,7 @@
 		songData = [[MCSongData alloc] initWithArtist:artist SongTitle:songTitle];
 	}
 	
-	return [songData autorelease];
+	return songData;// autorelease];
 }
 
 - (void)dealloc {

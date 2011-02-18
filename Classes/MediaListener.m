@@ -7,6 +7,7 @@
 //
 
 #import "MediaListener.h"
+#import "MCSongData.h"
 
 @implementation MediaListener
 
@@ -29,12 +30,15 @@
 	NSString *artist = [[[mediaNotification userInfo] objectForKey:@"Artist"] description];
 	NSString *song = [[[mediaNotification userInfo] objectForKey:@"Name"] description];
 	
+	MCSongData *sd = [[[MCSongData alloc] initWithArtist:artist SongTitle:song] autorelease];
+	
 	if ([playerState isEqualToString:ItunesStopped] || [playerState isEqualToString:ItunesPaused]) {
 		[[MCApplicationController sharedApplicationController] setApplicationState:kIdle];
 		[[MCStatusMenu sharedMCStatusMenu] setNoMediaInfo];
 	} else {
 		[[MCApplicationController sharedApplicationController] setApplicationState:kPlaying];
 		[[MCStatusMenu sharedMCStatusMenu] updateCurrentArtist:artist Song:song];
+		
 		[[MCApplicationController sharedApplicationController] broadcast];
 	}
 }
