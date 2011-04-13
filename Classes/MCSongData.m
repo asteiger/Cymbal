@@ -1,11 +1,3 @@
-//
-//  MCSongData.m
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/1/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
 #import "MCSongData.h"
 
 @implementation MCSongData
@@ -14,10 +6,15 @@
 @synthesize songTitle = _songTitle;
 @synthesize album = _album;
 
-- (id)initWithArtist:(NSString*)artist SongTitle:(NSString*)songTitle {
-	if (self = [super init]) {
++ (MCSongData*)songDataWithArtist:(NSString*)artist SongTitle:(NSString*)songTitle Album:(NSString*)album {
+    return [[[self alloc] initWithArtist:artist SongTitle:songTitle Album:album] autorelease];
+}
+
+- (id)initWithArtist:(NSString*)artist SongTitle:(NSString*)songTitle Album:(NSString*)album {
+	if ((self = [super init])) {
 		self.artist = artist;
 		self.songTitle = songTitle;
+        self.album = album;
 	}
 	
 	return self;

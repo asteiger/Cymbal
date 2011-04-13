@@ -1,23 +1,26 @@
-//
-//  Connection.h
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
-#import <Cocoa/Cocoa.h>
 #import "AsyncSocket.h"
+#import "Packet.h"
+#import "SongDataPacket.h"
+#import "ConnectionInfoPacket.h"
+#import "MCSongData.h"
 
-@interface Connection : NSObject {
-	NSNetService *netService;
+extern NSString const* kPacketReceivedNotification;
+
+@interface Connection : NSObject <NSNetServiceDelegate> {
+	NSString *remoteName;
 	AsyncSocket *socket;
 }
 
-- (id)initWithNetService:(NSNetService*)aNetService ShouldConnect:(BOOL)shouldConnect;
-- (void)connect;
-- (void)disconnect;
+- (id)initWithNetService:(NSNetService*)aNetService;
+- (id)initWithAsyncSocket:(AsyncSocket*)aSocket;
 
+- (void)disconnect;
 - (BOOL)isConnected;
+- (NSString*)remoteName;
+
+- (void)sendPacket:(Packet*)packet;
+
+- (void)didReceiveSongDataPacket:(SongDataPacket*)packet;
+- (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet;
 
 @end

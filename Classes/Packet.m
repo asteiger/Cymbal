@@ -1,103 +1,74 @@
-//
-//  Packet.m
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/17/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
 #import "Packet.h"
+#import "JSONKit.h"
 
-@interface Packet (Private)
+const float kProtocolVersion = 1.0;
 
-- (id)initWithSongData:(MCSongData*)songData;
-
-@end
-
+// packet json keys
+NSString *const kProtocolVersionKey  = @"protocolVersion";
+NSString *const kPacketTypeKey       = @"packetType";
+NSString *const kSenderNameKey       = @"senderName";
 
 @implementation Packet
 
-#define ProtocolVersion 1.0
-
-// dictionary/json keys
-#define KProtocolVersion @"protocolVersion"
-#define KMessageType @"messageType"
-
-#define KSongTitle @"songTitle"
-#define KAlbumName @"albumName"
-#define KArtistName @"artistName"
-
-// message types
-#define SongDataMessage @"SongData"
-
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		packetData = [[NSMutableDictionary alloc] init];
 		
-		[packetData setValue:[NSNumber numberWithFloat:ProtocolVersion] forKey:KProtocolVersion];
+		[packetData setValue:[NSNumber numberWithFloat:kProtocolVersion] forKey:kProtocolVersionKey];
+        [packetData setValue:NSStringFromClass([self class]) forKey:kPacketTypeKey];
 	}
 	
 	return self;
 }
 
 - (id)initWithJson:(id)json {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		packetData = [[NSMutableDictionary dictionaryWithJSON:json] retain];
 	}
 	
 	return self;
 }
 
-- (id)initWithSongData:(MCSongData*)songData {
-	if (self = [super init]) {
-		packetData = [[NSMutableDictionary alloc] init];
-		
-		[packetData setValue:[NSNumber numberWithFloat:ProtocolVersion] forKey:KProtocolVersion];
-		[packetData setValue:SongDataMessage forKey:KMessageType];
-		
-		[packetData setValue:songData.songTitle forKey:KSongTitle];
-		[packetData setValue:songData.album forKey:KAlbumName];
-		[packetData setValue:songData.artist forKey:KArtistName];
+- (id)initWithDictionary:(NSDictionary*)dictionary {
+	if ((self = [super init])) {
+		packetData = [[NSMutableDictionary dictionaryWithDictionary:dictionary] retain];
 	}
 	
 	return self;
 }
 
-+ (Packet*)packetWithSongData:(MCSongData *)songData {
-	return [[[self alloc] initWithSongData:songData] autorelease];
++ (Packet*)packetWithJson:(id)json {
+    NSString *packetType = [[NSMutableDictionary dictionaryWithJSON:json] valueForKey:kPacketTypeKey];
+    
+	return [[[NSClassFromString(packetType) alloc] initWithJson:json] autorelease];
 }
 
-+ (Packet*)packetWithJson:(id)json {
-	return [[[self alloc] initWithJson:json] autorelease];
++ (Packet*)packetWithDictionary:(NSDictionary *)dictionary {
+    NSString *packetType = [dictionary valueForKey:kPacketTypeKey];
+    
+	return [[[NSClassFromString(packetType) alloc] initWithDictionary:dictionary] autorelease];
 }
 
 - (NSString*)toJson {
 	return [NSString stringWithObjectAsJSON:packetData];
 }
 
+- (NSDictionary*)toDictionary {
+    return packetData;
+}
+
 - (NSNumber*)protocolVersion {
-	return [NSNumber numberWithFloat:ProtocolVersion];
+	return [NSNumber numberWithFloat:kProtocolVersion];
 }
 
-- (NSString*)messageType {
-	return [packetData objectForKey:KMessageType];
+- (NSString*)senderName {
+	return [packetData objectForKey:kSenderNameKey];
 }
 
-- (void)setMessageType:(NSString*)messageType {
-	[packetData setValue:messageType forKey:KMessageType];
-}
-
-- (MCSongData*)songData {
-	MCSongData* songData = nil;
-	
-	if ([(NSString*)[packetData objectForKey:KMessageType] isEqualToString:SongDataMessage]) {
-		NSString *artist = [packetData objectForKey:KArtistName];
-		NSString *songTitle = [packetData objectForKey:KSongTitle];
-		
-		songData = [[MCSongData alloc] initWithArtist:artist SongTitle:songTitle];
-	}
-	
-	return [songData autorelease];
+- (void)process {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
 }
 
 - (void)dealloc {

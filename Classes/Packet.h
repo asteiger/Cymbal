@@ -1,14 +1,7 @@
-//
-//  Packet.h
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/17/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
-#import <Cocoa/Cocoa.h>
-#import "JSONKit.h"
-#import "MCSongData.h"
+extern float const kProtocolVersion;
+extern NSString *const kProtocolVersionKey;
+extern NSString *const kPacketTypeKey;
+extern NSString *const kSenderNameKey;
 
 @interface Packet : NSObject {
 	NSMutableDictionary *packetData;
@@ -16,16 +9,17 @@
 
 - (id)init;
 - (id)initWithJson:(id)json;
+- (id)initWithDictionary:(NSDictionary*)dictionary;
 
-+ (Packet*)packetWithSongData:(MCSongData*)songData;
++ (Packet*)packetWithJson:(id)json;
++ (Packet*)packetWithDictionary:(NSDictionary*)dictionary;
 
 - (NSString*)toJson;
+- (NSDictionary*)toDictionary;
 
 - (NSNumber*)protocolVersion;
+- (NSString*)senderName;
 
-- (NSString*)messageType;
-- (void)setMessageType:(NSString*)messageType;
-
-- (MCSongData*)songData;
+- (void)process;
 
 @end

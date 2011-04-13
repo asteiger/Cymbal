@@ -1,81 +1,59 @@
-//
-//  Server.m
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
 #import "Server.h"
-
+#import "Packet.h"
+#import "Connection.h"
+#import "AsyncSocket.h"
 
 @implementation Server
 
+@synthesize connections;
+@synthesize isRunning;
+
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		serverSocket = [[AsyncSocket alloc] initWithDelegate:self];
-		connectedSockets = [[NSMutableArray alloc] initWithCapacity:1];
+		connections = [[NSMutableArray alloc] initWithCapacity:1];
 	}
 	
 	return self;
 }
 
-- (void)start {
+- (BOOL)start {
+    
 	NSError *error = nil;
 	if(![serverSocket acceptOnPort:0 error:&error])
 	{
 		NSLog(@"Error starting server: %@", error);
-		return;
+		return NO;
 	}
 	
-	NSLog(@"Server started on port %hu", [serverSocket localPort]);
-	isRunning = YES;
+	NSLog(@"Server started on %@ port %hu", [serverSocket localHost], [serverSocket localPort]);
+
+	netService = [[NSNetService alloc] initWithDomain:@"" type:@"_metacastapp._tcp." name:@"" port:[serverSocket localPort]];
+	[netService scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+	[netService setDelegate:self];
+	[netService publish];
+    
+    return isRunning = YES;
 }
 
 - (void)stop {
-	[serverSocket disconnect];
-	isRunning = NO;
+	[netService stop];
+	[netService removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+	[netService release];
+	netService = nil;
 	
-	for(int i = 0; i < [connectedSockets count]; i++) {
-		[[connectedSockets objectAtIndex:i] disconnect];
-	}
+	[serverSocket disconnect];
+	
+    [connections makeObjectsPerformSelector:@selector(disconnect)];
+    [connections removeAllObjects];
+	 
+    isRunning = NO;
 }
 
-- (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket {
-	[connectedSockets addObject:newSocket];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
-{
-	NSLog(@"Accepted client %@:%hu", host, port);
-}
-
-- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
-{
-	[sock readDataToData:[AsyncSocket CRLFData] withTimeout:-1 tag:0];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
-	// ignore data received
-	// we are only interested in sending
-}
-
-- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err
-{
-	NSLog(@"Client Disconnected: %@:%hu", [sock connectedHost], [sock connectedPort]);
-}
-
-- (void)onSocketDidDisconnect:(AsyncSocket *)sock
-{
-	[connectedSockets removeObject:sock];
-}
-
-- (void)broadcastSongData:(MCSongData*)songData {
-	for (int i = 0; i < [connectedSockets count]; i++) {
-		AsyncSocket *client = [connectedSockets objectAtIndex:i];
-		[client writeData:[@"hello\r\n" dataUsingEncoding:NSUTF8StringEncoding] withTimeout:-1 tag:0];
-	}
+- (void)broadcastPacket:(Packet*)packet {
+	NSLog(@"Broadcast packet, message type: %@", [packet toJson]);
+	
+	[connections makeObjectsPerformSelector:@selector(sendPacket:) withObject:packet];
 }
 
 - (BOOL)isRunning {
@@ -86,10 +64,47 @@
 	[serverSocket release];
 	serverSocket = nil;
 	
-	[connectedSockets release];
-	connectedSockets = nil;
+	[connections release];
+	connections = nil;
 	
 	[super dealloc];
 }
+
+#pragma mark -
+#pragma mark AsyncSocket Delegate Methods
+
+- (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket {
+    NSLog(@"Server accepted socket");
+    [connections addObject:[[[Connection alloc] initWithAsyncSocket:newSocket] autorelease]];
+}
+
+#pragma mark -
+#pragma mark NSNetService Delegate Methods
+
+- (void)netServiceWillPublish:(NSNetService *)sender { }
+- (void)netServiceDidPublish:(NSNetService *)sender {
+	NSLog(@"NetService published");
+}
+
+- (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict {
+	NSLog(@"NetService publish failed");
+}
+
+- (void)netServiceWillResolve:(NSNetService *)sender { }
+- (void)netServiceDidResolveAddress:(NSNetService *)sender {
+	NSLog(@"NetService resolved address.");
+}
+
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
+	NSLog(@"NetService resolve failed");
+}
+
+- (void)netServiceDidStop:(NSNetService *)sender {
+	NSLog(@"NetService stopped.");
+}
+
+- (void)netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data { }
+
+
 
 @end

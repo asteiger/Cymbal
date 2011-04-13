@@ -8,7 +8,6 @@
 
 #import "Browser.h"
 #import "MCBroadcaster.h"
-#import "MCStatusMenu.h"
 
 @implementation Browser
 
@@ -62,7 +61,7 @@
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-	[[MCStatusMenu sharedMCStatusMenu] addAvailableService:aNetService];
+	//[[MCStatusMenu sharedMCStatusMenu] addAvailableService:aNetService];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveDomain:(NSString *)domainString moreComing:(BOOL)moreComing {
@@ -70,7 +69,7 @@
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-	[[MCStatusMenu sharedMCStatusMenu] removeAvailableService:aNetService];
+	//[[MCStatusMenu sharedMCStatusMenu] removeAvailableService:aNetService];
 }
 
 @end

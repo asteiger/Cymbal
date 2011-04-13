@@ -1,24 +1,22 @@
-//
-//  Server.h
-//  Djinn
-//
-//  Created by Ashley Steigerwalt on 2/16/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+@class AsyncSocket;
+@class Packet;
 
-#import <Cocoa/Cocoa.h>
-#import "AsyncSocket.h"
-#import "MCSongData.h"
-
-@interface Server : NSObject {
+@interface Server : NSObject <NSNetServiceDelegate> {
+	NSNetService *netService;
 	AsyncSocket *serverSocket;
-	NSMutableArray *connectedSockets;
+	
+	NSMutableArray *connections;
+	
 	BOOL isRunning;
 }
 
-- (void)start;
+@property (nonatomic, readonly) NSMutableArray *connections;
+@property (nonatomic, readonly) BOOL isRunning;
+
+- (id)init;
+- (BOOL)start;
 - (void)stop;
-- (void)broadcastSongData:(MCSongData*)songData;
-- (BOOL)isRunning;
+
+- (void)broadcastPacket:(Packet*)packet;
 
 @end
