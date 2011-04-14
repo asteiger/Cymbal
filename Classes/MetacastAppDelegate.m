@@ -1,12 +1,12 @@
 #import "MetacastAppDelegate.h"
+#import "LocalMediaController.h"
 #import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
 
 @implementation MetacastAppDelegate
 
-@synthesize appState;
 @synthesize statusMenu;
-@synthesize mediaListener;
+@synthesize mediaController;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
 	
@@ -18,6 +18,8 @@
     
     server = [[Server alloc] init];
     [server start];
+    
+    self.mediaController = [[[LocalMediaController alloc] initWithServer:server] autorelease];
 }
 
 - (void)awakeFromNib {
@@ -44,17 +46,13 @@
     return YES;
 }
 
-- (void)updateAppState {
-    if (server.isRunning && mediaListener.currentSongData != nil) self.appState = @"Broadcasting";
-    else if (mediaListener.currentSongData != nil) self.appState = @"Playing";
-    else if (connection != nil && mediaListener.currentSongData != nil) self.appState = @"Listening";
-    else if (connection != nil) self.appState = @"Connected";
-    else self.appState = @"Idle";
-}
-
 - (void)dealloc {
 	[growlController release];
-	[mediaListener release];
+    growlController = nil;
+    
+    self.statusMenu = nil;
+	self.mediaController = nil;
+    
 	[super dealloc];
 
 }

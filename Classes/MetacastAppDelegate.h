@@ -3,24 +3,19 @@
 #import "Server.h"
 #import "Connection.h"
 
-@class MediaState;
-
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
-    NSString *appState;
-    
     Server *server;
 	Connection *connection;
     
 	MCGrowlController *growlController;
-	MediaController *mediaListener;
+	MediaController *mediaController;
     
     NSMenu *statusMenu;
     NSStatusItem *statusItem;
 }
 
-@property (nonatomic, retain) NSString *appState;
 @property (nonatomic, retain) IBOutlet NSMenu *statusMenu;
-@property (nonatomic, retain) IBOutlet MediaController *mediaListener;
+@property (nonatomic, retain) IBOutlet MediaController *mediaController;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;

@@ -2,24 +2,16 @@
 #import "MCSongData.h"
 
 @interface LocalMediaController (Private)
-- (NSString*)playerStateAsStringWithItunesApplication:(iTunesApplication*)iTunesApp;
+- (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
 - (void)updateCurrentMediaProperties;
 @end
 
 @implementation LocalMediaController
 
-@synthesize playerState;
-@synthesize currentSongData;
-
-#define iTunesStopped @"Stopped"
-#define iTunesPaused @"Paused"
-#define iTunesPlaying @"Playing"
-#define iTunesFastForwarding @"Fast Forwarding"
-#define iTunesRewinding @"Rewinding"
-
-- (id)init {
+- (id)initWithServer:(Server*)server {
 	if ((self = [super init])) {
-        iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+        _server = [server retain];
+        _iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
         
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
@@ -33,58 +25,40 @@
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got iTunes notification");
-	
 	[self updateCurrentMediaProperties];
 }
 
 - (void)updateCurrentMediaProperties {
-    self.playerState = [self playerStateAsStringWithItunesApplication:iTunes];
+    iTunesEPlS playerState = [_iTunes playerState];
+    
+    self.mediaState = [self mediaStateWithPlayerState:playerState ServerIsRunning:_server.isRunning];
 	
-    if ([self.playerState isEqualToString:iTunesStopped] || [self.playerState isEqualToString:iTunesPaused]) {
+    if (playerState == iTunesEPlSStopped || playerState == iTunesEPlSPaused) {
+        NSLog(@"Updated media properties. Media State: %@. Current Song: nil", self.mediaState);
         self.currentSongData = nil;
         return;
     }
     
-	self.currentSongData = [MCSongData songDataWithArtist:[[iTunes currentTrack] artist]
-                                                SongTitle:[[iTunes currentTrack] name]
-                                                    Album:[[iTunes currentTrack] album]
+	self.currentSongData = [MCSongData songDataWithArtist:[[_iTunes currentTrack] artist]
+                                                SongTitle:[[_iTunes currentTrack] name]
+                                                    Album:[[_iTunes currentTrack] album]
                             ];
+    NSLog(@"Updated media properties. Media State: %@. Current Song: %@", self.mediaState, self.currentSongData.songTitle);
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.playerState = nil;
+    self.mediaState = nil;
     
 	[super dealloc];
 }
 
-- (NSString*)playerStateAsStringWithItunesApplication:(iTunesApplication*)iTunesApp {
-    switch ([iTunesApp playerState]) {
-        case iTunesEPlSPlaying:
-            return iTunesPlaying;
-            break;
-            
-        case iTunesEPlSPaused:
-            return iTunesPaused;
-            break;
-            
-        case iTunesEPlSStopped:
-            return iTunesStopped;
-            break;
-            
-        case iTunesEPlSRewinding:
-            return iTunesRewinding;
-            break;
-            
-        case iTunesEPlSFastForwarding:
-            return iTunesFastForwarding;
-            break;
-            
-        default:
-            return nil;
-            break;
-    }
+- (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning {
+    if (iTunesPlayerState != iTunesEPlSStopped && iTunesPlayerState != iTunesEPlSPaused) 
+        return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
+    
+    return kMediaStateIdle;
 }
 
 @end

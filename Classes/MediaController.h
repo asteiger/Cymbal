@@ -1,8 +1,16 @@
 #import "MCSongData.h"
 
-@interface MediaController : NSObject
+extern NSString *const kMediaStateIdle;
+extern NSString *const kMediaStatePlaying;
+extern NSString *const kMediaStateBroadcasting;
+extern NSString *const kMediaStateListening;
 
-@property (nonatomic, retain) NSString *playerState;
+@interface MediaController : NSObject {
+    NSString *_mediaState;
+    MCSongData *_currentSongData;
+}
+
+@property (nonatomic, retain) NSString *mediaState;
 @property (nonatomic, retain) MCSongData *currentSongData;
 
 @end
