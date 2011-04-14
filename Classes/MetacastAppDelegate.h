@@ -2,10 +2,12 @@
 #import "MCGrowlController.h"
 #import "Server.h"
 #import "Connection.h"
+#import "Browser.h"
 
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
     Server *server;
 	Connection *connection;
+    Browser *browser;
     
 	MCGrowlController *growlController;
 	MediaInfoSupplier *mediaInfoSupplier;

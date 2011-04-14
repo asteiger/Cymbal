@@ -4,6 +4,8 @@
 	NSMutableArray *services;
 }
 
+@property (nonatomic, readonly) NSArray *services;
+
 - (void)startBrowsing;
 - (void)stopBrowsing;
 

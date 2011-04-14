@@ -18,6 +18,7 @@
 	[GrowlApplicationBridge setGrowlDelegate:growlController];
     
     server = [[Server alloc] init];
+    browser = [[Browser alloc] init];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
     
@@ -32,6 +33,12 @@
     [statusItem setHighlightMode:YES];
     [statusItem setImage:[NSImage imageNamed:@"icon-small.png"]];
     [statusItem setMenu:statusMenu];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
+    [server stop];
+    [connection disconnect];
+    [browser stopBrowsing];
 }
 
 - (IBAction)toggleBroadcast:(id)sender {
