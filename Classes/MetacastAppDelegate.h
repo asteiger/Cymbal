@@ -3,6 +3,8 @@
 #import "Server.h"
 #import "Connection.h"
 
+@class MediaState;
+
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
     NSString *appState;
     
