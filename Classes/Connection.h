@@ -11,12 +11,13 @@ extern NSString const* kPacketReceivedNotification;
 	AsyncSocket *socket;
 }
 
+@property (nonatomic, retain) NSString *remoteName;
+
 - (id)initWithNetService:(NSNetService*)aNetService;
 - (id)initWithAsyncSocket:(AsyncSocket*)aSocket;
 
 - (void)disconnect;
 - (BOOL)isConnected;
-- (NSString*)remoteName;
 
 - (void)sendPacket:(Packet*)packet;
 

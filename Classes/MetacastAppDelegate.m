@@ -9,10 +9,6 @@
 @synthesize statusMenu;
 @synthesize mediaInfoSupplier;
 
-- (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
-	
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	growlController = [[MCGrowlController alloc] init];
 	[GrowlApplicationBridge setGrowlDelegate:growlController];

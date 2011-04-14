@@ -13,6 +13,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 @implementation Connection
 
+@synthesize remoteName;
+
 - (id)init {
     if ((self = [super init])) {
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -42,7 +44,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 - (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet {
     [remoteName release];
-	remoteName = [[packet clientName] retain];
+	self.remoteName = [packet clientName];
 }
 
 #pragma mark -
@@ -130,12 +132,6 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 - (BOOL)isConnected {
 	return [socket isConnected];
-}
-
-- (NSString*)remoteName {
-   // assert([self isConnected]);
-    
-    return remoteName;
 }
 
 - (void)sendPacket:(Packet*)packet {
