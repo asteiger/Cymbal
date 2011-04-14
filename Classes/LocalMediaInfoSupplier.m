@@ -1,12 +1,12 @@
-#import "LocalMediaController.h"
+#import "LocalMediaInfoSupplier.h"
 #import "MCSongData.h"
 
-@interface LocalMediaController (Private)
+@interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
 - (void)updateCurrentMediaProperties;
 @end
 
-@implementation LocalMediaController
+@implementation LocalMediaInfoSupplier
 
 - (id)initWithServer:(Server*)server {
 	if ((self = [super init])) {

@@ -1,9 +1,9 @@
-#import "MediaController.h"
+#import "MediaInfoSupplier.h"
 #import "MCSongData.h"
 #import "iTunes.h"
 #import "Server.h"
 
-@interface LocalMediaController : MediaController {
+@interface LocalMediaInfoSupplier : MediaInfoSupplier {
     Server *_server;
     iTunesApplication *_iTunes;
 

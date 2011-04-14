@@ -5,7 +5,7 @@ extern NSString *const kMediaStatePlaying;
 extern NSString *const kMediaStateBroadcasting;
 extern NSString *const kMediaStateListening;
 
-@interface MediaController : NSObject {
+@interface MediaInfoSupplier : NSObject {
     NSString *_mediaState;
     MCSongData *_currentSongData;
 }

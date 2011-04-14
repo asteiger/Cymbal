@@ -1,5 +1,5 @@
 #import "MetacastAppDelegate.h"
-#import "LocalMediaController.h"
+#import "LocalMediaInfoSupplier.h"
 #import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
 
@@ -19,7 +19,7 @@
     server = [[Server alloc] init];
     [server start];
     
-    self.mediaController = [[[LocalMediaController alloc] initWithServer:server] autorelease];
+    self.mediaController = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
 }
 
 - (void)awakeFromNib {
