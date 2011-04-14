@@ -51,6 +51,8 @@
 }
 
 - (void)broadcastPacket:(Packet*)packet {
+    if (!isRunning) return;
+    
 	NSLog(@"Broadcast packet, message type: %@", [packet toJson]);
 	
 	[connections makeObjectsPerformSelector:@selector(sendPacket:) withObject:packet];

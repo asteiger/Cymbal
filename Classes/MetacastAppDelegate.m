@@ -18,9 +18,13 @@
 	[GrowlApplicationBridge setGrowlDelegate:growlController];
     
     server = [[Server alloc] init];
-    [server start];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    
+    if (self.mediaInfoSupplier.mediaState == kMediaStateIdle) {
+        self.mediaInfoSupplier = nil;
+        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+    }
 }
 
 - (void)awakeFromNib {
@@ -31,16 +35,8 @@
 }
 
 - (IBAction)toggleBroadcast:(id)sender {
-    if (server.isRunning) {
-        [server stop];
-        self.mediaInfoSupplier = nil;
-        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
-    }
-    else {
-        [server start];
-        self.mediaInfoSupplier = nil;
-        self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
-    }
+    if (server.isRunning) [server stop];
+    else [server start];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {

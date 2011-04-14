@@ -1,4 +1,5 @@
 #import "LocalMediaInfoSupplier.h"
+#import "SongDataPacket.h"
 #import "MCSongData.h"
 
 @interface LocalMediaInfoSupplier (Private)
@@ -24,24 +25,27 @@
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got iTunes notification");
+    
 	[self updateMediaProperties];
+    
+    if (self.mediaState != kMediaStateIdle)
+        [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
 }
 
 - (void)updateMediaProperties {
-    iTunesEPlS playerState = [_iTunes playerState];
-    
-    self.mediaState = [self mediaStateWithPlayerState:playerState ServerIsRunning:_server.isRunning];
+    self.mediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
 	
-    if (playerState == iTunesEPlSStopped || playerState == iTunesEPlSPaused) {
-        NSLog(@"Updated media properties. Media State: %@. Current Song: nil", self.mediaState);
+    if (self.mediaState == kMediaStateIdle) {
         self.currentSongData = nil;
-        return;
+        
+    } else {
+        iTunesTrack *currentTrack = [_iTunes currentTrack];
+        self.currentSongData = [MCSongData songDataWithArtist:[currentTrack artist] 
+                                                    SongTitle:[currentTrack name]
+                                                        Album:[currentTrack album]
+                                ];
     }
     
-	self.currentSongData = [MCSongData songDataWithArtist:[[_iTunes currentTrack] artist]
-                                                SongTitle:[[_iTunes currentTrack] name]
-                                                    Album:[[_iTunes currentTrack] album]
-                            ];
     NSLog(@"Updated media properties. Media State: %@. Current Song: %@", self.mediaState, self.currentSongData.songTitle);
 }
 
