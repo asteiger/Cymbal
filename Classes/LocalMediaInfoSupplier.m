@@ -3,7 +3,6 @@
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
-- (void)updateCurrentMediaProperties;
 @end
 
 @implementation LocalMediaInfoSupplier
@@ -16,7 +15,7 @@
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
         
-        [self updateCurrentMediaProperties];
+        [self updateMediaProperties];
         
 	}
 	
@@ -25,10 +24,10 @@
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got iTunes notification");
-	[self updateCurrentMediaProperties];
+	[self updateMediaProperties];
 }
 
-- (void)updateCurrentMediaProperties {
+- (void)updateMediaProperties {
     iTunesEPlS playerState = [_iTunes playerState];
     
     self.mediaState = [self mediaStateWithPlayerState:playerState ServerIsRunning:_server.isRunning];
@@ -50,6 +49,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.mediaState = nil;
+    [_server release];
     
 	[super dealloc];
 }

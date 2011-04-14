@@ -1,12 +1,13 @@
 #import "MetacastAppDelegate.h"
 #import "LocalMediaInfoSupplier.h"
+#import "RemoteMediaInfoSupplier.h"
 #import "Growl.framework/Headers/GrowlApplicationBridge.h"
 
 
 @implementation MetacastAppDelegate
 
 @synthesize statusMenu;
-@synthesize mediaController;
+@synthesize mediaInfoSupplier;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
 	
@@ -19,7 +20,7 @@
     server = [[Server alloc] init];
     [server start];
     
-    self.mediaController = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
 }
 
 - (void)awakeFromNib {
@@ -30,8 +31,16 @@
 }
 
 - (IBAction)toggleBroadcast:(id)sender {
-    if (server.isRunning) [server stop];
-    else [server start];
+    if (server.isRunning) {
+        [server stop];
+        self.mediaInfoSupplier = nil;
+        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+    }
+    else {
+        [server start];
+        self.mediaInfoSupplier = nil;
+        self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    }
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -51,7 +60,7 @@
     growlController = nil;
     
     self.statusMenu = nil;
-	self.mediaController = nil;
+	self.mediaInfoSupplier = nil;
     
 	[super dealloc];
 

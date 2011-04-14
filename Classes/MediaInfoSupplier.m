@@ -10,4 +10,6 @@ NSString *const kMediaStateListening = @"Listening";
 @synthesize mediaState = _mediaState;
 @synthesize currentSongData = _currentSongData;
 
+- (void)updateMediaProperties { }
+
 @end

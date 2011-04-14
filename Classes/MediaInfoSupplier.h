@@ -13,4 +13,6 @@ extern NSString *const kMediaStateListening;
 @property (nonatomic, retain) NSString *mediaState;
 @property (nonatomic, retain) MCSongData *currentSongData;
 
+- (void)updateMediaProperties;
+
 @end

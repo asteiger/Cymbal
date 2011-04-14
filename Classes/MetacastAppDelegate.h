@@ -8,14 +8,14 @@
 	Connection *connection;
     
 	MCGrowlController *growlController;
-	MediaInfoSupplier *mediaController;
+	MediaInfoSupplier *mediaInfoSupplier;
     
     NSMenu *statusMenu;
     NSStatusItem *statusItem;
 }
 
 @property (nonatomic, retain) IBOutlet NSMenu *statusMenu;
-@property (nonatomic, retain) IBOutlet MediaInfoSupplier *mediaController;
+@property (nonatomic, retain) IBOutlet MediaInfoSupplier *mediaInfoSupplier;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;

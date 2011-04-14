@@ -3,19 +3,15 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">10J869</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1306</string>
+		<string key="IBDocument.InterfaceBuilderVersion">844</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1306</string>
+			<string key="NS.object.0">844</string>
 		</object>
-		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
+		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>NSUserDefaultsController</string>
-			<string>NSMenu</string>
-			<string>NSMenuItem</string>
-			<string>NSCustomObject</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -227,15 +223,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">title: mediaController.mediaState</string>
+						<string key="label">title: mediaInfoSupplier.mediaState</string>
 						<reference key="source" ref="290691098"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="290691098"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">title: mediaController.mediaState</string>
+							<string key="NSLabel">title: mediaInfoSupplier.mediaState</string>
 							<string key="NSBinding">title</string>
-							<string key="NSKeyPath">mediaController.mediaState</string>
+							<string key="NSKeyPath">mediaInfoSupplier.mediaState</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -243,15 +239,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">title: mediaController.currentSongData.songTitle</string>
+						<string key="label">title: mediaInfoSupplier.currentSongData.songTitle</string>
 						<reference key="source" ref="47206752"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="47206752"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">title: mediaController.currentSongData.songTitle</string>
+							<string key="NSLabel">title: mediaInfoSupplier.currentSongData.songTitle</string>
 							<string key="NSBinding">title</string>
-							<string key="NSKeyPath">mediaController.currentSongData.songTitle</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData.songTitle</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -259,15 +255,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaController.currentSongData</string>
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
 						<reference key="source" ref="47206752"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="47206752"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaController.currentSongData</string>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
 							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaController.currentSongData</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
@@ -279,15 +275,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaController.currentSongData</string>
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
 						<reference key="source" ref="280291075"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="280291075"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaController.currentSongData</string>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
 							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaController.currentSongData</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
@@ -299,15 +295,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaController.currentSongData</string>
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
 						<reference key="source" ref="943714712"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="943714712"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaController.currentSongData</string>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
 							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaController.currentSongData</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
@@ -319,15 +315,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaController.currentSongData</string>
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
 						<reference key="source" ref="161740081"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="161740081"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaController.currentSongData</string>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
 							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaController.currentSongData</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNotNil</string>
@@ -339,15 +335,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">title: mediaController.currentSongData.artist</string>
+						<string key="label">title: mediaInfoSupplier.currentSongData.artist</string>
 						<reference key="source" ref="280291075"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="280291075"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">title: mediaController.currentSongData.artist</string>
+							<string key="NSLabel">title: mediaInfoSupplier.currentSongData.artist</string>
 							<string key="NSBinding">title</string>
-							<string key="NSKeyPath">mediaController.currentSongData.artist</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData.artist</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -355,15 +351,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">title: mediaController.currentSongData.album</string>
+						<string key="label">title: mediaInfoSupplier.currentSongData.album</string>
 						<reference key="source" ref="943714712"/>
 						<reference key="destination" ref="976324537"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="943714712"/>
 							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">title: mediaController.currentSongData.album</string>
+							<string key="NSLabel">title: mediaInfoSupplier.currentSongData.album</string>
 							<string key="NSBinding">title</string>
-							<string key="NSKeyPath">mediaController.currentSongData.album</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData.album</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -564,7 +560,9 @@
 					<object class="NSMutableDictionary">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference key="dict.sortedKeys" ref="0"/>
-						<reference key="dict.values" ref="0"/>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -587,13 +585,17 @@
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
+				<object class="NSMutableArray" key="dict.values">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+				</object>
 			</object>
 			<nil key="activeLocalization"/>
 			<object class="NSMutableDictionary" key="localizations">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
+				<object class="NSMutableArray" key="dict.values">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+				</object>
 			</object>
 			<nil key="sourceID"/>
 			<int key="maxID">622</int>
@@ -627,7 +629,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>mediaController</string>
+							<string>mediaInfoSupplier</string>
 							<string>statusMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -640,13 +642,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>mediaController</string>
+							<string>mediaInfoSupplier</string>
 							<string>statusMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mediaController</string>
+								<string key="name">mediaInfoSupplier</string>
 								<string key="candidateClassName">MediaController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -673,6 +675,7 @@
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
+		<nil key="IBDocument.LastKnownRelativeProjectPath"/>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<bool key="EncodedWithXMLCoder">YES</bool>

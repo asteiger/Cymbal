@@ -19,6 +19,7 @@
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
+		2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */; };
 		2FB40CE012F89163004A0363 /* MCSongData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB40CDF12F89163004A0363 /* MCSongData.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
 		2FC3B4F3135614D10003D3D4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3B4F1135614D10003D3D4 /* MainMenu.xib */; };
@@ -64,7 +65,7 @@
 		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2F1DA77812F682B900CAF45E /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		2F232D9512E21A4400E14DF9 /* Metacast-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Metacast-Info.plist"; sourceTree = "<group>"; };
-		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
+		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2F27ACDE12F3D069008E1BDD /* MCBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCBroadcaster.h; sourceTree = "<group>"; };
 		2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBroadcaster.m; sourceTree = "<group>"; };
@@ -76,6 +77,8 @@
 		2F73873D134B739B003E0832 /* GrowlNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlNotifier.h; sourceTree = "<group>"; };
 		2F73873E134B739B003E0832 /* SongDataPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDataPacket.h; sourceTree = "<group>"; };
 		2F73873F134B739B003E0832 /* SongDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDataPacket.m; sourceTree = "<group>"; };
+		2FA455FD13578916001E569F /* RemoteMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMediaInfoSupplier.h; sourceTree = "<group>"; };
+		2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2FB40CDE12F89163004A0363 /* MCSongData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSongData.h; sourceTree = "<group>"; };
 		2FB40CDF12F89163004A0363 /* MCSongData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSongData.m; sourceTree = "<group>"; };
 		2FB83D9112E00F0C00A9E754 /* English */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; fileEncoding = 4; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -83,7 +86,7 @@
 		2FC3B4F413568D9F0003D3D4 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		2FC3B50D1356A9310003D3D4 /* MediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaInfoSupplier.m; sourceTree = "<group>"; };
-		2FC3B50F1356A94C0003D3D4 /* MediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MediaInfoSupplier.h; sourceTree = "<group>"; };
+		2FC3B50F1356A94C0003D3D4 /* MediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaInfoSupplier.h; sourceTree = "<group>"; };
 		2FF1D08D130CBC470001628E /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		2FF1D08E130CBC470001628E /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		2FF1D092130CBC930001628E /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
@@ -247,6 +250,7 @@
 		2F37DFF712F2159300DBBCBB /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				2F35683F130DCB6A000EC787 /* Packet.m */,
 				2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */,
 				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
 				2F73873E134B739B003E0832 /* SongDataPacket.h */,
@@ -258,7 +262,6 @@
 				2FF1D098130CBCAD0001628E /* Browser.h */,
 				2FF1D099130CBCAD0001628E /* Browser.m */,
 				2F35683E130DCB6A000EC787 /* Packet.h */,
-				2F35683F130DCB6A000EC787 /* Packet.m */,
 			);
 			name = Net;
 			sourceTree = "<group>";
@@ -270,6 +273,8 @@
 				2FC3B50D1356A9310003D3D4 /* MediaInfoSupplier.m */,
 				2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */,
 				2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */,
+				2FA455FD13578916001E569F /* RemoteMediaInfoSupplier.h */,
+				2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */,
 				2F738741134B739B003E0832 /* SongDataPacket.m in Sources */,
 				2FC3B50E1356A9310003D3D4 /* MediaInfoSupplier.m in Sources */,
+				2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
