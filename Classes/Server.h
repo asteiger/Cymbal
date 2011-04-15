@@ -2,6 +2,7 @@
 @class Packet;
 
 @interface Server : NSObject <NSNetServiceDelegate> {
+    NSString *name;
 	NSNetService *netService;
 	AsyncSocket *serverSocket;
 	
@@ -10,6 +11,7 @@
 	BOOL isRunning;
 }
 
+@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSMutableArray *connections;
 @property (nonatomic, readonly) BOOL isRunning;
 

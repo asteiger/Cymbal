@@ -250,6 +250,7 @@
 		2F37DFF712F2159300DBBCBB /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				2F35683E130DCB6A000EC787 /* Packet.h */,
 				2F35683F130DCB6A000EC787 /* Packet.m */,
 				2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */,
 				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
@@ -261,7 +262,6 @@
 				2FF1D096130CBCA20001628E /* Connection.m */,
 				2FF1D098130CBCAD0001628E /* Browser.h */,
 				2FF1D099130CBCAD0001628E /* Browser.m */,
-				2F35683E130DCB6A000EC787 /* Packet.h */,
 			);
 			name = Net;
 			sourceTree = "<group>";

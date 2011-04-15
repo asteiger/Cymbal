@@ -8,6 +8,13 @@ NSString *const kProtocolVersionKey  = @"protocolVersion";
 NSString *const kPacketTypeKey       = @"packetType";
 NSString *const kSenderNameKey       = @"senderName";
 
+@interface Packet (Private)
+
+- (id)initWithJson:(id)json;
+- (id)initWithDictionary:(NSDictionary*)dictionary;
+
+@end
+
 @implementation Packet
 
 - (id)init {

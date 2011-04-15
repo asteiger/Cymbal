@@ -5,6 +5,7 @@
 
 @implementation Server
 
+@synthesize name;
 @synthesize connections;
 @synthesize isRunning;
 
@@ -86,6 +87,8 @@
 - (void)netServiceWillPublish:(NSNetService *)sender { }
 - (void)netServiceDidPublish:(NSNetService *)sender {
 	NSLog(@"NetService published");
+    
+    name = [[netService name] retain];
 }
 
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict {
@@ -103,10 +106,12 @@
 
 - (void)netServiceDidStop:(NSNetService *)sender {
 	NSLog(@"NetService stopped.");
+    
+    [name release];
+    name = nil;
 }
 
 - (void)netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data { }
-
 
 
 @end

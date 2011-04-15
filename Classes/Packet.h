@@ -8,8 +8,6 @@ extern NSString *const kSenderNameKey;
 }
 
 - (id)init;
-- (id)initWithJson:(id)json;
-- (id)initWithDictionary:(NSDictionary*)dictionary;
 
 + (Packet*)packetWithJson:(id)json;
 + (Packet*)packetWithDictionary:(NSDictionary*)dictionary;
