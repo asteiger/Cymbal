@@ -58,6 +58,10 @@
     
     if (action == @selector(toggleBroadcast:)) {
         [menuItem setState:server.isRunning];
+    
+    } else if (action == @selector(didSelectMetacaster:)) {
+        if ([connection isConnected])
+            [menuItem setState:[[menuItem title] isEqualToString:connection.remoteName]];
     }
     
     return YES;
@@ -93,7 +97,7 @@
     NSNetService *service = [browser serviceWithName:name];
     if (service == nil) return NO;
     
-    connection = [[Connection alloc] initWithNetService:service];
+    connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
     return YES;
 }
 

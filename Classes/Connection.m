@@ -7,6 +7,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 @interface Connection (Private) 
 
+- (id)initWithLocalName:(NSString*)name;
 - (void)receivedPacketNotification:(NSNotification*)notification;
 
 @end
@@ -16,8 +17,9 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 @synthesize localName;
 @synthesize remoteName;
 
-- (id)init {
+- (id)initWithLocalName:(NSString*)name {
     if ((self = [super init])) {
+        self.localName = name;
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(receivedPacketNotification:) 
                                                      name:(NSString*)kPacketReceivedNotification 
@@ -30,8 +32,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 #pragma mark -
 #pragma mark Connection to Listener
 
-- (id)initWithAsyncSocket:(AsyncSocket*)aSocket {
-	if ((self = [self init])) {
+- (id)initWithAsyncSocket:(AsyncSocket*)aSocket LocalName:(NSString*)name {
+	if ((self = [self initWithLocalName:name])) {
 		socket = [aSocket retain];
 		
         [socket setDelegate:self];
@@ -44,15 +46,17 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 }
 
 - (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet {
+    NSLog(@"Recieved connection info");
     self.remoteName = nil;
 	self.remoteName = [packet clientName];
+    NSLog(@"Connection set remote name to %@", self.remoteName);
 }
 
 #pragma mark -
 #pragma mark Connection to Server
 
-- (id)initWithNetService:(NSNetService *)aNetService {
-	if ((self = [self init])) {
+- (id)initWithNetService:(NSNetService *)aNetService LocalName:(NSString*)name {
+	if ((self = [self initWithLocalName:name])) {
 
         self.localName = [aNetService name];
 		[aNetService setDelegate:self];
@@ -75,6 +79,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 		NSLog([error localizedDescription], nil);
 	}
 	
+    [sender stop];
+    
 	[socket readDataWithTimeout:-1 tag:0];
 }
 
@@ -109,7 +115,10 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 - (void)onSocketDidDisconnect:(AsyncSocket *)sock {
     NSLog(@"Connection disconnected");
-
+    [socket release];
+	socket = nil;
+    
+    self.remoteName = nil;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
@@ -158,6 +167,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 #pragma mark Events
 
 - (void)receivedPacketNotification:(NSNotification*)notification {
+    NSLog(@"Packet Notification");
     id p = [Packet packetWithDictionary:[notification userInfo]];
     
     if ([p isKindOfClass:[ConnectionInfoPacket class]]) {

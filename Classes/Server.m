@@ -79,7 +79,7 @@
 
 - (void)onSocket:(AsyncSocket *)sock didAcceptNewSocket:(AsyncSocket *)newSocket {
     NSLog(@"Server accepted socket");
-    [connections addObject:[[[Connection alloc] initWithAsyncSocket:newSocket] autorelease]];
+    [connections addObject:[[[Connection alloc] initWithAsyncSocket:newSocket LocalName:self.name] autorelease]];
 }
 
 #pragma mark -
@@ -90,6 +90,7 @@
 	NSLog(@"NetService published");
     
     name = [[netService name] retain];
+    NSLog(@"Set server name to %@", name);
 }
 
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict {
