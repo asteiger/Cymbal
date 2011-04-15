@@ -33,7 +33,7 @@
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 - (void)availableServiceAdded:(NSNotification*)notification;
 - (void)availableServiceRemoved:(NSNotification*)notification;
-- (void)connectToMetacasterWithName:(NSString*)name;
+- (BOOL)connectToMetacasterWithName:(NSString*)name;
 - (void)didSelectMetacaster:(NSMenuItem*)sender;
 
 @end

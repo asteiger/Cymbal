@@ -80,10 +80,10 @@
 }
 
 - (void)didSelectMetacaster:(NSMenuItem*)sender {
-    [self connectToMetacasterWithName:[sender title]];
+    [sender setState:[self connectToMetacasterWithName:[sender title]]];
 }
 
-- (void)connectToMetacasterWithName:(NSString*)name {
+- (BOOL)connectToMetacasterWithName:(NSString*)name {
     if (connection != nil) {
         [connection disconnect];
         [connection release];
@@ -91,9 +91,10 @@
     }
     
     NSNetService *service = [browser serviceWithName:name];
-    if (service == nil) return;
+    if (service == nil) return NO;
     
     connection = [[Connection alloc] initWithNetService:service];
+    return YES;
 }
 
 - (void)dealloc {
