@@ -101,6 +101,15 @@
     return YES;
 }
 
+- (void)listenerConnected:(NSNotification*)notification {
+    
+}
+
+- (void)listenerDisonnected:(NSNotification*)notification {
+    
+}
+
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceRemovedNotification object:nil];

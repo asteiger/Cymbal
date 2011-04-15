@@ -31,9 +31,13 @@
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
+
 - (void)availableServiceAdded:(NSNotification*)notification;
 - (void)availableServiceRemoved:(NSNotification*)notification;
 - (BOOL)connectToMetacasterWithName:(NSString*)name;
 - (void)didSelectMetacaster:(NSMenuItem*)sender;
+
+- (void)listenerConnected:(NSNotification*)notification;
+- (void)listenerDisonnected:(NSNotification*)notification;
 
 @end
