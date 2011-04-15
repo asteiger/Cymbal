@@ -58,7 +58,6 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 - (id)initWithNetService:(NSNetService *)aNetService LocalName:(NSString*)name {
 	if ((self = [self initWithLocalName:name])) {
 
-        self.localName = [aNetService name];
 		[aNetService setDelegate:self];
 		
 		socket = [[AsyncSocket alloc] init];
