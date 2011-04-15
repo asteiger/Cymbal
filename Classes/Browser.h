@@ -1,3 +1,6 @@
+extern NSString *const kServiceNameKey;
+extern NSString *const kAvailableServiceAddedNotification;
+extern NSString *const kAvailableServiceRemovedNotification;
 
 @interface Browser : NSObject <NSNetServiceBrowserDelegate> {
 	NSNetServiceBrowser *browser;
@@ -8,5 +11,6 @@
 
 - (void)startBrowsing;
 - (void)stopBrowsing;
+- (NSNetService*)serviceWithName:(NSString*)name;
 
 @end

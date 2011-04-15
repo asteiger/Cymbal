@@ -12,14 +12,28 @@
 	MCGrowlController *growlController;
 	MediaInfoSupplier *mediaInfoSupplier;
     
-    NSMenu *statusMenu;
     NSStatusItem *statusItem;
+    NSMenu *statusMenu;
+    NSMenu *listenersMenu;
+    NSMenu *metacastersMenu;
+    
+    NSMenuItem *noListeners;
+    NSMenuItem *noMetacasters;
 }
 
+@property (nonatomic, readonly) Browser *browser;
 @property (nonatomic, retain) IBOutlet NSMenu *statusMenu;
+@property (nonatomic, retain) IBOutlet NSMenu *listenersMenu;
+@property (nonatomic, retain) IBOutlet NSMenu *metacastersMenu;
 @property (nonatomic, retain) IBOutlet MediaInfoSupplier *mediaInfoSupplier;
+@property (nonatomic, retain) IBOutlet NSMenuItem *noListeners;
+@property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
+- (void)availableServiceAdded:(NSNotification*)notification;
+- (void)availableServiceRemoved:(NSNotification*)notification;
+- (void)connectToMetacasterWithName:(NSString*)name;
+- (void)didSelectMetacaster:(NSMenuItem*)sender;
 
 @end

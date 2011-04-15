@@ -3,6 +3,7 @@
 @implementation MCGrowlController
 
 + (void)postNotificationWithSong:(MCSongData*)songData {
+    NSLog(@"Posting song notification");
 	[GrowlApplicationBridge notifyWithTitle:songData.artist
 								description:songData.songTitle
 						   notificationName:@"Song Information"

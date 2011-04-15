@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TicketVersion</key>
-	<integer>1</integer>
 	<key>AllNotifications</key>
 	<array>
 		<string>Song Information</string>
@@ -15,12 +13,14 @@
 	</array>
 	<key>DefaultNotifications</key>
 	<array>
-		<string>SongNotification</string>
+		<string>Song Information</string>
 		<string>Connect to Broadcaster</string>
 		<string>Listener Connected</string>
 		<string>Connection Lost</string>
 		<string>Broadcast Enabled Status</string>
 		<string>Application Status</string>
 	</array>
+	<key>TicketVersion</key>
+	<integer>1</integer>
 </dict>
 </plist>

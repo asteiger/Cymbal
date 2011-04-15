@@ -49,6 +49,7 @@
     [connections removeAllObjects];
 	 
     isRunning = NO;
+    NSLog(@"Server stopped");
 }
 
 - (void)broadcastPacket:(Packet*)packet {

@@ -1,6 +1,10 @@
 #import "Browser.h"
 #import "MCBroadcaster.h"
 
+NSString *const kServiceNameKey = @"ServiceName";
+NSString *const kAvailableServiceAddedNotification = @"AvailableServiceAddedNotification";
+NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemovedNotification";
+
 @implementation Browser
 
 @synthesize services;
@@ -22,6 +26,17 @@
 
 - (void)stopBrowsing {
 	[browser stop];
+}
+
+- (NSNetService*)serviceWithName:(NSString*)name {
+    NSEnumerator *enumerator = [services objectEnumerator];
+    NSNetService *service;
+    
+    while ((service = [enumerator nextObject])) {
+        if ([service name] == name) return service;
+    }
+    
+    return nil;
 }
 
 - (void)dealloc {
@@ -55,7 +70,11 @@
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+    NSLog(@"Service discovered: %@", [aNetService name]);
     [services addObject:aNetService];
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObject:[aNetService name] forKey:kServiceNameKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceAddedNotification object:self userInfo:info];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveDomain:(NSString *)domainString moreComing:(BOOL)moreComing {
@@ -63,7 +82,11 @@
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+    NSLog(@"Service disappeared: %@", [aNetService name]);
 	[services removeObject:aNetService];
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObject:[aNetService name] forKey:kServiceNameKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceRemovedNotification object:self userInfo:info];
 }
 
 @end
