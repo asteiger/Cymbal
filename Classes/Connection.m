@@ -13,6 +13,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 @implementation Connection
 
+@synthesize localName;
 @synthesize remoteName;
 
 - (id)init {
@@ -43,7 +44,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 }
 
 - (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet {
-    [remoteName release];
+    self.remoteName = nil;
 	self.remoteName = [packet clientName];
 }
 
@@ -52,6 +53,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 - (id)initWithNetService:(NSNetService *)aNetService {
 	if ((self = [self init])) {
+
+        self.localName = [aNetService name];
 		[aNetService setDelegate:self];
 		
 		socket = [[AsyncSocket alloc] init];
@@ -96,7 +99,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
 	NSLog(@"Connection didConnectToHost: %@", host);
-    remoteName = [[NSString stringWithFormat:@"Resolving... (%@)", [sock connectedHost]] retain];
+    self.remoteName = [NSString stringWithFormat:@"Resolving... (%@)", [sock connectedHost]];
+    [self sendPacket:[[ConnectionInfoPacket alloc] initWithName:self.localName]];
 }
 
 - (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
@@ -144,8 +148,8 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 	[socket release];
 	socket = nil;
     
-    [remoteName release];
-    remoteName = nil;
+    self.localName = nil;
+    self.remoteName = nil;
 	
 	[super dealloc];
 }

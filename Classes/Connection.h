@@ -7,10 +7,12 @@
 extern NSString const* kPacketReceivedNotification;
 
 @interface Connection : NSObject <NSNetServiceDelegate> {
+    NSString *localName;
 	NSString *remoteName;
 	AsyncSocket *socket;
 }
 
+@property (nonatomic, retain) NSString *localName;
 @property (nonatomic, retain) NSString *remoteName;
 
 - (id)initWithNetService:(NSNetService*)aNetService;
