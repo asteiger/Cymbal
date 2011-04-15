@@ -18,6 +18,4 @@ extern NSString *const kSenderNameKey;
 - (NSNumber*)protocolVersion;
 - (NSString*)senderName;
 
-- (void)process;
-
 @end

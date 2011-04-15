@@ -72,12 +72,6 @@ NSString *const kSenderNameKey       = @"senderName";
 	return [packetData objectForKey:kSenderNameKey];
 }
 
-- (void)process {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-                                 userInfo:nil];
-}
-
 - (void)dealloc {
 	[packetData release];
 	packetData = nil;

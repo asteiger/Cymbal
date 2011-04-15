@@ -33,8 +33,4 @@ static NSString *kArtistNameKey = @"artistName";
 	return [songData autorelease];
 }
 
-- (void)process {
-    // do great things here
-}
-
 @end

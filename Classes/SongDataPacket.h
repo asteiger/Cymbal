@@ -12,6 +12,4 @@
 
 - (MCSongData*)songData;
 
-- (void)process;
-
 @end
