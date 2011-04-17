@@ -207,6 +207,12 @@
 			children = (
 				2FB40CDE12F89163004A0363 /* MCSongData.h */,
 				2FB40CDF12F89163004A0363 /* MCSongData.m */,
+				2F35683E130DCB6A000EC787 /* Packet.h */,
+				2F35683F130DCB6A000EC787 /* Packet.m */,
+				2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */,
+				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
+				2F73873E134B739B003E0832 /* SongDataPacket.h */,
+				2F73873F134B739B003E0832 /* SongDataPacket.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -244,12 +250,6 @@
 		2F37DFF712F2159300DBBCBB /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				2F35683E130DCB6A000EC787 /* Packet.h */,
-				2F35683F130DCB6A000EC787 /* Packet.m */,
-				2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */,
-				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
-				2F73873E134B739B003E0832 /* SongDataPacket.h */,
-				2F73873F134B739B003E0832 /* SongDataPacket.m */,
 				2FF1D092130CBC930001628E /* Server.h */,
 				2FF1D093130CBC930001628E /* Server.m */,
 				2FF1D095130CBCA20001628E /* Connection.h */,
