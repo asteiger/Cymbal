@@ -12,4 +12,11 @@ NSString *const kMediaStateListening = @"Listening";
 
 - (void)updateMediaProperties { }
 
+- (void)dealloc {
+    self.mediaState = nil;
+    self.currentSongData = nil;
+    
+    [super dealloc];
+}
+
 @end

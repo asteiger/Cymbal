@@ -88,13 +88,6 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 	NSLog(@"Netservice failed to resolve");
 }
 
-- (void)didReceiveSongDataPacket:(SongDataPacket*)packet {
-	NSLog(@"Received SongData packet.");
-    
-    Class growlNotifier = NSClassFromString(kGrowlNotifier);
-	[growlNotifier postNotificationWithSong:[packet songData]];
-}
-
 #pragma mark -
 #pragma mark AsyncSocket Delegate Methods
 
@@ -173,8 +166,6 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
     if ([p isKindOfClass:[ConnectionInfoPacket class]]) {
         [self didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)p];
         
-    } else if ([p isKindOfClass:[SongDataPacket class]]) {
-        [self didReceiveSongDataPacket:(SongDataPacket*)p];
     }
 }
 

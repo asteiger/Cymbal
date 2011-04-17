@@ -23,7 +23,6 @@ extern NSString const* kPacketReceivedNotification;
 
 - (void)sendPacket:(Packet*)packet;
 
-- (void)didReceiveSongDataPacket:(SongDataPacket*)packet;
 - (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet;
 
 @end

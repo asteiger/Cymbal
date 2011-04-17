@@ -1,6 +1,7 @@
 #import "LocalMediaInfoSupplier.h"
 #import "SongDataPacket.h"
 #import "MCSongData.h"
+#import "MCGrowlController.h"
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
@@ -28,8 +29,10 @@
     
 	[self updateMediaProperties];
     
-    if (self.mediaState != kMediaStateIdle)
+    if (self.mediaState != kMediaStateIdle) {
         [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
+        [MCGrowlController postNotificationWithSong:self.currentSongData];
+    }
 }
 
 - (void)updateMediaProperties {
@@ -53,7 +56,6 @@
     NSLog(@"dealloc localmediainfosupplier");
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
-    self.mediaState = nil;
     [_server release];
     
 	[super dealloc];
