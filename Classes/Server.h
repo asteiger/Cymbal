@@ -1,6 +1,10 @@
 @class AsyncSocket;
 @class Packet;
 
+extern NSString *const kListenerConnectedNotification;
+extern NSString *const kListenerDisconnectedNotification;
+extern NSString *const kListenerNameKey;
+
 @interface Server : NSObject <NSNetServiceDelegate> {
     NSString *name;
 	NSNetService *netService;

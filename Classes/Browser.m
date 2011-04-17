@@ -8,9 +8,12 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 @implementation Browser
 
 @synthesize services;
+@synthesize localName;
 
-- (id)init {
+- (id)initWithLocalName:(NSString*)name {
 	if ((self = [super init])) {
+        self.localName = name;
+        
 		browser = [[NSNetServiceBrowser alloc] init];
 		[browser setDelegate:self];
 		
@@ -41,6 +44,8 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 
 - (void)dealloc {
 	[self stopBrowsing];
+    
+    self.localName = nil;
 	
 	[browser dealloc];
 	browser = nil;
@@ -71,6 +76,8 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"Service discovered: %@", [aNetService name]);
+    if ([[aNetService name] isEqualToString:self.localName]) return;
+    
     [services addObject:aNetService];
     
     NSDictionary *info = [NSDictionary dictionaryWithObject:[aNetService name] forKey:kServiceNameKey];

@@ -50,7 +50,8 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"dealloc localmediainfosupplier");
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
     self.mediaState = nil;
     [_server release];

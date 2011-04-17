@@ -20,6 +20,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 - (id)initWithLocalName:(NSString*)name {
     if ((self = [super init])) {
         self.localName = name;
+        self.remoteName = @"Remote Name Unavailable";
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(receivedPacketNotification:) 
                                                      name:(NSString*)kPacketReceivedNotification 

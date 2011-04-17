@@ -117,7 +117,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2FC3B4F7135693B00003D3D4 /* Additions */,
 				2F27ACDB12F3D03F008E1BDD /* Model */,
 				2F27ACDD12F3D04B008E1BDD /* Control */,
 				2FF1D10F130CD6200001628E /* Libraries */,
@@ -277,13 +276,6 @@
 				2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */,
 			);
 			name = Media;
-			sourceTree = "<group>";
-		};
-		2FC3B4F7135693B00003D3D4 /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Additions;
 			sourceTree = "<group>";
 		};
 		2FF1D10F130CD6200001628E /* Libraries */ = {

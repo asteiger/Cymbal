@@ -19,18 +19,16 @@
 	[GrowlApplicationBridge setGrowlDelegate:growlController];
     
     server = [[Server alloc] init];
-    browser = [[Browser alloc] init];
+    browser = [[Browser alloc] initWithLocalName:server.name];
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
     
-    if (self.mediaInfoSupplier.mediaState == kMediaStateIdle) {
-        self.mediaInfoSupplier = nil;
-        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceRemoved:) name:kAvailableServiceRemovedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kListenerDisconnectedNotification object:nil];
 }
 
 - (void)awakeFromNib {
@@ -49,6 +47,8 @@
 - (IBAction)toggleBroadcast:(id)sender {
     if (server.isRunning) [server stop];
     else [server start];
+    
+    browser.localName = server.name;
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -72,7 +72,6 @@
     
     [metacastersMenu addItemWithTitle:serviceName action:@selector(didSelectMetacaster:) keyEquivalent:@""];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
-    [metacastersMenu update];
 }
 
 - (void)availableServiceRemoved:(NSNotification*)notification {
@@ -80,7 +79,6 @@
     
     [metacastersMenu removeItem:[metacastersMenu itemWithTitle:serviceName]];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
-    [metacastersMenu update];
 }
 
 - (void)didSelectMetacaster:(NSMenuItem*)sender {
@@ -98,21 +96,40 @@
     if (service == nil) return NO;
     
     connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
+    
+    self.mediaInfoSupplier = nil;
+    self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+    
     return YES;
 }
 
 - (void)listenerConnected:(NSNotification*)notification {
+    NSString *listenerName = [[notification userInfo] objectForKey:kListenerNameKey];
     
+    [listenersMenu addItemWithTitle:listenerName action:nil keyEquivalent:@""];
+    [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
 }
 
 - (void)listenerDisonnected:(NSNotification*)notification {
+    NSString *listenerName = [[notification userInfo] objectForKey:kListenerNameKey];
     
+    [listenersMenu removeItem:[listenersMenu itemWithTitle:listenerName]];
+    [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
 }
 
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceRemovedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kListenerConnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kListenerDisconnectedNotification object:nil];
+    
+    [server release];
+    server = nil;
+    
+    [browser release];
+    browser = nil;
     
     [connection release];
     connection = nil;
