@@ -15,7 +15,6 @@
 		2F1DA77512F6824600CAF45E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77412F6824600CAF45E /* icon.png */; };
 		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
-		2F27ACE012F3D069008E1BDD /* MCBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */; };
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
@@ -67,8 +66,6 @@
 		2F232D9512E21A4400E14DF9 /* Metacast-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Metacast-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
-		2F27ACDE12F3D069008E1BDD /* MCBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCBroadcaster.h; sourceTree = "<group>"; };
-		2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBroadcaster.m; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
@@ -208,8 +205,6 @@
 		2F27ACDB12F3D03F008E1BDD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2F27ACDE12F3D069008E1BDD /* MCBroadcaster.h */,
-				2F27ACDF12F3D069008E1BDD /* MCBroadcaster.m */,
 				2FB40CDE12F89163004A0363 /* MCSongData.h */,
 				2FB40CDF12F89163004A0363 /* MCSongData.m */,
 			);
@@ -360,7 +355,6 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* MetacastAppDelegate.m in Sources */,
 				2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */,
-				2F27ACE012F3D069008E1BDD /* MCBroadcaster.m in Sources */,
 				2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */,
 				2FB40CE012F89163004A0363 /* MCSongData.m in Sources */,
 				2FF1D08F130CBC470001628E /* AsyncSocket.m in Sources */,
