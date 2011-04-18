@@ -347,7 +347,7 @@
 						<string key="label">enabled: alwaysNo</string>
 						<reference key="source" ref="47206752"/>
 						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector" id="11054564">
+						<object class="NSNibBindingConnector" key="connector" id="629788733">
 							<reference key="NSSource" ref="47206752"/>
 							<reference key="NSDestination" ref="976324537"/>
 							<string key="NSLabel">enabled: alwaysNo</string>
@@ -373,7 +373,7 @@
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
 							</object>
-							<reference key="NSPreviousConnector" ref="11054564"/>
+							<reference key="NSPreviousConnector" ref="629788733"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -384,7 +384,7 @@
 						<string key="label">enabled: alwaysNo</string>
 						<reference key="source" ref="280291075"/>
 						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector" id="566959369">
+						<object class="NSNibBindingConnector" key="connector" id="683352189">
 							<reference key="NSSource" ref="280291075"/>
 							<reference key="NSDestination" ref="976324537"/>
 							<string key="NSLabel">enabled: alwaysNo</string>
@@ -410,7 +410,7 @@
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
 							</object>
-							<reference key="NSPreviousConnector" ref="566959369"/>
+							<reference key="NSPreviousConnector" ref="683352189"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -421,7 +421,7 @@
 						<string key="label">enabled: alwaysNo</string>
 						<reference key="source" ref="943714712"/>
 						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector" id="578940235">
+						<object class="NSNibBindingConnector" key="connector" id="1026661767">
 							<reference key="NSSource" ref="943714712"/>
 							<reference key="NSDestination" ref="976324537"/>
 							<string key="NSLabel">enabled: alwaysNo</string>
@@ -447,7 +447,7 @@
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNil</string>
 							</object>
-							<reference key="NSPreviousConnector" ref="578940235"/>
+							<reference key="NSPreviousConnector" ref="1026661767"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -458,7 +458,7 @@
 						<string key="label">enabled: alwaysNo</string>
 						<reference key="source" ref="161740081"/>
 						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector" id="725876134">
+						<object class="NSNibBindingConnector" key="connector" id="888438823">
 							<reference key="NSSource" ref="161740081"/>
 							<reference key="NSDestination" ref="976324537"/>
 							<string key="NSLabel">enabled: alwaysNo</string>
@@ -484,7 +484,7 @@
 								<string key="NS.key.0">NSValueTransformerName</string>
 								<string key="NS.object.0">NSIsNotNil</string>
 							</object>
-							<reference key="NSPreviousConnector" ref="725876134"/>
+							<reference key="NSPreviousConnector" ref="888438823"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -720,7 +720,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">657</int>
+			<int key="maxID">664</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

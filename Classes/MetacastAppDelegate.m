@@ -6,6 +6,7 @@
 
 @implementation MetacastAppDelegate
 
+@synthesize server;
 @synthesize browser;
 @synthesize statusMenu;
 @synthesize listenersMenu;
@@ -55,6 +56,9 @@
     
     self.mediaInfoSupplier = nil;
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    
+    [[noListeners parentItem] setHidden:!server.isRunning];
+    [[noMetacasters parentItem] setHidden:server.isRunning];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {

@@ -23,6 +23,7 @@
     NSNumber *alwaysNo;
 }
 
+@property (nonatomic, readonly) Server *server;
 @property (nonatomic, readonly) Browser *browser;
 @property (nonatomic, retain) IBOutlet NSMenu *statusMenu;
 @property (nonatomic, retain) IBOutlet NSMenu *listenersMenu;
