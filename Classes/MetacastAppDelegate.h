@@ -19,6 +19,8 @@
     
     NSMenuItem *noListeners;
     NSMenuItem *noMetacasters;
+    
+    NSNumber *alwaysNo;
 }
 
 @property (nonatomic, readonly) Browser *browser;
@@ -28,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet MediaInfoSupplier *mediaInfoSupplier;
 @property (nonatomic, retain) IBOutlet NSMenuItem *noListeners;
 @property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
+@property (nonatomic, retain) NSNumber *alwaysNo;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;

@@ -13,6 +13,7 @@
 @synthesize mediaInfoSupplier;
 @synthesize noListeners;
 @synthesize noMetacasters;
+@synthesize alwaysNo;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	growlController = [[MCGrowlController alloc] init];
@@ -29,6 +30,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kListenerDisconnectedNotification object:nil];
+    
+    self.alwaysNo = [NSNumber numberWithBool:NO];
 }
 
 - (void)awakeFromNib {
@@ -148,6 +151,7 @@
     
     self.statusMenu = nil;
 	self.mediaInfoSupplier = nil;
+    self.alwaysNo = nil;
     
 	[super dealloc];
 

@@ -264,86 +264,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
-						<reference key="source" ref="47206752"/>
-						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="47206752"/>
-							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
-							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">607</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
-						<reference key="source" ref="280291075"/>
-						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="280291075"/>
-							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
-							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">610</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
-						<reference key="source" ref="943714712"/>
-						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="943714712"/>
-							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
-							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">613</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
-						<reference key="source" ref="161740081"/>
-						<reference key="destination" ref="976324537"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="161740081"/>
-							<reference key="NSDestination" ref="976324537"/>
-							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
-							<string key="NSBinding">hidden</string>
-							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNotNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">617</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">title: mediaInfoSupplier.currentSongData.artist</string>
 						<reference key="source" ref="280291075"/>
 						<reference key="destination" ref="976324537"/>
@@ -405,6 +325,170 @@
 						<reference key="destination" ref="196831694"/>
 					</object>
 					<int key="connectionID">638</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: alwaysNo</string>
+						<reference key="source" ref="290691098"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="290691098"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">enabled: alwaysNo</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">alwaysNo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">641</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: alwaysNo</string>
+						<reference key="source" ref="47206752"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector" id="11054564">
+							<reference key="NSSource" ref="47206752"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">enabled: alwaysNo</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">alwaysNo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">644</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
+						<reference key="source" ref="47206752"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="47206752"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
+							<string key="NSBinding">hidden</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">NSIsNil</string>
+							</object>
+							<reference key="NSPreviousConnector" ref="11054564"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">645</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: alwaysNo</string>
+						<reference key="source" ref="280291075"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector" id="566959369">
+							<reference key="NSSource" ref="280291075"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">enabled: alwaysNo</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">alwaysNo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">648</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
+						<reference key="source" ref="280291075"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="280291075"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
+							<string key="NSBinding">hidden</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">NSIsNil</string>
+							</object>
+							<reference key="NSPreviousConnector" ref="566959369"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">649</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: alwaysNo</string>
+						<reference key="source" ref="943714712"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector" id="578940235">
+							<reference key="NSSource" ref="943714712"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">enabled: alwaysNo</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">alwaysNo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">652</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
+						<reference key="source" ref="943714712"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="943714712"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
+							<string key="NSBinding">hidden</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">NSIsNil</string>
+							</object>
+							<reference key="NSPreviousConnector" ref="578940235"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">653</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: alwaysNo</string>
+						<reference key="source" ref="161740081"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector" id="725876134">
+							<reference key="NSSource" ref="161740081"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">enabled: alwaysNo</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">alwaysNo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">656</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">hidden: mediaInfoSupplier.currentSongData</string>
+						<reference key="source" ref="161740081"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="161740081"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">hidden: mediaInfoSupplier.currentSongData</string>
+							<string key="NSBinding">hidden</string>
+							<string key="NSKeyPath">mediaInfoSupplier.currentSongData</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSValueTransformerName</string>
+								<string key="NS.object.0">NSIsNotNil</string>
+							</object>
+							<reference key="NSPreviousConnector" ref="725876134"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">657</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -599,9 +683,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableDictionary">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<reference key="dict.sortedKeys" ref="0"/>
-						<reference key="dict.values" ref="0"/>
+						<string key="NS.key.0">ToolTip</string>
+						<object class="IBToolTipAttribute" key="NS.object.0">
+							<string key="name">ToolTip</string>
+							<reference key="object" ref="290691098"/>
+							<string key="toolTip">Connected to ...</string>
+						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -633,7 +720,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">639</int>
+			<int key="maxID">657</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
