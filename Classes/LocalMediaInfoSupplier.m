@@ -14,6 +14,7 @@
         _server = [server retain];
         _iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(broadcastCurrentSongData) name:kListenerConnectedNotification object:nil];
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
         
@@ -24,13 +25,17 @@
 	return self;
 }
 
+- (void)broadcastCurrentSongData {
+    [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
+}
+
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got iTunes notification");
     
 	[self updateMediaProperties];
     
     if (self.mediaState != kMediaStateIdle) {
-        [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
+        [self broadcastCurrentSongData];
         [MCGrowlController postNotificationWithSong:self.currentSongData];
     }
 }
@@ -54,6 +59,7 @@
 
 - (void)dealloc {
     NSLog(@"dealloc localmediainfosupplier");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
     [_server release];

@@ -117,9 +117,6 @@ NSString *const kListenerNameKey = @"ListenerNameKey";
 
 - (void)netServiceDidStop:(NSNetService *)sender {
 	NSLog(@"NetService stopped.");
-    
-    [name release];
-    name = nil;
 }
 
 - (void)netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data { }

@@ -4,8 +4,8 @@
 
 + (void)postNotificationWithSong:(MCSongData*)songData {
     NSLog(@"Posting song notification");
-	[GrowlApplicationBridge notifyWithTitle:songData.artist
-								description:songData.songTitle
+	[GrowlApplicationBridge notifyWithTitle:songData.songTitle
+								description:[NSString stringWithFormat:@"%@\n%@", songData.artist, songData.album, nil]
 						   notificationName:@"Song Information"
 								   iconData:nil
 								   priority:0

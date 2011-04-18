@@ -49,6 +49,9 @@
     else [server start];
     
     browser.localName = server.name;
+    
+    self.mediaInfoSupplier = nil;
+    self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -69,6 +72,7 @@
 
 - (void)availableServiceAdded:(NSNotification*)notification {
     NSString *serviceName = [[notification userInfo] objectForKey:kServiceNameKey];
+    if ([serviceName isEqualToString:server.name]) return;
     
     [metacastersMenu addItemWithTitle:serviceName action:@selector(didSelectMetacaster:) keyEquivalent:@""];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
@@ -76,6 +80,7 @@
 
 - (void)availableServiceRemoved:(NSNotification*)notification {
     NSString *serviceName = [[notification userInfo] objectForKey:kServiceNameKey];
+    if ([serviceName isEqualToString:server.name]) return;
     
     [metacastersMenu removeItem:[metacastersMenu itemWithTitle:serviceName]];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
@@ -87,20 +92,24 @@
 
 - (BOOL)connectToMetacasterWithName:(NSString*)name {
     if (connection != nil) {
+        if ([name isEqualToString:connection.remoteName]) return YES;
+        
         [connection disconnect];
         [connection release];
         connection = nil;
     }
     
     NSNetService *service = [browser serviceWithName:name];
-    if (service == nil) return NO;
+    if (service != nil) {
+        connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
     
-    connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
+        self.mediaInfoSupplier = nil;
+        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+        
+        return [connection isConnected];
+    }
     
-    self.mediaInfoSupplier = nil;
-    self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
-    
-    return YES;
+    return NO;
 }
 
 - (void)listenerConnected:(NSNotification*)notification {
