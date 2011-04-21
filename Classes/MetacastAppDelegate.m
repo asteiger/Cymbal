@@ -21,16 +21,21 @@
 	[GrowlApplicationBridge setGrowlDelegate:growlController];
     
     server = [[Server alloc] init];
-    browser = [[Browser alloc] initWithLocalName:server.name];
+    browser = [[Browser alloc] init];
+    [browser bind:@"localName" toObject:server withKeyPath:@"name" options:nil];
+    
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    
+    [[noListeners parentItem] setHidden:!server.isRunning];
+    [[noMetacasters parentItem] setHidden:server.isRunning];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceRemoved:) name:kAvailableServiceRemovedNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kListenerDisconnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
     
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
@@ -87,7 +92,6 @@
 
 - (void)availableServiceRemoved:(NSNotification*)notification {
     NSString *serviceName = [[notification userInfo] objectForKey:kServiceNameKey];
-    if ([serviceName isEqualToString:server.name]) return;
     
     [metacastersMenu removeItem:[metacastersMenu itemWithTitle:serviceName]];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
@@ -120,16 +124,26 @@
 }
 
 - (void)listenerConnected:(NSNotification*)notification {
-    NSString *listenerName = [[notification userInfo] objectForKey:kListenerNameKey];
+    Connection *c = [notification object];
     
-    [listenersMenu addItemWithTitle:listenerName action:nil keyEquivalent:@""];
+    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:c.remoteName action:nil keyEquivalent:@""] autorelease];
+    
+    [item setRepresentedObject:c];
+    [item bind:@"title" toObject:c withKeyPath:@"remoteName" options:nil];
+    [item bind:@"enabled" toObject:self withKeyPath:@"alwaysNo" options:nil];
+    
+    [listenersMenu addItem:item];
+    
     [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
 }
 
 - (void)listenerDisonnected:(NSNotification*)notification {
-    NSString *listenerName = [[notification userInfo] objectForKey:kListenerNameKey];
+    Connection *c = [notification object];
     
-    [listenersMenu removeItem:[listenersMenu itemWithTitle:listenerName]];
+    NSInteger index;
+    if (-1 == (index = [listenersMenu indexOfItemWithRepresentedObject:c])) return;
+    
+    [listenersMenu removeItem:[listenersMenu itemAtIndex:index]];
     [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
 }
 
@@ -139,7 +153,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceRemovedNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kListenerConnectedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kListenerDisconnectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kConnectionDisconnectedNotification object:nil];
     
     [server release];
     server = nil;

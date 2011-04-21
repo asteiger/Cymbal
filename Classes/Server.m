@@ -4,8 +4,6 @@
 #import "AsyncSocket.h"
 
 NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification";
-NSString *const kListenerDisconnectedNotification = @"ListenerDisconnectedNotification";
-NSString *const kListenerNameKey = @"ListenerNameKey";
 
 @implementation Server
 
@@ -86,9 +84,8 @@ NSString *const kListenerNameKey = @"ListenerNameKey";
     
     Connection *c = [[[Connection alloc] initWithAsyncSocket:newSocket LocalName:self.name] autorelease];
     [connections addObject:c];
-    
-    NSDictionary *info = [NSDictionary dictionaryWithObject:c.remoteName forKey:kListenerNameKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kListenerConnectedNotification object:self userInfo:info];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kListenerConnectedNotification object:c];
 }
 
 #pragma mark -

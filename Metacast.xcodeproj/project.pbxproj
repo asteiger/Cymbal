@@ -296,6 +296,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				2F1DA6AF12F6723600CAF45E /* CopyFiles */,
+				2F359BEF135CC8B800BE07BA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -346,6 +347,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F359BEF135CC8B800BE07BA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto -arch i386 \"$TARGET_BUILD_DIR\" \"$TARGET_BUILD_DIR Intel\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -404,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -429,6 +448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

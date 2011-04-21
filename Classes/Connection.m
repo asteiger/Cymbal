@@ -3,7 +3,8 @@
 #import "Packet.h"
 #import "GrowlNotifier.h"
 
-NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
+NSString *const kPacketReceivedNotification = @"PacketReceivedNotification";
+NSString *const kConnectionDisconnectedNotification = @"ConnectionConnectedNotification";
 
 @interface Connection (Private) 
 
@@ -23,7 +24,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
         self.remoteName = @"Remote Name Unavailable";
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(receivedPacketNotification:) 
-                                                     name:(NSString*)kPacketReceivedNotification 
+                                                     name:kPacketReceivedNotification 
                                                    object:self];
     }
         
@@ -111,7 +112,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
     [socket release];
 	socket = nil;
     
-    self.remoteName = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kConnectionDisconnectedNotification object:self];
 }
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
@@ -120,7 +121,7 @@ NSString const* kPacketReceivedNotification = @"PacketReceivedNotification";
 	NSString *json = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	Packet *p = [Packet packetWithJson:json];
 	
-    [[NSNotificationCenter defaultCenter] postNotificationName:(NSString*)kPacketReceivedNotification object:self userInfo:[p toDictionary]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPacketReceivedNotification object:self userInfo:[p toDictionary]];
     
 	[socket readDataWithTimeout:-1 tag:0];
 }

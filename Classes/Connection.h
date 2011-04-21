@@ -4,7 +4,8 @@
 #import "ConnectionInfoPacket.h"
 #import "MCSongData.h"
 
-extern NSString const* kPacketReceivedNotification;
+extern NSString *const kPacketReceivedNotification;
+extern NSString *const kConnectionDisconnectedNotification;
 
 @interface Connection : NSObject <NSNetServiceDelegate> {
     NSString *localName;

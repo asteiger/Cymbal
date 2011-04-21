@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
-	<key>CFBundleLocalizations</key>
-	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
@@ -14,6 +12,8 @@
 	<string>com.narwhaltech.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<string>en</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
@@ -24,13 +24,15 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.music</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>LSUIElement</key>
-	<true/>
 </dict>
 </plist>

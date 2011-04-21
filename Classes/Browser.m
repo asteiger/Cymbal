@@ -1,5 +1,4 @@
 #import "Browser.h"
-#import "MCBroadcaster.h"
 
 NSString *const kServiceNameKey = @"ServiceName";
 NSString *const kAvailableServiceAddedNotification = @"AvailableServiceAddedNotification";
@@ -10,10 +9,8 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 @synthesize services;
 @synthesize localName;
 
-- (id)initWithLocalName:(NSString*)name {
-	if ((self = [super init])) {
-        self.localName = name;
-        
+- (id)init {
+	if ((self = [super init])) {        
 		browser = [[NSNetServiceBrowser alloc] init];
 		[browser setDelegate:self];
 		

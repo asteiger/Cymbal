@@ -12,7 +12,7 @@
 - (id)initWithServer:(Server*)server {
 	if ((self = [super init])) {
         _server = [server retain];
-        _iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
+        _iTunes = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(broadcastCurrentSongData) name:kListenerConnectedNotification object:nil];
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
@@ -62,6 +62,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
+    [_iTunes release];
     [_server release];
     
 	[super dealloc];
