@@ -127,7 +127,7 @@
 					</object>
 					<object class="NSMenuItem" id="1035610479">
 						<reference key="NSMenu" ref="301681542"/>
-						<string key="NSTitle">Metacasters</string>
+						<string key="NSTitle">Cymbalers</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="794253562"/>
@@ -139,7 +139,7 @@
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMenuItem" id="271844">
 									<reference key="NSMenu" ref="90699271"/>
-									<string key="NSTitle">No Metacasters</string>
+									<string key="NSTitle">No Cymbalers</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="794253562"/>
