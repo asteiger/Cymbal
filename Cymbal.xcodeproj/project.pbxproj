@@ -53,7 +53,7 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		256AC3D80F4B6AC300CF3369 /* MetacastAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetacastAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* MetacastAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetacastAppDelegate.m; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* Cymbal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; path = Cymbal_Prefix.pch; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* Cymbal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cymbal_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -63,7 +63,7 @@
 		2F1DA73312F67D2F00CAF45E /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Classes/Growl.framework; sourceTree = SOURCE_ROOT; };
 		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2F1DA77812F682B900CAF45E /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
-		2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; path = "Cymbal-Info.plist"; sourceTree = "<group>"; };
+		2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Cymbal-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
@@ -426,8 +426,8 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../Djinn\"",
-					"\"$(SRCROOT)/../Djinn/Classes\"",
+					"\"$(SRCROOT)/\"",
+					"\"$(SRCROOT)/Classes\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -452,8 +452,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../Djinn\"",
-					"\"$(SRCROOT)/../Djinn/Classes\"",
+					"\"$(SRCROOT)/\"",
+					"\"$(SRCROOT)/Classes\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
