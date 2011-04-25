@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		256AC3DA0F4B6AC300CF3369 /* MetacastAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MetacastAppDelegate.m */; };
-		2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */; };
-		2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* MCGrowlController.m */; };
-		2F1DA73412F67D2F00CAF45E /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
-		2F1DA73C12F67D4400CAF45E /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F1DA73312F67D2F00CAF45E /* Growl.framework */; };
+		2F1DA6E912F676A600CAF45E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* NotificationController.m */; };
 		2F1DA77512F6824600CAF45E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77412F6824600CAF45E /* icon.png */; };
 		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
+		2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FF2D0136396B600E4B57F /* NotificationView.xib */; };
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
+		2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */; };
+		2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */; };
 		2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */; };
 		2FB40CE012F89163004A0363 /* MCSongData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB40CDF12F89163004A0363 /* MCSongData.m */; };
 		2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FB83DB512E0142300A9E754 /* Localizable.strings */; };
@@ -29,6 +29,7 @@
 		2FF1D097130CBCA20001628E /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D096130CBCA20001628E /* Connection.m */; };
 		2FF1D09A130CBCAD0001628E /* Browser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D099130CBCAD0001628E /* Browser.m */; };
 		2FF1D112130CD64E0001628E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D111130CD64E0001628E /* JSONKit.m */; };
+		2FFF23031361E62500CDA256 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFF23021361E62500CDA256 /* MAAttachedWindow.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -41,7 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2F1DA73C12F67D4400CAF45E /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,12 +57,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
-		2F1DA6E712F676A600CAF45E /* MCGrowlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCGrowlController.h; sourceTree = "<group>"; };
-		2F1DA6E812F676A600CAF45E /* MCGrowlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCGrowlController.m; sourceTree = "<group>"; };
-		2F1DA73312F67D2F00CAF45E /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Classes/Growl.framework; sourceTree = SOURCE_ROOT; };
+		2F1DA6E712F676A600CAF45E /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		2F1DA6E812F676A600CAF45E /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2F1DA77812F682B900CAF45E /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
+		2F1FF2D0136396B600E4B57F /* NotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
 		2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Cymbal-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
@@ -71,9 +70,11 @@
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
 		2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionInfoPacket.h; sourceTree = "<group>"; };
 		2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionInfoPacket.m; sourceTree = "<group>"; };
-		2F73873D134B739B003E0832 /* GrowlNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowlNotifier.h; sourceTree = "<group>"; };
 		2F73873E134B739B003E0832 /* SongDataPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDataPacket.h; sourceTree = "<group>"; };
 		2F73873F134B739B003E0832 /* SongDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDataPacket.m; sourceTree = "<group>"; };
+		2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		2FA455FD13578916001E569F /* RemoteMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2FB40CDE12F89163004A0363 /* MCSongData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSongData.h; sourceTree = "<group>"; };
@@ -94,6 +95,8 @@
 		2FF1D099130CBCAD0001628E /* Browser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Browser.m; sourceTree = "<group>"; };
 		2FF1D110130CD64E0001628E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		2FF1D111130CD64E0001628E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		2FFF23011361E62500CDA256 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		2FFF23021361E62500CDA256 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Cymbal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cymbal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				2F1DA73412F67D2F00CAF45E /* Growl.framework in Frameworks */,
 				2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,7 +126,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2F1DA73312F67D2F00CAF45E /* Growl.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -178,8 +179,8 @@
 				2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				2FB83DB512E0142300A9E754 /* Localizable.strings */,
-				2F1DA64812F66A5800CAF45E /* Growl Registration Ticket.growlRegDict */,
 				2F356841130DCBA0000EC787 /* PacketSample.json */,
+				2F1FF2D0136396B600E4B57F /* NotificationView.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -220,8 +221,8 @@
 		2F27ACDD12F3D04B008E1BDD /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				2F9B8B7B1365C6A7000CDB68 /* UI */,
 				2F3567DA130D82FB000EC787 /* App */,
-				2F3567DB130D830A000EC787 /* Growl */,
 				2F37E00612F2170900DBBCBB /* Media */,
 				2F37DFF712F2159300DBBCBB /* Net */,
 			);
@@ -235,16 +236,6 @@
 				256AC3D90F4B6AC300CF3369 /* MetacastAppDelegate.m */,
 			);
 			name = App;
-			sourceTree = "<group>";
-		};
-		2F3567DB130D830A000EC787 /* Growl */ = {
-			isa = PBXGroup;
-			children = (
-				2F73873D134B739B003E0832 /* GrowlNotifier.h */,
-				2F1DA6E712F676A600CAF45E /* MCGrowlController.h */,
-				2F1DA6E812F676A600CAF45E /* MCGrowlController.m */,
-			);
-			name = Growl;
 			sourceTree = "<group>";
 		};
 		2F37DFF712F2159300DBBCBB /* Net */ = {
@@ -273,9 +264,23 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
+		2F9B8B7B1365C6A7000CDB68 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2F1DA6E712F676A600CAF45E /* NotificationController.h */,
+				2F1DA6E812F676A600CAF45E /* NotificationController.m */,
+				2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */,
+				2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */,
+				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		2FF1D10F130CD6200001628E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2FFF23011361E62500CDA256 /* MAAttachedWindow.h */,
+				2FFF23021361E62500CDA256 /* MAAttachedWindow.m */,
 				2FC3B4F413568D9F0003D3D4 /* iTunes.h */,
 				2FF1D110130CD64E0001628E /* JSONKit.h */,
 				2FF1D111130CD64E0001628E /* JSONKit.m */,
@@ -339,10 +344,11 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */,
-				2F1DA6A512F6711900CAF45E /* Growl Registration Ticket.growlRegDict in Resources */,
 				2F1DA77512F6824600CAF45E /* icon.png in Resources */,
 				2F1DA77912F682B900CAF45E /* icon-small.png in Resources */,
 				2FC3B4F3135614D10003D3D4 /* MainMenu.xib in Resources */,
+				2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */,
+				2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +379,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* MetacastAppDelegate.m in Sources */,
 				2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */,
-				2F1DA6E912F676A600CAF45E /* MCGrowlController.m in Sources */,
+				2F1DA6E912F676A600CAF45E /* NotificationController.m in Sources */,
 				2FB40CE012F89163004A0363 /* MCSongData.m in Sources */,
 				2FF1D08F130CBC470001628E /* AsyncSocket.m in Sources */,
 				2FF1D094130CBC930001628E /* Server.m in Sources */,
@@ -385,6 +391,8 @@
 				2F738741134B739B003E0832 /* SongDataPacket.m in Sources */,
 				2FC3B50E1356A9310003D3D4 /* MediaInfoSupplier.m in Sources */,
 				2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */,
+				2FFF23031361E62500CDA256 /* MAAttachedWindow.m in Sources */,
+				2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

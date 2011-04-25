@@ -1,5 +1,5 @@
 #import "RemoteMediaInfoSupplier.h"
-#import "MCGrowlController.h"
+#import "NotificationController.h"
 
 @interface RemoteMediaInfoSupplier (Private) 
 
@@ -34,7 +34,8 @@
     
     if ([p isKindOfClass:[SongDataPacket class]]) {
         self.currentSongData = [(SongDataPacket*)p songData];
-        [MCGrowlController postNotificationWithSong:self.currentSongData];
+        
+        [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
     }
     
     if ([_connection isConnected]) self.mediaState = kMediaStateListening;

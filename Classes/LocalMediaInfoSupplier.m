@@ -1,7 +1,7 @@
 #import "LocalMediaInfoSupplier.h"
 #import "SongDataPacket.h"
 #import "MCSongData.h"
-#import "MCGrowlController.h"
+#import "NotificationController.h"
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
@@ -36,7 +36,8 @@
     
     if (self.mediaState != kMediaStateIdle) {
         [self broadcastCurrentSongData];
-        [MCGrowlController postNotificationWithSong:self.currentSongData];
+        
+        [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
     }
 }
 

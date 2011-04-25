@@ -6,7 +6,6 @@
 @interface LocalMediaInfoSupplier : MediaInfoSupplier {
     Server *_server;
     iTunesApplication *_iTunes;
-
 }
 
 - (id)initWithServer:(Server*)server;

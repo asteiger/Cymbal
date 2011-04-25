@@ -1,5 +1,4 @@
 #import "MediaInfoSupplier.h"
-#import "MCGrowlController.h"
 #import "Server.h"
 #import "Connection.h"
 #import "Browser.h"
@@ -9,7 +8,6 @@
 	Connection *connection;
     Browser *browser;
     
-	MCGrowlController *growlController;
 	MediaInfoSupplier *mediaInfoSupplier;
     
     NSStatusItem *statusItem;

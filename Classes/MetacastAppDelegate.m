@@ -1,7 +1,7 @@
 #import "MetacastAppDelegate.h"
 #import "LocalMediaInfoSupplier.h"
 #import "RemoteMediaInfoSupplier.h"
-#import "Growl.framework/Headers/GrowlApplicationBridge.h"
+#import "MAAttachedWindow.h"
 
 
 @implementation MetacastAppDelegate
@@ -17,8 +17,7 @@
 @synthesize alwaysNo;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	growlController = [[MCGrowlController alloc] init];
-	[GrowlApplicationBridge setGrowlDelegate:growlController];
+
     
     server = [[Server alloc] init];
     browser = [[Browser alloc] init];
@@ -45,6 +44,7 @@
     [statusItem setHighlightMode:YES];
     [statusItem setImage:[NSImage imageNamed:@"icon-small.png"]];
     [statusItem setMenu:statusMenu];
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
@@ -163,9 +163,6 @@
     
     [connection release];
     connection = nil;
-    
-	[growlController release];
-    growlController = nil;
     
     self.statusMenu = nil;
 	self.mediaInfoSupplier = nil;
