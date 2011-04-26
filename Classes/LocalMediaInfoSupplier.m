@@ -26,6 +26,8 @@
 }
 
 - (void)broadcastCurrentSongData {
+    if (self.currentSongData == nil) return;
+    
     [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
 }
 
