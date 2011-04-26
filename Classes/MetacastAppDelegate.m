@@ -18,7 +18,7 @@
 @synthesize broadcastEnabled;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
+    broadcastEnabled = YES;
     
     server = [[Server alloc] init];
     browser = [[Browser alloc] init];
@@ -27,15 +27,19 @@
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
-    
-    [[noListeners parentItem] setHidden:!server.isRunning];
-    [[noMetacasters parentItem] setHidden:server.isRunning];
+    if (self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
+        [server start];
+        [self.mediaInfoSupplier updateMediaProperties];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceRemoved:) name:kAvailableServiceRemovedNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
+    
+    [[self.noListeners parentItem] bind:@"hidden" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName forKey:NSValueTransformerNameBindingOption]];
+    [[self.noMetacasters parentItem] bind:@"hidden" toObject:server withKeyPath:@"isRunning" options:nil];
     
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
@@ -60,9 +64,6 @@
     if (!self.broadcastEnabled && server.isRunning) [server stop];
     if (self.broadcastEnabled && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) [server start];
     [mediaInfoSupplier updateMediaProperties];
-    
-    [[noListeners parentItem] setHidden:!server.isRunning];
-    [[noMetacasters parentItem] setHidden:server.isRunning];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -84,7 +85,10 @@
 - (void)availableServiceAdded:(NSNotification*)notification {
     NSNetService *service = [notification object];
 
-    [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacaster:) keyEquivalent:@""];
+    NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacaster:) keyEquivalent:@""];
+    if (self.mediaInfoSupplier.mediaState == kMediaStateIdle && (connection == nil || ![connection isConnected]))
+        [self didSelectMetacaster:metacasterItem];
+    
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 

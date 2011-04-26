@@ -15,6 +15,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 	if ((self = [super init])) {
 		serverSocket = [[AsyncSocket alloc] initWithDelegate:self];
 		connections = [[NSMutableArray alloc] initWithCapacity:1];
+        self.isRunning = NO;
 	}
 	
 	return self;
@@ -36,7 +37,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 	[netService setDelegate:self];
 	[netService publish];
     
-    return isRunning = YES;
+    return self.isRunning = YES;
 }
 
 - (void)stop {
@@ -50,20 +51,16 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
     [connections makeObjectsPerformSelector:@selector(disconnect)];
     [connections removeAllObjects];
 	 
-    isRunning = NO;
+    self.isRunning = NO;
     NSLog(@"Server stopped");
 }
 
 - (void)broadcastPacket:(Packet*)packet {
-    if (!isRunning) return;
+    if (!self.isRunning) return;
     
-	NSLog(@"Broadcast packet, message type: %@", [packet toJson]);
+	NSLog(@"Broadcast packet, message: %@", [packet toJson]);
 	
 	[connections makeObjectsPerformSelector:@selector(sendPacket:) withObject:packet];
-}
-
-- (BOOL)isRunning {
-	return isRunning;
 }
 
 - (void)dealloc {

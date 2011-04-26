@@ -15,7 +15,7 @@ extern NSString *const kListenerConnectedNotification;
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSMutableArray *connections;
-@property (nonatomic, readonly) BOOL isRunning;
+@property (nonatomic) BOOL isRunning;
 
 - (id)init;
 - (BOOL)start;
