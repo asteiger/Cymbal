@@ -19,6 +19,8 @@
     NSMenuItem *noMetacasters;
     
     NSNumber *alwaysNo;
+    
+    BOOL broadcastEnabled;
 }
 
 @property (nonatomic, readonly) Server *server;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *noListeners;
 @property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
 @property (nonatomic, retain) NSNumber *alwaysNo;
+@property (nonatomic) BOOL broadcastEnabled;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;

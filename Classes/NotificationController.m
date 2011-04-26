@@ -70,13 +70,13 @@ NotificationController *instance;
 }
 
 - (void)postBroadcastEnabledNotificationWithState:(int)state {
-	NSString *stateMessage = state == NSOnState ? @"Broadcast Enabled" : @"Broadcast Disabled";
+	//NSString *stateMessage = state == NSOnState ? @"Broadcast Enabled" : @"Broadcast Disabled";
 	
 	
 }
 
 - (void)postConnectedToBroadcasterWithName:(NSString*)name {
-	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+	//NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
 	
 	
 }

@@ -15,6 +15,7 @@
 @synthesize noListeners;
 @synthesize noMetacasters;
 @synthesize alwaysNo;
+@synthesize broadcastEnabled;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
@@ -54,13 +55,9 @@
 }
 
 - (IBAction)toggleBroadcast:(id)sender {
-    if (server.isRunning) [server stop];
-    else [server start];
+    self.broadcastEnabled = !self.broadcastEnabled;
     
-    browser.localName = server.name;
-    
-    self.mediaInfoSupplier = nil;
-    self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    if (!self.broadcastEnabled && server.isRunning) [server stop];
     
     [[noListeners parentItem] setHidden:!server.isRunning];
     [[noMetacasters parentItem] setHidden:server.isRunning];
@@ -72,7 +69,7 @@
     SEL action = [menuItem action];
     
     if (action == @selector(toggleBroadcast:)) {
-        [menuItem setState:server.isRunning];
+        [menuItem setState:self.broadcastEnabled];
     
     } else if (action == @selector(didSelectMetacaster:)) {
         if ([connection isConnected])
@@ -83,17 +80,16 @@
 }
 
 - (void)availableServiceAdded:(NSNotification*)notification {
-    NSString *serviceName = [[notification userInfo] objectForKey:kServiceNameKey];
-    if ([serviceName isEqualToString:server.name]) return;
-    
-    [metacastersMenu addItemWithTitle:serviceName action:@selector(didSelectMetacaster:) keyEquivalent:@""];
+    NSNetService *service = [notification object];
+
+    [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacaster:) keyEquivalent:@""];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 
 - (void)availableServiceRemoved:(NSNotification*)notification {
-    NSString *serviceName = [[notification userInfo] objectForKey:kServiceNameKey];
+    NSNetService *service = [notification object];
     
-    [metacastersMenu removeItem:[metacastersMenu itemWithTitle:serviceName]];
+    [metacastersMenu removeItem:[metacastersMenu itemWithTitle:[service name]]];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 

@@ -1,7 +1,6 @@
 #import "Connection.h"
 #import "Server.h"
 #import "Packet.h"
-#import "GrowlNotifier.h"
 
 NSString *const kPacketReceivedNotification = @"PacketReceivedNotification";
 NSString *const kConnectionDisconnectedNotification = @"ConnectionConnectedNotification";

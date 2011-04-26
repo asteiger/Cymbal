@@ -1,6 +1,5 @@
 #import "Browser.h"
 
-NSString *const kServiceNameKey = @"ServiceName";
 NSString *const kAvailableServiceAddedNotification = @"AvailableServiceAddedNotification";
 NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemovedNotification";
 
@@ -73,12 +72,11 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"Service discovered: %@", [aNetService name]);
-    if ([[aNetService name] isEqualToString:self.localName]) return;
+    if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
     
     [services addObject:aNetService];
     
-    NSDictionary *info = [NSDictionary dictionaryWithObject:[aNetService name] forKey:kServiceNameKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceAddedNotification object:self userInfo:info];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceAddedNotification object:aNetService userInfo:nil];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveDomain:(NSString *)domainString moreComing:(BOOL)moreComing {
@@ -87,10 +85,10 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"Service disappeared: %@", [aNetService name]);
+    if (![services containsObject:aNetService]) return;
 	[services removeObject:aNetService];
     
-    NSDictionary *info = [NSDictionary dictionaryWithObject:[aNetService name] forKey:kServiceNameKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceRemovedNotification object:self userInfo:info];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceRemovedNotification object:aNetService userInfo:nil];
 }
 
 @end

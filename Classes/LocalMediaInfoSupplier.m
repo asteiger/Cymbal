@@ -2,6 +2,7 @@
 #import "SongDataPacket.h"
 #import "MCSongData.h"
 #import "NotificationController.h"
+#import "Connection.h"
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
@@ -14,7 +15,7 @@
         _server = [server retain];
         _iTunes = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(broadcastCurrentSongData) name:kListenerConnectedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
         
@@ -23,6 +24,13 @@
 	}
 	
 	return self;
+}
+
+- (void)listenerConnected:(NSNotification*)connectionNotification {
+    if (self.currentSongData == nil) return;
+    
+    Connection *c = [connectionNotification object];
+    [c sendPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
 }
 
 - (void)broadcastCurrentSongData {
@@ -37,9 +45,12 @@
 	[self updateMediaProperties];
     
     if (self.mediaState != kMediaStateIdle) {
-        [self broadcastCurrentSongData];
+        if (APP_DELEGATE.broadcastEnabled && !_server.isRunning) [_server start];
         
+        [self broadcastCurrentSongData];
         [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
+    } else {
+        if (_server.isRunning) [_server stop];
     }
 }
 

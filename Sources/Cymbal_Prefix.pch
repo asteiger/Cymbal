@@ -5,8 +5,9 @@
 #ifdef __OBJC__
 
 #import <Cocoa/Cocoa.h>
+#import "MetacastAppDelegate.h"
 
-#define APP_DELEGATE [NSApp delegate]
+#define APP_DELEGATE ((MetacastAppDelegate*)[NSApp delegate])
 #define kGrowlNotifier @"MCGrowlController"
 
 #endif

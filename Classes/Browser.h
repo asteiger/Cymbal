@@ -1,4 +1,3 @@
-extern NSString *const kServiceNameKey;
 extern NSString *const kAvailableServiceAddedNotification;
 extern NSString *const kAvailableServiceRemovedNotification;
 

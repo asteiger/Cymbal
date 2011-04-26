@@ -10,6 +10,7 @@
 
 - (id)initWithServer:(Server*)server;
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
+- (void)listenerConnected:(NSNotification*)connectionNotification;
 - (void)broadcastCurrentSongData;
 
 @end
