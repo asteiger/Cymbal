@@ -45,7 +45,10 @@
 	[self updateMediaProperties];
     
     if (self.mediaState != kMediaStateIdle) {
-        if (APP_DELEGATE.broadcastEnabled && !_server.isRunning) [_server start];
+        if (APP_DELEGATE.broadcastEnabled && !_server.isRunning) {
+            [_server start];
+            self.mediaState = kMediaStateBroadcasting;
+        }
         
         [self broadcastCurrentSongData];
         [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];

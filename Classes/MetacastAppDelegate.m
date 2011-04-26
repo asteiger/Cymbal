@@ -58,6 +58,8 @@
     self.broadcastEnabled = !self.broadcastEnabled;
     
     if (!self.broadcastEnabled && server.isRunning) [server stop];
+    if (self.broadcastEnabled && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) [server start];
+    [mediaInfoSupplier updateMediaProperties];
     
     [[noListeners parentItem] setHidden:!server.isRunning];
     [[noMetacasters parentItem] setHidden:server.isRunning];
