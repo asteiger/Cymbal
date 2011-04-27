@@ -48,13 +48,6 @@ NotificationController *instance;
 }
 
 - (void)timerFire:(NSTimer*)aTimer {
-    
-    [NSAnimationContext beginGrouping];
-	[[NSAnimationContext currentContext] setDuration:0.4];	
-	[[self.notificationWindow animator] setAlphaValue:0.0];
-	[NSAnimationContext endGrouping];
-    [[self.notificationWindow animator] startAnimation];
-    
     [self.notificationWindow orderOut:self];
     self.notificationWindow = nil;
 }

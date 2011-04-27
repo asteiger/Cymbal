@@ -38,8 +38,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
     
-    [[self.noListeners parentItem] bind:@"hidden" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName forKey:NSValueTransformerNameBindingOption]];
     [[self.noMetacasters parentItem] bind:@"hidden" toObject:server withKeyPath:@"isRunning" options:nil];
+    [[self.noListeners parentItem] bind:@"hidden" 
+                               toObject:server 
+                            withKeyPath:@"isRunning" 
+                                options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
+                                                                    forKey:NSValueTransformerNameBindingOption]];
     
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
