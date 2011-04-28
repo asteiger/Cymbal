@@ -71,7 +71,6 @@
                                 ];
     }
     
-    NSLog(@"Updated media properties. Media State: %@. Current Song: %@", self.mediaState, self.currentSongData.songTitle);
 }
 
 - (void)dealloc {

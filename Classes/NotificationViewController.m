@@ -25,6 +25,9 @@
 
 - (void)dealloc
 {
+    self.titleLine = nil;
+    self.subjectLine1 = nil;
+    self.subjectLine2 = nil;
     [super dealloc];
 }
 

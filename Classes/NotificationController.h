@@ -1,14 +1,12 @@
 #import "MCSongData.h"
 #import "MAAttachedWindow.h"
-
-
+#import "NotificationViewController.h"
 
 @interface NotificationController : NSObject  {
+    NotificationViewController *nvc;
     MAAttachedWindow *notificationWindow;
     NSTimer *timer;
 }
-
-@property (nonatomic, retain) MAAttachedWindow *notificationWindow;
 
 + (NotificationController*)sharedInstance;
 - (void)postNotificationWithSong:(MCSongData*)songData;
