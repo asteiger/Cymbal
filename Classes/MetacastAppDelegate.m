@@ -122,6 +122,7 @@
     
     NSNetService *service = [browser serviceWithName:name];
     if (service != nil) {
+        [server stop];
         connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
     
         self.mediaInfoSupplier = nil;
@@ -168,6 +169,8 @@
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
+    if ([self.mediaInfoSupplier isKindOfClass:[LocalMediaInfoSupplier class]]) return;
+    
     LocalMediaInfoSupplier *localMediaSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
     
     if (localMediaSupplier.mediaState != kMediaStateIdle) {
