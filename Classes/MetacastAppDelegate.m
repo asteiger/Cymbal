@@ -104,7 +104,7 @@
 }
 
 - (void)didSelectMetacaster:(NSMenuItem*)sender {
-    [sender setState:[self connectToMetacasterWithName:[sender title]]];
+    [self connectToMetacasterWithName:[sender title]];
 }
 
 - (BOOL)connectToMetacasterWithName:(NSString*)name {
@@ -120,13 +120,11 @@
     if (service != nil) {
         connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
     
-        if ([connection isConnected]) {
-            self.mediaInfoSupplier = nil;
-            self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+        self.mediaInfoSupplier = nil;
+        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
         
-            [[NotificationController sharedInstance] postConnectedToBroadcasterWithName:name];
-            return YES;
-        }
+        [[NotificationController sharedInstance] postConnectedToBroadcasterWithName:name];
+        return YES;
     }
     
     return NO;
