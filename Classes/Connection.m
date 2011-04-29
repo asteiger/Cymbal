@@ -3,7 +3,7 @@
 #import "Packet.h"
 
 NSString *const kPacketReceivedNotification = @"PacketReceivedNotification";
-NSString *const kConnectionDisconnectedNotification = @"ConnectionConnectedNotification";
+NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNotification";
 
 @interface Connection (Private) 
 

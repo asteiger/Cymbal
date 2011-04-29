@@ -17,6 +17,7 @@ static NotificationController *instance;
 
 - (id)init {
     if ((self = [super init])) {
+        notifications = [[NSMutableArray arrayWithCapacity:1] retain];
         NSRect rect = [[NSScreen mainScreen] visibleFrame];
         NSPoint point = NSMakePoint(rect.size.width, rect.size.height - 20);
         
@@ -104,6 +105,7 @@ static NotificationController *instance;
 - (void)dealloc {
     [super dealloc];
     
+    [notifications release];
     [notificationWindow release];
     notificationWindow = nil;
     

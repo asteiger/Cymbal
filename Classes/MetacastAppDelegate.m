@@ -1,7 +1,7 @@
 #import "MetacastAppDelegate.h"
 #import "LocalMediaInfoSupplier.h"
 #import "RemoteMediaInfoSupplier.h"
-#import "MAAttachedWindow.h"
+#import "NotificationController.h"
 
 
 @implementation MetacastAppDelegate
@@ -38,12 +38,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
     
-    [[self.noMetacasters parentItem] bind:@"hidden" toObject:server withKeyPath:@"isRunning" options:nil];
-    [[self.noListeners parentItem] bind:@"hidden" 
+    [[self.noMetacasters parentItem] bind:@"enabled" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
+                                                                                                                                  forKey:NSValueTransformerNameBindingOption]];
+    [[self.noListeners parentItem] bind:@"enabled" 
                                toObject:server 
                             withKeyPath:@"isRunning" 
-                                options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
-                                                                    forKey:NSValueTransformerNameBindingOption]];
+                                options:nil];
     
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
@@ -120,10 +120,13 @@
     if (service != nil) {
         connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
     
-        self.mediaInfoSupplier = nil;
-        self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
+        if ([connection isConnected]) {
+            self.mediaInfoSupplier = nil;
+            self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];
         
-        return [connection isConnected];
+            [[NotificationController sharedInstance] postConnectedToBroadcasterWithName:name];
+            return YES;
+        }
     }
     
     return NO;
@@ -145,6 +148,12 @@
 
 - (void)listenerDisonnected:(NSNotification*)notification {
     Connection *c = [notification object];
+    if (c == connection) {
+        [[NotificationController sharedInstance] postDisconnectedFromBroadcasterWithName:c.remoteName];
+        [connection release];
+        connection = nil;
+        return;
+    }
     
     NSInteger index;
     if (-1 == (index = [listenersMenu indexOfItemWithRepresentedObject:c])) return;

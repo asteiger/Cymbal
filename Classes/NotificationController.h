@@ -8,6 +8,7 @@
     NSTimer *timer;
     
     NSRect originalViewFrame;
+    NSMutableArray *notifications;
 }
 
 + (NotificationController*)sharedInstance;
