@@ -120,6 +120,16 @@ static NotificationController *instance;
     [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
+- (void)postListenerConnectedWithName:(NSString*)name {
+    NSString *message = [NSString stringWithFormat:@"New listener connected", name];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
+}
+
+- (void)postListenerDisconnectedWithName:(NSString*)name {
+    NSString *message = [NSString stringWithFormat:@"%@ disconnected", name];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
+}
+
 - (void)dealloc {
     [super dealloc];
     

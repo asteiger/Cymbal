@@ -146,6 +146,7 @@
     [listenersMenu addItem:item];
     
     [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
+    [[NotificationController sharedInstance] postListenerConnectedWithName:c.remoteName];
 }
 
 - (void)listenerDisonnected:(NSNotification*)notification {
@@ -162,6 +163,8 @@
     
     [listenersMenu removeItem:[listenersMenu itemAtIndex:index]];
     [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
+    
+    [[NotificationController sharedInstance] postListenerDisconnectedWithName:c.remoteName];
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {

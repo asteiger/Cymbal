@@ -17,6 +17,8 @@
 - (void)postBroadcastStoppedNotification;
 - (void)postConnectedToBroadcasterWithName:(NSString*)name;
 - (void)postDisconnectedFromBroadcasterWithName:(NSString*)name;
+- (void)postListenerConnectedWithName:(NSString*)name;
+- (void)postListenerDisconnectedWithName:(NSString*)name;
 - (void)postNextNotification;
 - (void)timerFire:(NSTimer*)timer;
 
