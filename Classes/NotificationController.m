@@ -17,7 +17,8 @@ static NotificationController *instance;
 
 - (id)init {
     if ((self = [super init])) {
-        notifications = [[NSMutableArray arrayWithCapacity:1] retain];
+        notifications = [[NSMutableArray arrayWithCapacity:0] retain];
+        
         NSRect rect = [[NSScreen mainScreen] visibleFrame];
         NSPoint point = NSMakePoint(rect.size.width, rect.size.height - 20);
         
@@ -34,16 +35,30 @@ static NotificationController *instance;
 }
 
 - (void)notificationWindowWithTitle:(NSString*)title Subject1:(NSString*)subject1 Subject2:(NSString*)subject2 {
+    if ([title isEqualToString:@""]) title = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    
+    NSDictionary *notification = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  title, @"title",
+                                  subject1, @"subject1",
+                                  subject2, @"subject2", nil];
+    
+    [notifications addObject:notification];
+    if ([notifications count] == 1) [self postNextNotification];
+}
+
+- (void)postNextNotification {
     @synchronized(self) {
+        if ([notifications count] == 0) return;
+        
+        NSDictionary *headObject = [notifications objectAtIndex:0];
+    
         [timer fire];
         
-        nvc.titleLine = title;
-        nvc.subjectLine1 = subject1;
-        nvc.subjectLine2 = subject2;
+        nvc.titleLine = [headObject objectForKey:@"title"];
+        nvc.subjectLine1 = [headObject objectForKey:@"subject1"];
+        nvc.subjectLine2 = [headObject objectForKey:@"subject2"];
         
-        if (nil == title) nvc.titleLine = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];;
-        
-        if (nil == subject2) {
+        if ([nvc.subjectLine2 isEqualToString:@""]) {
             NSRect newFrame = originalViewFrame;
             newFrame.size.height = originalViewFrame.size.height-20;
             
@@ -63,17 +78,20 @@ static NotificationController *instance;
         
         timer = [[NSTimer timerWithTimeInterval:3 target:self selector:@selector(timerFire:) userInfo:nil repeats:NO] retain];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-         
-        NSLog(@"notify: %@ %@ %@", title, subject1, subject2);
     }
 }
 
 - (void)timerFire:(NSTimer*)aTimer {
-    [notificationWindow orderOut:self];
-    
-    [timer invalidate];
-    [timer release];
-    timer = nil;
+    @synchronized(self) {
+        [notificationWindow orderOut:self];
+        
+        [timer invalidate];
+        [timer release];
+        timer = nil;
+        
+        [notifications removeObjectAtIndex:0];
+        [self postNextNotification];
+    }
 }
 
 - (void)postNotificationWithSong:(MCSongData*)songData {
@@ -84,22 +102,22 @@ static NotificationController *instance;
 
 - (void)postBroadcastStartedNotification {
     NSString *message = @"Broadcasting started";
-    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
 - (void)postBroadcastStoppedNotification {
     NSString *message = @"Broadcasting stopped";
-    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
 - (void)postConnectedToBroadcasterWithName:(NSString*)name {
 	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
-    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
 - (void)postDisconnectedFromBroadcasterWithName:(NSString*)name {
 	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
-    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
+    [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
 - (void)dealloc {
