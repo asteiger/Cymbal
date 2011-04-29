@@ -10,9 +10,10 @@
 
 + (NotificationController*)sharedInstance;
 - (void)postNotificationWithSong:(MCSongData*)songData;
-- (void)postNotificationWithTitle:(NSString*)title Description:(NSString*)description NotificationName:(NSString*)notificationName;
-- (void)postBroadcastEnabledNotificationWithState:(int)state;
+- (void)postBroadcastStartedNotification;
+- (void)postBroadcastStoppedNotification;
 - (void)postConnectedToBroadcasterWithName:(NSString*)name;
+- (void)postDisconnectedFromBroadcasterWithName:(NSString*)name;
 - (void)timerFire:(NSTimer*)timer;
 
 @end

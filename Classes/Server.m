@@ -2,6 +2,7 @@
 #import "Packet.h"
 #import "Connection.h"
 #import "AsyncSocket.h"
+#import "NotificationController.h"
 
 NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification";
 
@@ -37,6 +38,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 	[netService setDelegate:self];
 	[netService publish];
     
+    [[NotificationController sharedInstance] postBroadcastStartedNotification];
     return self.isRunning = YES;
 }
 
@@ -52,6 +54,8 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
     [connections removeAllObjects];
 	 
     self.isRunning = NO;
+    
+    [[NotificationController sharedInstance] postBroadcastStoppedNotification];
     NSLog(@"Server stopped");
 }
 

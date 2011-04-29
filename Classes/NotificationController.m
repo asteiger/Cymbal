@@ -34,9 +34,12 @@ static NotificationController *instance;
     @synchronized(self) {
         [timer fire];
     
+        
         nvc.titleLine = title;
         nvc.subjectLine1 = subject1;
         nvc.subjectLine2 = subject2;
+        
+        if (nil == title) nvc.titleLine = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];;
         
         [notificationWindow setAlphaValue:0.0];
         [notificationWindow orderFront:self];
@@ -67,18 +70,24 @@ static NotificationController *instance;
     [self notificationWindowWithTitle:songData.songTitle Subject1:songData.artist Subject2:songData.album];
 }
 
-- (void)postNotificationWithTitle:(NSString*)title Description:(NSString*)description NotificationName:(NSString*)notificationName {
-	
+- (void)postBroadcastStartedNotification {
+    NSString *message = @"Broadcasting started";
+    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
 }
 
-- (void)postBroadcastEnabledNotificationWithState:(int)state {
-	//NSString *stateMessage = state == NSOnState ? @"Broadcast Enabled" : @"Broadcast Disabled";
-	
-	
+- (void)postBroadcastStoppedNotification {
+    NSString *message = @"Broadcasting stopped";
+    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
 }
 
 - (void)postConnectedToBroadcasterWithName:(NSString*)name {
-	//NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
+}
+
+- (void)postDisconnectedFromBroadcasterWithName:(NSString*)name {
+	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+    [self notificationWindowWithTitle:nil Subject1:message Subject2:nil];
 }
 
 - (void)dealloc {
