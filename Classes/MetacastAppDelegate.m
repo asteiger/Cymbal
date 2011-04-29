@@ -38,6 +38,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
     
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
+    
     [[self.noMetacasters parentItem] bind:@"enabled" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
                                                                                                                                   forKey:NSValueTransformerNameBindingOption]];
     [[self.noListeners parentItem] bind:@"enabled" 
@@ -81,6 +83,8 @@
     } else if (action == @selector(didSelectMetacaster:)) {
         if ([connection isConnected])
             [menuItem setState:[[menuItem title] isEqualToString:connection.remoteName]];
+        else
+            [menuItem setState:NSOffState];
     }
     
     return YES;
@@ -160,6 +164,17 @@
     [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
 }
 
+- (void)receivedItunesNotification:(NSNotification *)mediaNotification {
+    LocalMediaInfoSupplier *localMediaSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+    
+    if (localMediaSupplier.mediaState != kMediaStateIdle) {
+        [connection disconnect];
+        if (broadcastEnabled && !server.isRunning)
+            [server start];
+        
+        self.mediaInfoSupplier = localMediaSupplier;
+    }
+}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];

@@ -45,4 +45,6 @@
 - (void)listenerConnected:(NSNotification*)notification;
 - (void)listenerDisonnected:(NSNotification*)notification;
 
+- (void)receivedItunesNotification:(NSNotification *)mediaNotification;
+
 @end

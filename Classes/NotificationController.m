@@ -116,7 +116,7 @@ static NotificationController *instance;
 }
 
 - (void)postDisconnectedFromBroadcasterWithName:(NSString*)name {
-	NSString *message = [NSString stringWithFormat:@"Listening to %@", name];
+	NSString *message = [NSString stringWithFormat:@"Disconnected from %@", name];
     [self notificationWindowWithTitle:@"" Subject1:message Subject2:@""];
 }
 
