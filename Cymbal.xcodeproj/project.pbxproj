@@ -74,7 +74,7 @@
 		2F73873F134B739B003E0832 /* SongDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDataPacket.m; sourceTree = "<group>"; };
 		2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
-		2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
+		2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationViewController.xib; path = ../Classes/NotificationViewController.xib; sourceTree = "<group>"; };
 		2FA455FD13578916001E569F /* RemoteMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteMediaInfoSupplier.h; sourceTree = "<group>"; };
 		2FA455FE13578916001E569F /* RemoteMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2FB40CDE12F89163004A0363 /* MCSongData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSongData.h; sourceTree = "<group>"; };
@@ -174,6 +174,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
 				2FC3B4F1135614D10003D3D4 /* MainMenu.xib */,
 				2F1DA77112F6821200CAF45E /* Images */,
 				2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */,
@@ -271,7 +272,6 @@
 				2F1DA6E812F676A600CAF45E /* NotificationController.m */,
 				2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */,
 				2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */,
-				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
