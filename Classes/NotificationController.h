@@ -6,6 +6,8 @@
     NotificationViewController *nvc;
     MAAttachedWindow *notificationWindow;
     NSTimer *timer;
+    
+    NSRect originalViewFrame;
 }
 
 + (NotificationController*)sharedInstance;

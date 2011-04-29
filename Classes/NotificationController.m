@@ -25,6 +25,8 @@ static NotificationController *instance;
         notificationWindow = [[MAAttachedWindow alloc] initWithView:nvc.view attachedToPoint:point onSide:MAPositionLeft atDistance:10];
         [notificationWindow setHasArrow:0];
         [notificationWindow setLevel:NSFloatingWindowLevel];
+        
+        originalViewFrame = nvc.view.frame;
     }
     
     return self;
@@ -33,7 +35,6 @@ static NotificationController *instance;
 - (void)notificationWindowWithTitle:(NSString*)title Subject1:(NSString*)subject1 Subject2:(NSString*)subject2 {
     @synchronized(self) {
         [timer fire];
-    
         
         nvc.titleLine = title;
         nvc.subjectLine1 = subject1;
@@ -41,6 +42,16 @@ static NotificationController *instance;
         
         if (nil == title) nvc.titleLine = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];;
         
+        if (nil == subject2) {
+            NSRect newFrame = originalViewFrame;
+            newFrame.size.height = originalViewFrame.size.height-20;
+            
+            [nvc.view setFrame:newFrame];
+        } else {
+            [nvc.view setFrame:originalViewFrame];
+        }
+        
+        [notificationWindow _updateGeometry];
         [notificationWindow setAlphaValue:0.0];
         [notificationWindow orderFront:self];
         
