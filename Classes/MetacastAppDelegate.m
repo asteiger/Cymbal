@@ -3,6 +3,8 @@
 #import "RemoteMediaInfoSupplier.h"
 #import "NotificationController.h"
 
+static NSString *const kRanBeforeDefaultsKey = @"DefaultsRanBefore";
+static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled";
 
 @implementation MetacastAppDelegate
 
@@ -17,8 +19,15 @@
 @synthesize alwaysNo;
 @synthesize broadcastEnabled;
 
+#pragma mark App Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    broadcastEnabled = YES;
+    BOOL firstRun = ![[NSUserDefaults standardUserDefaults] boolForKey:kRanBeforeDefaultsKey];
+    if (firstRun) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kRanBeforeDefaultsKey];
+        broadcastEnabled = YES;
+    } else {
+        broadcastEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kBrodcastEnabledDefaultsKey];
+    }
     
     server = [[Server alloc] init];
     browser = [[Browser alloc] init];
@@ -27,7 +36,7 @@
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
-    if (self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
+    if (broadcastEnabled && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
     }
@@ -62,7 +71,11 @@
     [server stop];
     [connection disconnect];
     [browser stopBrowsing];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:broadcastEnabled forKey:kBrodcastEnabledDefaultsKey];
 }
+
+#pragma mark Application Control
 
 - (IBAction)toggleBroadcast:(id)sender {
     self.broadcastEnabled = !self.broadcastEnabled;
@@ -156,6 +169,9 @@
         [[NotificationController sharedInstance] postDisconnectedFromBroadcasterWithName:c.remoteName];
         [connection release];
         connection = nil;
+        
+        self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+        
         return;
     }
     
@@ -175,12 +191,17 @@
     
     if (localMediaSupplier.mediaState != kMediaStateIdle) {
         [connection disconnect];
-        if (broadcastEnabled && !server.isRunning)
-            [server start];
+        [connection release];
+        connection = nil;
         
         self.mediaInfoSupplier = localMediaSupplier;
+        
+        if (broadcastEnabled && !server.isRunning)
+            [server start];
     }
 }
+
+#pragma mark Dealloc
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];
