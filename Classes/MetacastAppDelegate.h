@@ -21,6 +21,7 @@
     NSNumber *alwaysNo;
     
     BOOL broadcastEnabled;
+    BOOL autoconnectEnabled;
 }
 
 @property (nonatomic, readonly) Server *server;
@@ -33,8 +34,10 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
 @property (nonatomic, retain) NSNumber *alwaysNo;
 @property (nonatomic) BOOL broadcastEnabled;
+@property (nonatomic) BOOL autoconnectEnabled;
 
 - (IBAction)toggleBroadcast:(id)sender;
+- (IBAction)toggleAutoconnect:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
 - (void)availableServiceAdded:(NSNotification*)notification;

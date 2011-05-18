@@ -5,6 +5,7 @@
 
 static NSString *const kRanBeforeDefaultsKey = @"DefaultsRanBefore";
 static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled";
+static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEnabled";
 
 @implementation MetacastAppDelegate
 
@@ -18,15 +19,18 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
 @synthesize noMetacasters;
 @synthesize alwaysNo;
 @synthesize broadcastEnabled;
+@synthesize autoconnectEnabled;
 
 #pragma mark App Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     BOOL firstRun = ![[NSUserDefaults standardUserDefaults] boolForKey:kRanBeforeDefaultsKey];
     if (firstRun) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kRanBeforeDefaultsKey];
-        broadcastEnabled = YES;
+        self.broadcastEnabled = YES;
+        self.autoconnectEnabled = YES;
     } else {
-        broadcastEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kBrodcastEnabledDefaultsKey];
+        self.broadcastEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kBrodcastEnabledDefaultsKey];
+        self.autoconnectEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoconnectEnabledDefaultsKey];
     }
     
     server = [[Server alloc] init];
@@ -36,7 +40,7 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
-    if (broadcastEnabled && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
+    if (self.broadcastEnabled && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
     }
@@ -73,6 +77,7 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     [browser stopBrowsing];
     
     [[NSUserDefaults standardUserDefaults] setBool:broadcastEnabled forKey:kBrodcastEnabledDefaultsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:autoconnectEnabled forKey:kAutoconnectEnabledDefaultsKey];
 }
 
 #pragma mark Application Control
@@ -99,6 +104,10 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     [mediaInfoSupplier updateMediaProperties];
 }
 
+- (IBAction)toggleAutoconnect:(id)sender {
+    self.autoconnectEnabled = !self.autoconnectEnabled;
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     SEL action = [menuItem action];
     
@@ -110,6 +119,8 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
             [menuItem setState:[[menuItem title] isEqualToString:connection.remoteName]];
         else
             [menuItem setState:NSOffState];
+    } else if (action == @selector(toggleAutoconnect:)) {
+        [menuItem setState:self.autoconnectEnabled];
     }
     
     return YES;
@@ -119,7 +130,7 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     NSNetService *service = [notification object];
 
     NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacaster:) keyEquivalent:@""];
-    if (self.mediaInfoSupplier.mediaState == kMediaStateIdle && (connection == nil || ![connection isConnected]))
+    if (self.autoconnectEnabled && self.mediaInfoSupplier.mediaState == kMediaStateIdle && (connection == nil || ![connection isConnected]))
         [self didSelectMetacaster:metacasterItem];
     
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
