@@ -43,6 +43,8 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 }
 
 - (void)stop {
+    if (!self.isRunning) return;
+    
 	[netService stop];
 	[netService removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 	[netService release];

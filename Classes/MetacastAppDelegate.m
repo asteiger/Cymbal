@@ -62,7 +62,7 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
 - (void)awakeFromNib {
     statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain]; 
     [statusItem setHighlightMode:YES];
-    [statusItem setImage:[NSImage imageNamed:@"icon-small.png"]];
+    [statusItem setImage:[NSImage imageNamed:@"cymbal-icon-small.png"]];
     [statusItem setMenu:statusMenu];
 
 }
@@ -81,7 +81,21 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     self.broadcastEnabled = !self.broadcastEnabled;
     
     if (!self.broadcastEnabled && server.isRunning) [server stop];
-    if (self.broadcastEnabled && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) [server start];
+    if (self.broadcastEnabled && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) {
+        if ([self.mediaInfoSupplier isKindOfClass:[LocalMediaInfoSupplier class]]) {
+            [server start];
+        } else {
+            LocalMediaInfoSupplier *localSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+            [localSupplier updateMediaProperties];
+            
+            if (localSupplier.mediaState != kMediaStateIdle) {
+                [connection disconnect];
+                self.mediaInfoSupplier = localSupplier;
+                [server start];
+            }
+        }
+    }
+    
     [mediaInfoSupplier updateMediaProperties];
 }
 
