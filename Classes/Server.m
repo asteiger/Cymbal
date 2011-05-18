@@ -14,6 +14,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 
 - (id)init {
 	if ((self = [super init])) {
+        name = [[[NSHost currentHost] localizedName] retain];
 		serverSocket = [[AsyncSocket alloc] initWithDelegate:self];
 		connections = [[NSMutableArray alloc] initWithCapacity:1];
         self.isRunning = NO;
@@ -70,6 +71,9 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 }
 
 - (void)dealloc {
+    [name release];
+    name = nil;
+    
 	[serverSocket release];
 	serverSocket = nil;
 	
@@ -98,6 +102,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 - (void)netServiceDidPublish:(NSNetService *)sender {
 	NSLog(@"NetService published");
     
+    [name release];
     name = [[netService name] retain];
     NSLog(@"Set server name to %@", name);
 }

@@ -8,7 +8,6 @@ extern NSString *const kAvailableServiceRemovedNotification;
 }
 
 @property (nonatomic, readonly) NSArray *services;
-@property (nonatomic, retain) NSString *localName;
 
 - (void)startBrowsing;
 - (void)stopBrowsing;

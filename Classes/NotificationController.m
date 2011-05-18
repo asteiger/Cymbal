@@ -84,7 +84,7 @@ static NotificationController *instance;
 - (void)timerFire:(NSTimer*)aTimer {
     @synchronized(self) {
         [notificationWindow orderOut:self];
-        
+                
         [timer invalidate];
         [timer release];
         timer = nil;

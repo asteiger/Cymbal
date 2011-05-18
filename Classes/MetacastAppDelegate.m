@@ -100,8 +100,6 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    NSLog(@"Validating menu item");
-    
     SEL action = [menuItem action];
     
     if (action == @selector(toggleBroadcast:)) {
@@ -150,7 +148,7 @@ static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled"
     NSNetService *service = [browser serviceWithName:name];
     if (service != nil) {
         [server stop];
-        connection = [[Connection alloc] initWithNetService:service LocalName:[[NSHost currentHost] localizedName]];
+        connection = [[Connection alloc] initWithNetService:service LocalName:server.name];
     
         self.mediaInfoSupplier = nil;
         self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithConnection:connection] autorelease];

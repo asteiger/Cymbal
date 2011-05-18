@@ -21,6 +21,8 @@ NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNot
     if ((self = [super init])) {
         self.localName = name;
         self.remoteName = @"Remote Name Unavailable";
+        resolvedRemoteName = NO;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(receivedPacketNotification:) 
                                                      name:kPacketReceivedNotification 
@@ -48,6 +50,8 @@ NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNot
 
 - (void)didReceiveConnectionInfoPacket:(ConnectionInfoPacket*)packet {
     NSLog(@"Recieved connection info");
+    resolvedRemoteName = YES;
+    
     self.remoteName = nil;
 	self.remoteName = [packet clientName];
     NSLog(@"Connection set remote name to %@", self.remoteName);
@@ -81,7 +85,7 @@ NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNot
 	
     [sender stop];
     
-	[socket readDataWithTimeout:-1 tag:0];
+	
 }
 
 - (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
@@ -98,8 +102,14 @@ NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNot
 
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
 	NSLog(@"Connection didConnectToHost: %@", host);
-    self.remoteName = [NSString stringWithFormat:@"Resolving... (%@)", [sock connectedHost]];
+    
+    if (!resolvedRemoteName) {
+        NSLog(@"connection remote name before setting to resolving: %@", self.remoteName);
+        self.remoteName = [NSString stringWithFormat:@"Resolving... (%@)", [sock connectedHost]];
+    }
+    
     [self sendPacket:[[ConnectionInfoPacket alloc] initWithName:self.localName]];
+    [socket readDataWithTimeout:-1 tag:0];
 }
 
 - (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
@@ -118,6 +128,9 @@ NSString *const kConnectionDisconnectedNotification = @"ConnectionDisonnectedNot
 	NSLog(@"Connection read data");
 	
 	NSString *json = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"Connection %@:%@ read data: %@", self.localName, self.remoteName, json);
+    
 	Packet *p = [Packet packetWithJson:json];
 	
     [[NSNotificationCenter defaultCenter] postNotificationName:kPacketReceivedNotification object:self userInfo:[p toDictionary]];

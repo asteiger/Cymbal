@@ -8,6 +8,8 @@ extern NSString *const kPacketReceivedNotification;
 extern NSString *const kConnectionDisconnectedNotification;
 
 @interface Connection : NSObject <NSNetServiceDelegate> {
+    BOOL resolvedRemoteName;
+    
     NSString *localName;
 	NSString *remoteName;
 	AsyncSocket *socket;
