@@ -52,8 +52,6 @@ static NotificationController *instance;
         
         NSDictionary *headObject = [notifications objectAtIndex:0];
     
-        [timer fire];
-        
         nvc.titleLine = [headObject objectForKey:@"title"];
         nvc.subjectLine1 = [headObject objectForKey:@"subject1"];
         nvc.subjectLine2 = [headObject objectForKey:@"subject2"];
@@ -71,10 +69,14 @@ static NotificationController *instance;
         [notificationWindow setAlphaValue:0.0];
         [notificationWindow orderFront:self];
         
-        [NSAnimationContext beginGrouping];
-        [[NSAnimationContext currentContext] setDuration:0.4];	
-        [[notificationWindow animator] setAlphaValue:1.0];
-        [NSAnimationContext endGrouping];
+        NSMutableDictionary *animationDict = [NSMutableDictionary dictionaryWithCapacity:2];
+        [animationDict setObject:notificationWindow forKey:NSViewAnimationTargetKey];
+        [animationDict setObject:NSViewAnimationFadeInEffect forKey:NSViewAnimationEffectKey];
+        
+        NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:animationDict]];
+        [animation setDuration:0.5];
+        [animation startAnimation];
+        [animation release];
         
         timer = [[NSTimer timerWithTimeInterval:3 target:self selector:@selector(timerFire:) userInfo:nil repeats:NO] retain];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -83,6 +85,16 @@ static NotificationController *instance;
 
 - (void)timerFire:(NSTimer*)aTimer {
     @synchronized(self) {
+        NSMutableDictionary *animationDict = [NSMutableDictionary dictionaryWithCapacity:2];
+        [animationDict setObject:notificationWindow forKey:NSViewAnimationTargetKey];
+        [animationDict setObject:NSViewAnimationFadeOutEffect forKey:NSViewAnimationEffectKey];
+        
+        NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:animationDict]];
+        [animation setDuration:0.5];
+        [animation setAnimationBlockingMode:NSAnimationBlocking];
+        [animation startAnimation];
+        [animation release];
+        
         [notificationWindow orderOut:self];
                 
         [timer invalidate];

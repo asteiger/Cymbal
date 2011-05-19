@@ -9,5 +9,6 @@
 
 #define APP_DELEGATE ((MetacastAppDelegate*)[NSApp delegate])
 #define kGrowlNotifier @"MCGrowlController"
+#define kCymbalNetServiceTypeName @"_cymbalapp._tcp."
 
 #endif

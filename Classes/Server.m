@@ -34,7 +34,7 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 	
 	NSLog(@"Server started on %@ port %hu", [serverSocket localHost], [serverSocket localPort]);
 
-	netService = [[NSNetService alloc] initWithDomain:@"" type:@"_metacastapp._tcp." name:@"" port:[serverSocket localPort]];
+	netService = [[NSNetService alloc] initWithDomain:@"" type:kCymbalNetServiceTypeName name:@"" port:[serverSocket localPort]];
 	[netService scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 	[netService setDelegate:self];
 	[netService publish];

@@ -19,7 +19,7 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 }
 
 - (void)startBrowsing {
-	[browser searchForServicesOfType:@"_metacastapp._tcp." inDomain:@""];
+	[browser searchForServicesOfType:kCymbalNetServiceTypeName inDomain:@""];
 }
 
 - (void)stopBrowsing {
