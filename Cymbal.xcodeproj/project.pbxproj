@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		256AC3DA0F4B6AC300CF3369 /* MetacastAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MetacastAppDelegate.m */; };
+		2F07C531138B0DC9000E816B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F07C530138B0DC9000E816B /* Sparkle.framework */; };
+		2F07C534138B0E3B000E816B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F07C530138B0DC9000E816B /* Sparkle.framework */; };
+		2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2F07C535138B11A9000E816B /* dsa_pub.pem */; };
 		2F1DA6E912F676A600CAF45E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* NotificationController.m */; };
 		2F1DA77512F6824600CAF45E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77412F6824600CAF45E /* icon.png */; };
 		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
@@ -37,12 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2F1DA6AF12F6723600CAF45E /* CopyFiles */ = {
+		2F07C533138B0E17000E816B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2F07C534138B0E3B000E816B /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +62,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2F07C530138B0DC9000E816B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		2F07C535138B11A9000E816B /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		2F1DA6E712F676A600CAF45E /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		2F1DA6E812F676A600CAF45E /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
 		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */,
+				2F07C531138B0DC9000E816B /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +143,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F07C530138B0DC9000E816B /* Sparkle.framework */,
 				2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
@@ -178,6 +186,7 @@
 			children = (
 				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
 				2FC3B4F1135614D10003D3D4 /* MainMenu.xib */,
+				2F07C535138B11A9000E816B /* dsa_pub.pem */,
 				2F1DA77112F6821200CAF45E /* Images */,
 				2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -303,7 +312,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				2F1DA6AF12F6723600CAF45E /* CopyFiles */,
+				2F07C533138B0E17000E816B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -352,6 +361,7 @@
 				2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */,
 				2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */,
 				2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */,
+				2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
