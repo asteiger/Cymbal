@@ -48,45 +48,38 @@ static NotificationController *instance;
 }
 
 - (void)postNextNotification {
-    @synchronized(self) {
-        if (![PreferencesController sharedInstance].showDesktopNotification) return;
-        if ([notifications count] == 0) return;
-        
-        NSDictionary *headObject = [notifications objectAtIndex:0];
+    if (![PreferencesController sharedInstance].showDesktopNotification) return;
+    if ([notifications count] == 0) return;
     
-        nvc.titleLine = [headObject objectForKey:@"title"];
-        nvc.subjectLine1 = [headObject objectForKey:@"subject1"];
-        nvc.subjectLine2 = [headObject objectForKey:@"subject2"];
-        
-        if ([nvc.subjectLine2 isEqualToString:@""]) {
-            NSRect newFrame = originalViewFrame;
-            newFrame.size.height = originalViewFrame.size.height-20;
-            
-            [nvc.view setFrame:newFrame];
-        } else {
-            [nvc.view setFrame:originalViewFrame];
-        }
-        
-        [notificationWindow _updateGeometry];
-        [notificationWindow setAlphaValue:0.0];
-        [notificationWindow orderFront:self];
-        
-        NSMutableDictionary *animationDict = [NSMutableDictionary dictionaryWithCapacity:2];
-        [animationDict setObject:notificationWindow forKey:NSViewAnimationTargetKey];
-        [animationDict setObject:NSViewAnimationFadeInEffect forKey:NSViewAnimationEffectKey];
-        
-        NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:animationDict]];
-        [animation setDuration:0.5];
-        [animation startAnimation];
-        [animation release];
-        
-        timer = [[NSTimer timerWithTimeInterval:3 target:self selector:@selector(timerFire:) userInfo:nil repeats:NO] retain];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    }
-}
+    NSDictionary *headObject = [notifications objectAtIndex:0];
 
-- (void)timerFire:(NSTimer*)aTimer {
-    @synchronized(self) {
+    nvc.titleLine = [headObject objectForKey:@"title"];
+    nvc.subjectLine1 = [headObject objectForKey:@"subject1"];
+    nvc.subjectLine2 = [headObject objectForKey:@"subject2"];
+    
+    if ([nvc.subjectLine2 isEqualToString:@""]) {
+        NSRect newFrame = originalViewFrame;
+        newFrame.size.height = originalViewFrame.size.height-20;
+        
+        [nvc.view setFrame:newFrame];
+    } else {
+        [nvc.view setFrame:originalViewFrame];
+    }
+    
+    [notificationWindow _updateGeometry];
+    [notificationWindow setAlphaValue:0.0];
+    [notificationWindow orderFront:self];
+    
+    NSMutableDictionary *animationDict = [NSMutableDictionary dictionaryWithCapacity:2];
+    [animationDict setObject:notificationWindow forKey:NSViewAnimationTargetKey];
+    [animationDict setObject:NSViewAnimationFadeInEffect forKey:NSViewAnimationEffectKey];
+    
+    NSViewAnimation *animation = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:animationDict]];
+    [animation setDuration:0.5];
+    [animation startAnimation];
+    [animation release];
+           
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         NSMutableDictionary *animationDict = [NSMutableDictionary dictionaryWithCapacity:2];
         [animationDict setObject:notificationWindow forKey:NSViewAnimationTargetKey];
         [animationDict setObject:NSViewAnimationFadeOutEffect forKey:NSViewAnimationEffectKey];
@@ -98,14 +91,14 @@ static NotificationController *instance;
         [animation release];
         
         [notificationWindow orderOut:self];
-                
+        
         [timer invalidate];
         [timer release];
         timer = nil;
         
         [notifications removeObjectAtIndex:0];
         [self postNextNotification];
-    }
+    });
 }
 
 - (void)postNotificationWithSong:(MCSongData*)songData {

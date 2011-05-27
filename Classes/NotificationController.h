@@ -20,6 +20,5 @@
 - (void)postListenerConnectedWithName:(NSString*)name;
 - (void)postListenerDisconnectedWithName:(NSString*)name;
 - (void)postNextNotification;
-- (void)timerFire:(NSTimer*)timer;
 
 @end
