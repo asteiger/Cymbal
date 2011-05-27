@@ -1,13 +1,3 @@
-//
-//  NotificationViewController.h
-//  Cymbal
-//
-//  Created by Ashley Steigerwalt on 4/25/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
-
-#import <Cocoa/Cocoa.h>
-
 
 @interface NotificationViewController : NSViewController {
     NSString *_titleLine;

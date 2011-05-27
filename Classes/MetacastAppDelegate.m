@@ -93,6 +93,10 @@
     preferences.allowAutoconnect = !preferences.allowAutoconnect;
 }
 
+- (IBAction)toggleShowDesktopNotifications:(id)sender {
+    preferences.showDesktopNotification = !preferences.showDesktopNotification;
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     SEL action = [menuItem action];
     
@@ -106,6 +110,8 @@
             [menuItem setState:NSOffState];
     } else if (action == @selector(toggleAutoconnect:)) {
         [menuItem setState:preferences.allowAutoconnect];
+    } else if (action == @selector(toggleShowDesktopNotifications:)) {
+        [menuItem setState:preferences.showDesktopNotification];
     }
     
     return YES;

@@ -1,4 +1,5 @@
 #import "NotificationController.h"
+#import "PreferencesController.h"
 
 @implementation NotificationController
 
@@ -48,6 +49,7 @@ static NotificationController *instance;
 
 - (void)postNextNotification {
     @synchronized(self) {
+        if (![PreferencesController sharedInstance].showDesktopNotification) return;
         if ([notifications count] == 0) return;
         
         NSDictionary *headObject = [notifications objectAtIndex:0];

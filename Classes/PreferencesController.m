@@ -25,6 +25,7 @@ static PreferencesController *sharedInstance;
             
             self.allowBroadcasting = YES;
             self.allowAutoconnect = YES;
+            self.showDesktopNotification = YES;
         } 
     }
     

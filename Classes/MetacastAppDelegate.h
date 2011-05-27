@@ -36,6 +36,7 @@
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (IBAction)toggleAutoconnect:(id)sender;
+- (IBAction)toggleShowDesktopNotifications:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
 - (void)availableServiceAdded:(NSNotification*)notification;
