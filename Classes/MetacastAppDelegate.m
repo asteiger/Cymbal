@@ -3,9 +3,7 @@
 #import "RemoteMediaInfoSupplier.h"
 #import "NotificationController.h"
 
-static NSString *const kRanBeforeDefaultsKey = @"DefaultsRanBefore";
-static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled";
-static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEnabled";
+
 
 @implementation MetacastAppDelegate
 
@@ -18,20 +16,10 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
 @synthesize noListeners;
 @synthesize noMetacasters;
 @synthesize alwaysNo;
-@synthesize broadcastEnabled;
-@synthesize autoconnectEnabled;
 
 #pragma mark App Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    BOOL firstRun = ![[NSUserDefaults standardUserDefaults] boolForKey:kRanBeforeDefaultsKey];
-    if (firstRun) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kRanBeforeDefaultsKey];
-        self.broadcastEnabled = YES;
-        self.autoconnectEnabled = YES;
-    } else {
-        self.broadcastEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kBrodcastEnabledDefaultsKey];
-        self.autoconnectEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kAutoconnectEnabledDefaultsKey];
-    }
+    preferences = [PreferencesController sharedInstance];
     
     server = [[Server alloc] init];
     browser = [[Browser alloc] init];
@@ -40,7 +28,7 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
     [browser startBrowsing];
     
     self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
-    if (self.broadcastEnabled && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
+    if (preferences.allowBroadcasting && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
     }
@@ -75,18 +63,15 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
     [server stop];
     [connection disconnect];
     [browser stopBrowsing];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:broadcastEnabled forKey:kBrodcastEnabledDefaultsKey];
-    [[NSUserDefaults standardUserDefaults] setBool:autoconnectEnabled forKey:kAutoconnectEnabledDefaultsKey];
 }
 
 #pragma mark Application Control
 
 - (IBAction)toggleBroadcast:(id)sender {
-    self.broadcastEnabled = !self.broadcastEnabled;
+    preferences.allowBroadcasting = !preferences.allowBroadcasting;
     
-    if (!self.broadcastEnabled && server.isRunning) [server stop];
-    if (self.broadcastEnabled && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) {
+    if (!preferences.allowBroadcasting && server.isRunning) [server stop];
+    if (preferences.allowBroadcasting && !server.isRunning && mediaInfoSupplier.mediaState != kMediaStateIdle) {
         if ([self.mediaInfoSupplier isKindOfClass:[LocalMediaInfoSupplier class]]) {
             [server start];
         } else {
@@ -105,14 +90,14 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
 }
 
 - (IBAction)toggleAutoconnect:(id)sender {
-    self.autoconnectEnabled = !self.autoconnectEnabled;
+    preferences.allowAutoconnect = !preferences.allowAutoconnect;
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     SEL action = [menuItem action];
     
     if (action == @selector(toggleBroadcast:)) {
-        [menuItem setState:self.broadcastEnabled];
+        [menuItem setState:preferences.allowBroadcasting];
     
     } else if (action == @selector(didSelectMetacaster:)) {
         if ([connection isConnected])
@@ -120,7 +105,7 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
         else
             [menuItem setState:NSOffState];
     } else if (action == @selector(toggleAutoconnect:)) {
-        [menuItem setState:self.autoconnectEnabled];
+        [menuItem setState:preferences.allowAutoconnect];
     }
     
     return YES;
@@ -130,7 +115,7 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
     NSNetService *service = [notification object];
 
     NSMenuItem *metacasterItem = [metacastersMenu addItemWithTitle:[service name] action:@selector(didSelectMetacaster:) keyEquivalent:@""];
-    if (self.autoconnectEnabled && self.mediaInfoSupplier.mediaState == kMediaStateIdle && (connection == nil || ![connection isConnected]))
+    if (preferences.allowAutoconnect && self.mediaInfoSupplier.mediaState == kMediaStateIdle && (connection == nil || ![connection isConnected]))
         [self didSelectMetacaster:metacasterItem];
     
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
@@ -219,7 +204,7 @@ static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEna
         
         self.mediaInfoSupplier = localMediaSupplier;
         
-        if (broadcastEnabled && !server.isRunning)
+        if (preferences.allowBroadcasting && !server.isRunning)
             [server start];
     }
 }

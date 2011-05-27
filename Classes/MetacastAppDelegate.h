@@ -2,6 +2,7 @@
 #import "Server.h"
 #import "Connection.h"
 #import "Browser.h"
+#import "PreferencesController.h"
 
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
     Server *server;
@@ -20,8 +21,7 @@
     
     NSNumber *alwaysNo;
     
-    BOOL broadcastEnabled;
-    BOOL autoconnectEnabled;
+    PreferencesController *preferences;
 }
 
 @property (nonatomic, readonly) Server *server;
@@ -33,8 +33,6 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *noListeners;
 @property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
 @property (nonatomic, retain) NSNumber *alwaysNo;
-@property (nonatomic) BOOL broadcastEnabled;
-@property (nonatomic) BOOL autoconnectEnabled;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (IBAction)toggleAutoconnect:(id)sender;

@@ -3,6 +3,7 @@
 #import "MCSongData.h"
 #import "NotificationController.h"
 #import "Connection.h"
+#import "PreferencesController.h"
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
@@ -45,7 +46,7 @@
 	[self updateMediaProperties];
     
     if (self.mediaState != kMediaStateIdle) {
-        if (APP_DELEGATE.broadcastEnabled && !_server.isRunning) {
+        if ([PreferencesController sharedInstance].allowBroadcasting && !_server.isRunning) {
             [_server start];
             self.mediaState = kMediaStateBroadcasting;
         }
