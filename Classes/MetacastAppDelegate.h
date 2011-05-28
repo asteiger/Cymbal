@@ -1,12 +1,10 @@
 #import "MediaInfoSupplier.h"
 #import "Server.h"
-#import "Connection.h"
 #import "Browser.h"
 #import "PreferencesController.h"
 
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
     Server *server;
-	Connection *connection;
     Browser *browser;
     
 	MediaInfoSupplier *mediaInfoSupplier;
@@ -41,10 +39,6 @@
 
 - (void)availableServiceAdded:(NSNotification*)notification;
 - (void)availableServiceRemoved:(NSNotification*)notification;
-- (BOOL)connectToMetacasterWithName:(NSString*)name;
-- (void)didSelectMetacaster:(NSMenuItem*)sender;
-
-- (void)listenerDisonnected:(NSNotification*)notification;
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 

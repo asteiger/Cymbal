@@ -2,7 +2,6 @@
 #import "SongDataPacket.h"
 #import "MCSongData.h"
 #import "NotificationController.h"
-#import "Connection.h"
 #import "PreferencesController.h"
 
 @interface LocalMediaInfoSupplier (Private)
