@@ -30,7 +30,6 @@
 		2FC3B4F3135614D10003D3D4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC3B4F1135614D10003D3D4 /* MainMenu.xib */; };
 		2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */; };
 		2FC3B50E1356A9310003D3D4 /* MediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC3B50D1356A9310003D3D4 /* MediaInfoSupplier.m */; };
-		2FF1D08F130CBC470001628E /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D08E130CBC470001628E /* AsyncSocket.m */; };
 		2FF1D094130CBC930001628E /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D093130CBC930001628E /* Server.m */; };
 		2FF1D09A130CBCAD0001628E /* Browser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D099130CBCAD0001628E /* Browser.m */; };
 		2FF1D112130CD64E0001628E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D111130CD64E0001628E /* JSONKit.m */; };
@@ -98,8 +97,6 @@
 		2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = /System/Library/Frameworks/ScriptingBridge.framework; sourceTree = "<absolute>"; };
 		2FC3B50D1356A9310003D3D4 /* MediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaInfoSupplier.m; sourceTree = "<group>"; };
 		2FC3B50F1356A94C0003D3D4 /* MediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaInfoSupplier.h; sourceTree = "<group>"; };
-		2FF1D08D130CBC470001628E /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
-		2FF1D08E130CBC470001628E /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		2FF1D092130CBC930001628E /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
 		2FF1D093130CBC930001628E /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 		2FF1D098130CBCAD0001628E /* Browser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Browser.h; sourceTree = "<group>"; };
@@ -301,8 +298,6 @@
 				2FC3B4F413568D9F0003D3D4 /* iTunes.h */,
 				2FF1D110130CD64E0001628E /* JSONKit.h */,
 				2FF1D111130CD64E0001628E /* JSONKit.m */,
-				2FF1D08D130CBC470001628E /* AsyncSocket.h */,
-				2FF1D08E130CBC470001628E /* AsyncSocket.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -382,7 +377,6 @@
 				2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */,
 				2F1DA6E912F676A600CAF45E /* NotificationController.m in Sources */,
 				2FB40CE012F89163004A0363 /* MCSongData.m in Sources */,
-				2FF1D08F130CBC470001628E /* AsyncSocket.m in Sources */,
 				2FF1D094130CBC930001628E /* Server.m in Sources */,
 				2FF1D09A130CBCAD0001628E /* Browser.m in Sources */,
 				2FF1D112130CD64E0001628E /* JSONKit.m in Sources */,
