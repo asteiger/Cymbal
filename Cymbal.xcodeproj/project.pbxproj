@@ -17,6 +17,7 @@
 		2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FF2D0136396B600E4B57F /* NotificationView.xib */; };
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
 		2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F294AD713900F7600CA5122 /* PreferencesController.m */; };
+		2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDCA1390653D009DF94B /* Broadcaster.m */; };
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
@@ -75,6 +76,8 @@
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2F294AD613900F7600CA5122 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		2F294AD713900F7600CA5122 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		2F30CDC91390653D009DF94B /* Broadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcaster.h; sourceTree = "<group>"; };
+		2F30CDCA1390653D009DF94B /* Broadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcaster.m; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
 				2F73873E134B739B003E0832 /* SongDataPacket.h */,
 				2F73873F134B739B003E0832 /* SongDataPacket.m */,
+				2F30CDC91390653D009DF94B /* Broadcaster.h */,
+				2F30CDCA1390653D009DF94B /* Broadcaster.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				2FFF23031361E62500CDA256 /* MAAttachedWindow.m in Sources */,
 				2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */,
 				2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */,
+				2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

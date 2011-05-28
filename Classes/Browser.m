@@ -1,4 +1,5 @@
 #import "Browser.h"
+#import "Broadcaster.h"
 
 NSString *const kAvailableServiceAddedNotification = @"AvailableServiceAddedNotification";
 NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemovedNotification";
@@ -13,6 +14,7 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 		[browser setDelegate:self];
 		
 		services = [[NSMutableArray alloc] initWithCapacity:1];
+		broadcasters = [[NSMutableArray alloc] initWithCapacity:1];
 	}
 	
 	return self;
@@ -45,6 +47,9 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 	
 	[services dealloc];
 	services = nil;
+    
+    [broadcasters release];
+    broadcasters = nil;
 	
 	[super dealloc];
 }
@@ -69,9 +74,12 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"Service discovered: %@, my server name is: %@", [aNetService name], [APP_DELEGATE.server name]);
-    if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
+    //if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
     
     [services addObject:aNetService];
+    
+    [broadcasters addObject:[Broadcaster broadcasterWithNetService:aNetService]];
+    
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceAddedNotification object:aNetService userInfo:nil];
 }

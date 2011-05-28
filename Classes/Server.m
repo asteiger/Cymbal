@@ -68,6 +68,10 @@ NSString *const kListenerConnectedNotification = @"ListenerConnectedNotification
 	NSLog(@"Broadcast packet, message: %@", [packet toJson]);
 	
 	[connections makeObjectsPerformSelector:@selector(sendPacket:) withObject:packet];
+    
+    NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[packet toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:@"packetData"];
+    BOOL success = [netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:txtRecord]];
+    NSLog(@"txtrecord success: %d", success);
 }
 
 - (void)dealloc {
