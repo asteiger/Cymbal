@@ -44,7 +44,6 @@
 - (BOOL)connectToMetacasterWithName:(NSString*)name;
 - (void)didSelectMetacaster:(NSMenuItem*)sender;
 
-- (void)listenerConnected:(NSNotification*)notification;
 - (void)listenerDisonnected:(NSNotification*)notification;
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;

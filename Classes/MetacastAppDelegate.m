@@ -36,7 +36,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceRemoved:) name:kAvailableServiceRemovedNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerDisonnected:) name:kConnectionDisconnectedNotification object:nil];
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
@@ -162,21 +161,6 @@
     return NO;
 }
 
-- (void)listenerConnected:(NSNotification*)notification {
-    Connection *c = [notification object];
-    
-    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:c.remoteName action:nil keyEquivalent:@""] autorelease];
-    
-    [item setRepresentedObject:c];
-    [item bind:@"title" toObject:c withKeyPath:@"remoteName" options:nil];
-    [item bind:@"enabled" toObject:self withKeyPath:@"alwaysNo" options:nil];
-    
-    [listenersMenu addItem:item];
-    
-    [noListeners setHidden:[[listenersMenu itemArray] count] > 1];
-    [[NotificationController sharedInstance] postListenerConnectedWithName:c.remoteName];
-}
-
 - (void)listenerDisonnected:(NSNotification*)notification {
     Connection *c = [notification object];
     if (c == connection) {
@@ -220,8 +204,6 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceRemovedNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kListenerConnectedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kConnectionDisconnectedNotification object:nil];
     
     [server release];

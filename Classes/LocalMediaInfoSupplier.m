@@ -16,7 +16,6 @@
         _server = [server retain];
         _iTunes = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listenerConnected:) name:kListenerConnectedNotification object:nil];
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
         
@@ -25,13 +24,6 @@
 	}
 	
 	return self;
-}
-
-- (void)listenerConnected:(NSNotification*)connectionNotification {
-    if (self.currentSongData == nil) return;
-    
-    Connection *c = [connectionNotification object];
-    [c sendPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
 }
 
 - (void)broadcastCurrentSongData {
