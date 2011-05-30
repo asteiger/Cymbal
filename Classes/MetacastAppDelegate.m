@@ -2,8 +2,7 @@
 #import "LocalMediaInfoSupplier.h"
 #import "RemoteMediaInfoSupplier.h"
 #import "NotificationController.h"
-
-
+#import "BroadcasterMenuItemView.h"
 
 @implementation MetacastAppDelegate
 
@@ -38,13 +37,13 @@
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     
-    [[self.noMetacasters parentItem] bind:@"enabled" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
+    /*[[self.noMetacasters parentItem] bind:@"enabled" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
                                                                                                                                   forKey:NSValueTransformerNameBindingOption]];
     [[self.noListeners parentItem] bind:@"enabled" 
                                toObject:server 
                             withKeyPath:@"isRunning" 
                                 options:nil];
-    
+    */
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
 
@@ -112,7 +111,15 @@
 - (void)availableServiceAdded:(NSNotification*)notification {
     NSNetService *service = [notification object];
 
-    [metacastersMenu addItemWithTitle:[service name] action:nil keyEquivalent:@""];
+    NSMenuItem *item = [metacastersMenu addItemWithTitle:[service name] action:nil keyEquivalent:@""];
+    NSViewController *viewController = [[NSViewController alloc] initWithNibName:@"BroadcasterMenuItemView" bundle:nil];
+    [item setView:viewController.view];
+    
+    ((BroadcasterMenuItemView*)viewController.view).shareName = [service name];
+    
+    [viewController release];
+    
+    
     if (preferences.allowAutoconnect && self.mediaInfoSupplier.mediaState == kMediaStateIdle) {
         // auto follow
     }

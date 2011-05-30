@@ -18,6 +18,9 @@
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
 		2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F294AD713900F7600CA5122 /* PreferencesController.m */; };
 		2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDCA1390653D009DF94B /* Broadcaster.m */; };
+		2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */; };
+		2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */; };
+		2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */; };
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
 		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
@@ -76,6 +79,10 @@
 		2F294AD713900F7600CA5122 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		2F30CDC91390653D009DF94B /* Broadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcaster.h; sourceTree = "<group>"; };
 		2F30CDCA1390653D009DF94B /* Broadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcaster.m; sourceTree = "<group>"; };
+		2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BroadcasterMenuItemView.xib; path = ../Classes/BroadcasterMenuItemView.xib; sourceTree = "<group>"; };
+		2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar_placeholder.gif; sourceTree = "<group>"; };
+		2F30CDE213943AAB009DF94B /* BroadcasterMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcasterMenuItemView.h; sourceTree = "<group>"; };
+		2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcasterMenuItemView.m; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
@@ -184,6 +191,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */,
 				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
 				2FC3B4F1135614D10003D3D4 /* MainMenu.xib */,
 				2F07C535138B11A9000E816B /* dsa_pub.pem */,
@@ -209,6 +217,7 @@
 		2F1DA77112F6821200CAF45E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */,
 				2F1DA77812F682B900CAF45E /* icon-small.png */,
 				2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */,
 				2F1DA77412F6824600CAF45E /* icon.png */,
@@ -286,6 +295,8 @@
 				2F1DA6E812F676A600CAF45E /* NotificationController.m */,
 				2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */,
 				2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */,
+				2F30CDE213943AAB009DF94B /* BroadcasterMenuItemView.h */,
+				2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -362,6 +373,8 @@
 				2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */,
 				2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */,
 				2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */,
+				2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */,
+				2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +402,7 @@
 				2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */,
 				2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */,
 				2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */,
+				2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
