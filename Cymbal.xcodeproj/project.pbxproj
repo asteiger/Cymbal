@@ -22,7 +22,6 @@
 		2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */; };
 		2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */; };
 		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
-		2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */; };
 		2F738741134B739B003E0832 /* SongDataPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F73873F134B739B003E0832 /* SongDataPacket.m */; };
 		2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */; };
 		2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */; };
@@ -86,8 +85,6 @@
 		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
-		2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionInfoPacket.h; sourceTree = "<group>"; };
-		2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionInfoPacket.m; sourceTree = "<group>"; };
 		2F73873E134B739B003E0832 /* SongDataPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDataPacket.h; sourceTree = "<group>"; };
 		2F73873F134B739B003E0832 /* SongDataPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDataPacket.m; sourceTree = "<group>"; };
 		2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cymbal-icon-small.png"; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 				2FB40CDF12F89163004A0363 /* MCSongData.m */,
 				2F35683E130DCB6A000EC787 /* Packet.h */,
 				2F35683F130DCB6A000EC787 /* Packet.m */,
-				2F73873B134B739B003E0832 /* ConnectionInfoPacket.h */,
-				2F73873C134B739B003E0832 /* ConnectionInfoPacket.m */,
 				2F73873E134B739B003E0832 /* SongDataPacket.h */,
 				2F73873F134B739B003E0832 /* SongDataPacket.m */,
 				2F30CDC91390653D009DF94B /* Broadcaster.h */,
@@ -394,7 +389,6 @@
 				2FF1D09A130CBCAD0001628E /* Browser.m in Sources */,
 				2FF1D112130CD64E0001628E /* JSONKit.m in Sources */,
 				2F356840130DCB6A000EC787 /* Packet.m in Sources */,
-				2F738740134B739B003E0832 /* ConnectionInfoPacket.m in Sources */,
 				2F738741134B739B003E0832 /* SongDataPacket.m in Sources */,
 				2FC3B50E1356A9310003D3D4 /* MediaInfoSupplier.m in Sources */,
 				2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */,
