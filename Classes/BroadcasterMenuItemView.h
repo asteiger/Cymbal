@@ -13,4 +13,5 @@
 @property (nonatomic, retain) NSString *shareName;
 @property (nonatomic, retain) MCSongData *currentSongData;
 
+- (IBAction)searchForSongOnITunes:(id)sender;
 @end

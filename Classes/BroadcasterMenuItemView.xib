@@ -48,7 +48,7 @@
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSButton" id="498150830">
+					<object class="NSButton" id="1003716876">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{241, 79}, {25, 19}}</string>
@@ -56,7 +56,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="416877821"/>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="86471711">
+						<object class="NSButtonCell" key="NSCell" id="715678663">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents"/>
@@ -65,7 +65,7 @@
 								<double key="NSSize">12</double>
 								<int key="NSfFlags">16</int>
 							</object>
-							<reference key="NSControlView" ref="498150830"/>
+							<reference key="NSControlView" ref="1003716876"/>
 							<int key="NSButtonFlags">-1228652289</int>
 							<int key="NSButtonFlags2">173</int>
 							<object class="NSCustomResource" key="NSNormalImage">
@@ -140,7 +140,7 @@
 						<string key="NSFrame">{{68, 53}, {201, 48}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="498150830"/>
+						<reference key="NSNextKeyView" ref="1003716876"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="349378350">
 							<int key="NSCellFlags">67239424</int>
@@ -289,6 +289,14 @@
 					</object>
 					<int key="connectionID">24</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">searchForSongOnITunes:</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="1003716876"/>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -328,7 +336,7 @@
 							<reference ref="416877821"/>
 							<reference ref="853414225"/>
 							<reference ref="472082746"/>
-							<reference ref="498150830"/>
+							<reference ref="1003716876"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -418,17 +426,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="498150830"/>
+						<reference key="object" ref="1003716876"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="86471711"/>
+							<reference ref="715678663"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
-						<reference key="object" ref="86471711"/>
-						<reference key="parent" ref="498150830"/>
+						<reference key="object" ref="715678663"/>
+						<reference key="parent" ref="1003716876"/>
 					</object>
 				</object>
 			</object>
@@ -493,7 +501,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">31</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -501,6 +509,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">BroadcasterMenuItemView</string>
 					<string key="superclassName">NSView</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">searchForSongOnITunes:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">searchForSongOnITunes:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">searchForSongOnITunes:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">

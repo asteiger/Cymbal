@@ -30,4 +30,16 @@
     [albumNameField setStringValue:currentSongData.album];
 }
 
+- (IBAction)searchForSongOnITunes:(id)sender {
+    NSString *strippedArtist = [self.currentSongData.artist stringByReplacingOccurrencesOfString:@" " withString:@""];
+    strippedArtist = [strippedArtist stringByReplacingOccurrencesOfString:@"&" withString:@"And"];
+    strippedArtist = [strippedArtist stringByReplacingOccurrencesOfString:@"." withString:@""];
+    strippedArtist = [strippedArtist stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    
+    NSString *url = [NSString stringWithFormat:@"http://itunes.com/%@", strippedArtist, nil];
+    NSString* escapedUrlString = [url stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:escapedUrlString]];
+}
+
 @end
