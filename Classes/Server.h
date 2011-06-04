@@ -1,5 +1,7 @@
 @class BroadcasterInfo;
 
+extern NSString *const kBroadcasterInfoKey;
+
 @interface Server : NSObject <NSNetServiceDelegate> {
     NSString *name;
 	NSNetService *netService;

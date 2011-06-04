@@ -1,8 +1,11 @@
 #import "Broadcaster.h"
 #import "JSONKit.h"
 #import "NSNetService+TXTRecord.h"
+#import "Server.h"
 
 @implementation Broadcaster
+
+@synthesize info;
 
 + (Broadcaster*)broadcasterWithNetService:(NSNetService *)aNetService {
     return [[[self alloc] initWithNetService:aNetService] autorelease];
@@ -22,18 +25,20 @@
 
 - (void)netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
     
-    NSString *theData = [sender stringFromTXTRecordForKey:@"packetData"];
-    NSLog(@"TXT record update by %@. contents: %@", [service name], theData);
+    NSString *json = [sender stringFromTXTRecordForKey:kBroadcasterInfoKey];
+    NSLog(@"TXT record update by %@. contents: %@", [service name], json);
     
-    
+    self.info = [BroadcasterInfo packetWithJson:json];
 }
 
 - (MCSongData*)currentSong {
-    return [pastSongQueue objectAtIndex:0];
+    return [self.info songData];
 }
 
 - (void)dealloc
 {
+    self.info = nil;
+    
     [service release];
     service = nil;
     

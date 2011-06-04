@@ -2,6 +2,8 @@
 #import "BroadcasterInfo.h"
 #import "NotificationController.h"
 
+NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
+
 @implementation Server
 
 @synthesize name;
@@ -43,11 +45,8 @@
 - (void)setBroadcasterInfo:(BroadcasterInfo*)info {
     if (!self.isRunning) return;
     
-	NSLog(@"Broadcast packet, message: %@", [info toJson]);
-    
-    NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[info toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:@"packetData"];
-    BOOL success = [netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:txtRecord]];
-    NSLog(@"txtrecord success: %d", success);
+    NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[info toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:kBroadcasterInfoKey];
+    [netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:txtRecord]];
 }
 
 - (void)dealloc {
