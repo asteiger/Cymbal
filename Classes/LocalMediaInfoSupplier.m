@@ -1,5 +1,5 @@
 #import "LocalMediaInfoSupplier.h"
-#import "SongDataPacket.h"
+#import "Packet.h"
 #import "MCSongData.h"
 #import "NotificationController.h"
 #import "PreferencesController.h"
@@ -28,7 +28,10 @@
 - (void)broadcastCurrentSongData {
     if (self.currentSongData == nil) return;
     
-    [_server broadcastPacket:[SongDataPacket packetWithSongData:self.currentSongData]];
+    Packet *packet = [[[Packet alloc] init] autorelease];
+    [packet setSongData:self.currentSongData];
+    
+    [_server broadcastPacket:packet];
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
@@ -50,6 +53,7 @@
 }
 
 - (void)updateMediaProperties {
+    
     self.mediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
 	
     if (self.mediaState == kMediaStateIdle) {

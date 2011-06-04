@@ -5,8 +5,11 @@ const float kProtocolVersion = 1.0;
 
 // packet json keys
 NSString *const kProtocolVersionKey  = @"protocolVersion";
-NSString *const kPacketTypeKey       = @"packetType";
-NSString *const kSenderNameKey       = @"senderName";
+NSString *const kApplicationVersionKey  = @"applicationVersion";
+NSString *const kSongTitleKey  = @"songTitle";
+NSString *const kAlbumNameKey  = @"albumName";
+NSString *const kArtistNameKey = @"artistName";
+
 
 @interface Packet (Private)
 
@@ -22,7 +25,7 @@ NSString *const kSenderNameKey       = @"senderName";
 		packetData = [[NSMutableDictionary alloc] init];
 		
 		[packetData setValue:[NSNumber numberWithFloat:kProtocolVersion] forKey:kProtocolVersionKey];
-        [packetData setValue:NSStringFromClass([self class]) forKey:kPacketTypeKey];
+        [packetData setValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forKey:kApplicationVersionKey];
 	}
 	
 	return self;
@@ -44,16 +47,12 @@ NSString *const kSenderNameKey       = @"senderName";
 	return self;
 }
 
-+ (Packet*)packetWithJson:(id)json {
-    NSString *packetType = [[NSMutableDictionary dictionaryWithJSON:json] valueForKey:kPacketTypeKey];
-    
-	return [[[NSClassFromString(packetType) alloc] initWithJson:json] autorelease];
++ (Packet*)packetWithJson:(id)json {    
+	return [[[Packet alloc] initWithJson:json] autorelease];
 }
 
 + (Packet*)packetWithDictionary:(NSDictionary *)dictionary {
-    NSString *packetType = [dictionary valueForKey:kPacketTypeKey];
-    
-	return [[[NSClassFromString(packetType) alloc] initWithDictionary:dictionary] autorelease];
+	return [[[Packet alloc] initWithDictionary:dictionary] autorelease];
 }
 
 - (NSString*)toJson {
@@ -68,8 +67,22 @@ NSString *const kSenderNameKey       = @"senderName";
 	return [NSNumber numberWithFloat:kProtocolVersion];
 }
 
-- (NSString*)senderName {
-	return [packetData objectForKey:kSenderNameKey];
+- (void)setSongData:(MCSongData*)songData {
+    [packetData setValue:songData.songTitle forKey:kSongTitleKey];
+    [packetData setValue:songData.album forKey:kAlbumNameKey];
+    [packetData setValue:songData.artist forKey:kArtistNameKey];
+}
+
+- (MCSongData*)songData {
+	MCSongData* songData = nil;
+	
+    NSString *artist = [packetData objectForKey:kArtistNameKey];
+    NSString *songTitle = [packetData objectForKey:kSongTitleKey];
+    NSString *album = [packetData objectForKey:kAlbumNameKey];
+    
+    songData = [[MCSongData alloc] initWithArtist:artist SongTitle:songTitle Album:album];
+	
+	return [songData autorelease];
 }
 
 - (void)dealloc {

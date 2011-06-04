@@ -1,7 +1,6 @@
 extern float const kProtocolVersion;
 extern NSString *const kProtocolVersionKey;
-extern NSString *const kPacketTypeKey;
-extern NSString *const kSenderNameKey;
+extern NSString *const kApplicationVersionKey;
 
 @interface Packet : NSObject {
 	NSMutableDictionary *packetData;
@@ -16,6 +15,8 @@ extern NSString *const kSenderNameKey;
 - (NSDictionary*)toDictionary;
 
 - (NSNumber*)protocolVersion;
-- (NSString*)senderName;
+
+- (void)setSongData:(MCSongData*)songData;
+- (MCSongData*)songData;
 
 @end
