@@ -2,14 +2,14 @@ extern float const kProtocolVersion;
 extern NSString *const kProtocolVersionKey;
 extern NSString *const kApplicationVersionKey;
 
-@interface Packet : NSObject {
+@interface BroadcasterInfo : NSObject {
 	NSMutableDictionary *packetData;
 }
 
 - (id)init;
 
-+ (Packet*)packetWithJson:(id)json;
-+ (Packet*)packetWithDictionary:(NSDictionary*)dictionary;
++ (BroadcasterInfo*)packetWithJson:(id)json;
++ (BroadcasterInfo*)packetWithDictionary:(NSDictionary*)dictionary;
 
 - (NSString*)toJson;
 - (NSDictionary*)toDictionary;

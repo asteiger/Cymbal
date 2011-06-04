@@ -1,5 +1,5 @@
 #import "Server.h"
-#import "Packet.h"
+#import "BroadcasterInfo.h"
 #import "NotificationController.h"
 
 @implementation Server
@@ -40,12 +40,12 @@
     NSLog(@"Server stopped");
 }
 
-- (void)broadcastPacket:(Packet*)packet {
+- (void)setBroadcasterInfo:(BroadcasterInfo*)info {
     if (!self.isRunning) return;
     
-	NSLog(@"Broadcast packet, message: %@", [packet toJson]);
+	NSLog(@"Broadcast packet, message: %@", [info toJson]);
     
-    NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[packet toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:@"packetData"];
+    NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[info toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:@"packetData"];
     BOOL success = [netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:txtRecord]];
     NSLog(@"txtrecord success: %d", success);
 }

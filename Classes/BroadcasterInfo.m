@@ -1,4 +1,4 @@
-#import "Packet.h"
+#import "BroadcasterInfo.h"
 #import "JSONKit.h"
 
 const float kProtocolVersion = 1.0;
@@ -11,14 +11,14 @@ NSString *const kAlbumNameKey  = @"albumName";
 NSString *const kArtistNameKey = @"artistName";
 
 
-@interface Packet (Private)
+@interface BroadcasterInfo (Private)
 
 - (id)initWithJson:(id)json;
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end
 
-@implementation Packet
+@implementation BroadcasterInfo
 
 - (id)init {
 	if ((self = [super init])) {
@@ -47,12 +47,12 @@ NSString *const kArtistNameKey = @"artistName";
 	return self;
 }
 
-+ (Packet*)packetWithJson:(id)json {    
-	return [[[Packet alloc] initWithJson:json] autorelease];
++ (BroadcasterInfo*)packetWithJson:(id)json {    
+	return [[[BroadcasterInfo alloc] initWithJson:json] autorelease];
 }
 
-+ (Packet*)packetWithDictionary:(NSDictionary *)dictionary {
-	return [[[Packet alloc] initWithDictionary:dictionary] autorelease];
++ (BroadcasterInfo*)packetWithDictionary:(NSDictionary *)dictionary {
+	return [[[BroadcasterInfo alloc] initWithDictionary:dictionary] autorelease];
 }
 
 - (NSString*)toJson {

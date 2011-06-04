@@ -23,7 +23,7 @@
 		2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */; };
 		2F30CDE813944300009DF94B /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */; };
 		2F30CDEB139452FC009DF94B /* NSNetService+TXTRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */; };
-		2F356840130DCB6A000EC787 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* Packet.m */; };
+		2F356840130DCB6A000EC787 /* BroadcasterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* BroadcasterInfo.m */; };
 		2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */; };
 		2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */; };
 		2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */; };
@@ -87,8 +87,8 @@
 		2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		2F30CDE9139452FB009DF94B /* NSNetService+TXTRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+TXTRecord.h"; sourceTree = "<group>"; };
 		2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+TXTRecord.m"; sourceTree = "<group>"; };
-		2F35683E130DCB6A000EC787 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
-		2F35683F130DCB6A000EC787 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		2F35683E130DCB6A000EC787 /* BroadcasterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; path = BroadcasterInfo.h; sourceTree = "<group>"; };
+		2F35683F130DCB6A000EC787 /* BroadcasterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcasterInfo.m; sourceTree = "<group>"; };
 		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
 		2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cymbal-icon-small.png"; sourceTree = "<group>"; };
 		2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 			children = (
 				2FB40CDE12F89163004A0363 /* MCSongData.h */,
 				2FB40CDF12F89163004A0363 /* MCSongData.m */,
-				2F35683E130DCB6A000EC787 /* Packet.h */,
-				2F35683F130DCB6A000EC787 /* Packet.m */,
+				2F35683E130DCB6A000EC787 /* BroadcasterInfo.h */,
+				2F35683F130DCB6A000EC787 /* BroadcasterInfo.m */,
 				2F30CDC91390653D009DF94B /* Broadcaster.h */,
 				2F30CDCA1390653D009DF94B /* Broadcaster.m */,
 			);
@@ -401,7 +401,7 @@
 				2FF1D094130CBC930001628E /* Server.m in Sources */,
 				2FF1D09A130CBCAD0001628E /* Browser.m in Sources */,
 				2FF1D112130CD64E0001628E /* JSONKit.m in Sources */,
-				2F356840130DCB6A000EC787 /* Packet.m in Sources */,
+				2F356840130DCB6A000EC787 /* BroadcasterInfo.m in Sources */,
 				2FC3B50E1356A9310003D3D4 /* MediaInfoSupplier.m in Sources */,
 				2FA455FF13578916001E569F /* RemoteMediaInfoSupplier.m in Sources */,
 				2FFF23031361E62500CDA256 /* MAAttachedWindow.m in Sources */,

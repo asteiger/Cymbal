@@ -1,4 +1,4 @@
-@class Packet;
+@class BroadcasterInfo;
 
 @interface Server : NSObject <NSNetServiceDelegate> {
     NSString *name;
@@ -14,6 +14,6 @@
 - (BOOL)start;
 - (void)stop;
 
-- (void)broadcastPacket:(Packet*)packet;
+- (void)setBroadcasterInfo:(BroadcasterInfo*)info;
 
 @end

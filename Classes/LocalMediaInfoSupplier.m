@@ -1,5 +1,5 @@
 #import "LocalMediaInfoSupplier.h"
-#import "Packet.h"
+#import "BroadcasterInfo.h"
 #import "MCSongData.h"
 #import "NotificationController.h"
 #import "PreferencesController.h"
@@ -26,12 +26,7 @@
 }
 
 - (void)broadcastCurrentSongData {
-    if (self.currentSongData == nil) return;
     
-    Packet *packet = [[[Packet alloc] init] autorelease];
-    [packet setSongData:self.currentSongData];
-    
-    [_server broadcastPacket:packet];
 }
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification {
@@ -45,8 +40,16 @@
             self.mediaState = kMediaStateBroadcasting;
         }
         
-        [self broadcastCurrentSongData];
-        [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
+        if (self.currentSongData != nil) {
+        
+            BroadcasterInfo *packet = [[[BroadcasterInfo alloc] init] autorelease];
+            [packet setSongData:self.currentSongData];
+            
+            [_server setBroadcasterInfo:packet];
+            
+            [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
+        }
+        
     } else {
         if (_server.isRunning) [_server stop];
     }
