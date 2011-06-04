@@ -6,6 +6,7 @@
 @implementation Broadcaster
 
 @synthesize info;
+@synthesize songData;
 
 + (Broadcaster*)broadcasterWithNetService:(NSNetService *)aNetService {
     return [[[self alloc] initWithNetService:aNetService] autorelease];
@@ -29,10 +30,11 @@
     NSLog(@"TXT record update by %@. contents: %@", [service name], json);
     
     self.info = [BroadcasterInfo packetWithJson:json];
+    self.songData = [self.info songData];
 }
 
-- (MCSongData*)currentSong {
-    return [self.info songData];
+- (NSString*)name {
+    return [service name];
 }
 
 - (void)dealloc

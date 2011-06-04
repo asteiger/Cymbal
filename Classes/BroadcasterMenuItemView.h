@@ -5,6 +5,9 @@
     IBOutlet NSTextField *songNameField;
     IBOutlet NSTextField *artistNameField;
     IBOutlet NSTextField *albumNameField;
+    
+    NSString *shareName;
+    MCSongData *currentSongData;
 }
 
 @property (nonatomic, retain) NSString *shareName;

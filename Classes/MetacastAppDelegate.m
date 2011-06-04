@@ -3,6 +3,7 @@
 #import "RemoteMediaInfoSupplier.h"
 #import "NotificationController.h"
 #import "BroadcasterMenuItemView.h"
+#import "Broadcaster.h"
 
 @implementation MetacastAppDelegate
 
@@ -110,13 +111,18 @@
 
 - (void)availableServiceAdded:(NSNotification*)notification {
     NSNetService *service = [notification object];
-
+    Broadcaster *broadcaster = [Broadcaster broadcasterWithNetService:service];
+    
     NSMenuItem *item = [metacastersMenu addItemWithTitle:[service name] action:nil keyEquivalent:@""];
+    
     NSViewController *viewController = [[NSViewController alloc] initWithNibName:@"BroadcasterMenuItemView" bundle:nil];
-    [item setView:viewController.view];
+    [item setRepresentedObject:broadcaster];
     
-    ((BroadcasterMenuItemView*)viewController.view).shareName = [service name];
-    
+    BroadcasterMenuItemView *view = (BroadcasterMenuItemView*)viewController.view;
+    [view bind:@"shareName" toObject:broadcaster withKeyPath:@"name" options:nil];
+    [view bind:@"currentSongData" toObject:broadcaster withKeyPath:@"songData" options:nil];
+
+    [item setView:view];
     [viewController release];
     
     
