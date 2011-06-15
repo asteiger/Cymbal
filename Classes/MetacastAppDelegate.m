@@ -43,13 +43,6 @@
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     
-    /*[[self.noMetacasters parentItem] bind:@"enabled" toObject:server withKeyPath:@"isRunning" options:[NSDictionary dictionaryWithObject:NSNegateBooleanTransformerName 
-                                                                                                                                  forKey:NSValueTransformerNameBindingOption]];
-    [[self.noListeners parentItem] bind:@"enabled" 
-                               toObject:server 
-                            withKeyPath:@"isRunning" 
-                                options:nil];
-    */
     self.alwaysNo = [NSNumber numberWithBool:NO];
 }
 
