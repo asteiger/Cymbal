@@ -31,6 +31,11 @@
     if (preferences.allowBroadcasting && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
+        
+        BroadcasterInfo *packet = [[[BroadcasterInfo alloc] init] autorelease];
+        [packet setSongData:self.mediaInfoSupplier.currentSongData];
+        
+        [server setBroadcasterInfo:packet];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
