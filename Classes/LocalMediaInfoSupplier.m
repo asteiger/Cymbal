@@ -42,7 +42,7 @@
         
         if (self.currentSongData != nil) {
         
-            BroadcasterInfo *packet = [[[BroadcasterInfo alloc] init] autorelease];
+            TXTRecordPacket *packet = [[[TXTRecordPacket alloc] init] autorelease];
             [packet setSongData:self.currentSongData];
             
             [_server setBroadcasterInfo:packet];

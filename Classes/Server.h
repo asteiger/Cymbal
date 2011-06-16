@@ -1,4 +1,4 @@
-@class BroadcasterInfo;
+@class TXTRecordPacket;
 
 extern NSString *const kBroadcasterInfoKey;
 
@@ -16,6 +16,6 @@ extern NSString *const kBroadcasterInfoKey;
 - (BOOL)start;
 - (void)stop;
 
-- (void)setBroadcasterInfo:(BroadcasterInfo*)info;
+- (void)setBroadcasterInfo:(TXTRecordPacket*)info;
 
 @end

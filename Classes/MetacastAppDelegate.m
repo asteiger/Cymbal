@@ -32,7 +32,7 @@
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
         
-        BroadcasterInfo *packet = [[[BroadcasterInfo alloc] init] autorelease];
+        TXTRecordPacket *packet = [[[TXTRecordPacket alloc] init] autorelease];
         [packet setSongData:self.mediaInfoSupplier.currentSongData];
         
         [server setBroadcasterInfo:packet];

@@ -3,11 +3,11 @@
 
 @interface Broadcaster : NSObject <NSNetServiceDelegate> {
     NSNetService *service;
-    BroadcasterInfo *info;
+    TXTRecordPacket *info;
     MCSongData *songData;
 }
 
-@property (nonatomic, retain) BroadcasterInfo *info;
+@property (nonatomic, retain) TXTRecordPacket *info;
 @property (nonatomic, retain) MCSongData *songData;
 @property (nonatomic, readonly) NSString *name;
 

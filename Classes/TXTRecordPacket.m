@@ -11,14 +11,14 @@ NSString *const kAlbumNameKey  = @"albumName";
 NSString *const kArtistNameKey = @"artistName";
 
 
-@interface BroadcasterInfo (Private)
+@interface TXTRecordPacket (Private)
 
 - (id)initWithJson:(id)json;
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end
 
-@implementation BroadcasterInfo
+@implementation TXTRecordPacket
 
 - (id)init {
 	if ((self = [super init])) {
@@ -47,12 +47,12 @@ NSString *const kArtistNameKey = @"artistName";
 	return self;
 }
 
-+ (BroadcasterInfo*)packetWithJson:(id)json {    
-	return [[[BroadcasterInfo alloc] initWithJson:json] autorelease];
++ (TXTRecordPacket*)packetWithJson:(id)json {    
+	return [[[TXTRecordPacket alloc] initWithJson:json] autorelease];
 }
 
-+ (BroadcasterInfo*)packetWithDictionary:(NSDictionary *)dictionary {
-	return [[[BroadcasterInfo alloc] initWithDictionary:dictionary] autorelease];
++ (TXTRecordPacket*)packetWithDictionary:(NSDictionary *)dictionary {
+	return [[[TXTRecordPacket alloc] initWithDictionary:dictionary] autorelease];
 }
 
 - (NSString*)toJson {

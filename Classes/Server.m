@@ -42,7 +42,7 @@ NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
     NSLog(@"Server stopped");
 }
 
-- (void)setBroadcasterInfo:(BroadcasterInfo*)info {
+- (void)setBroadcasterInfo:(TXTRecordPacket*)info {
     if (!self.isRunning) return;
     
     NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[info toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:kBroadcasterInfoKey];

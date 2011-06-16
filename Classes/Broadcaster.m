@@ -29,7 +29,7 @@
     NSString *json = [sender stringFromTXTRecordForKey:kBroadcasterInfoKey];
     NSLog(@"TXT record update by %@. contents: %@", [service name], json);
     
-    self.info = [BroadcasterInfo packetWithJson:json];
+    self.info = [TXTRecordPacket packetWithJson:json];
     self.songData = [self.info songData];
 }
 
