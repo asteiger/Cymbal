@@ -82,10 +82,6 @@
     [mediaInfoSupplier updateMediaProperties];
 }
 
-- (IBAction)toggleAutoconnect:(id)sender {
-    preferences.allowAutoconnect = !preferences.allowAutoconnect;
-}
-
 - (IBAction)toggleShowDesktopNotifications:(id)sender {
     preferences.showDesktopNotification = !preferences.showDesktopNotification;
 }
@@ -96,10 +92,6 @@
     if (action == @selector(toggleBroadcast:)) {
         [menuItem setState:preferences.allowBroadcasting];
     
-    } else if (action == @selector(didSelectMetacaster:)) {
-        
-    } else if (action == @selector(toggleAutoconnect:)) {
-        [menuItem setState:preferences.allowAutoconnect];
     } else if (action == @selector(toggleShowDesktopNotifications:)) {
         [menuItem setState:preferences.showDesktopNotification];
     }
@@ -122,11 +114,6 @@
 
     [item setView:view];
     [viewController release];
-    
-    
-    if (preferences.allowAutoconnect && self.mediaInfoSupplier.mediaState == kMediaStateIdle) {
-        // auto follow
-    }
     
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }

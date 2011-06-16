@@ -128,14 +128,6 @@
 						<reference key="NSOnImage" ref="794253562"/>
 						<reference key="NSMixedImage" ref="798915820"/>
 					</object>
-					<object class="NSMenuItem" id="614771018">
-						<reference key="NSMenu" ref="301681542"/>
-						<string key="NSTitle">Allow Auto-connecting</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="794253562"/>
-						<reference key="NSMixedImage" ref="798915820"/>
-					</object>
 					<object class="NSMenuItem" id="655821790">
 						<reference key="NSMenu" ref="301681542"/>
 						<string key="NSTitle">Show Desktop Notifications</string>
@@ -482,14 +474,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutoconnect:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="614771018"/>
-					</object>
-					<int key="connectionID">681</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">terminate:</string>
 						<reference key="source" ref="1014"/>
 						<reference key="destination" ref="987141077"/>
@@ -569,7 +553,6 @@
 							<reference ref="508037759"/>
 							<reference ref="14868128"/>
 							<reference ref="47206752"/>
-							<reference ref="614771018"/>
 							<reference ref="463882935"/>
 							<reference ref="987141077"/>
 							<reference ref="655821790"/>
@@ -655,11 +638,6 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">679</int>
-						<reference key="object" ref="614771018"/>
-						<reference key="parent" ref="301681542"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">682</int>
 						<reference key="object" ref="463882935"/>
 						<reference key="parent" ref="301681542"/>
@@ -701,7 +679,6 @@
 					<string>555.IBPluginDependency</string>
 					<string>556.IBPluginDependency</string>
 					<string>557.IBPluginDependency</string>
-					<string>679.IBPluginDependency</string>
 					<string>682.IBPluginDependency</string>
 					<string>683.IBPluginDependency</string>
 					<string>684.IBPluginDependency</string>
@@ -719,7 +696,6 @@
 							<string key="toolTip">Connected to ...</string>
 						</object>
 					</object>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

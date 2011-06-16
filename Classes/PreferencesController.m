@@ -2,7 +2,6 @@
 
 static NSString *const kRanBeforeDefaultsKey = @"DefaultsRanBefore";
 static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled";
-static NSString *const kAutoconnectEnabledDefaultsKey = @"DefaultsAutoconnectEnabled";
 static NSString *const kShowDesktopNotificationDefaultsKey = @"DefaultsShowDesktopNotifications";
 
 @implementation PreferencesController
@@ -24,7 +23,6 @@ static PreferencesController *sharedInstance;
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kRanBeforeDefaultsKey];
             
             self.allowBroadcasting = YES;
-            self.allowAutoconnect = YES;
             self.showDesktopNotification = YES;
         } 
     }
@@ -38,14 +36,6 @@ static PreferencesController *sharedInstance;
 
 - (void)setAllowBroadcasting:(BOOL)allowBroadcasting {
     [[NSUserDefaults standardUserDefaults] setBool:allowBroadcasting forKey:kBrodcastEnabledDefaultsKey];
-}
-
-- (BOOL)allowAutoconnect {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kAutoconnectEnabledDefaultsKey];
-}
-
-- (void)setAllowAutoconnect:(BOOL)allowAutoconnect {
-    [[NSUserDefaults standardUserDefaults] setBool:allowAutoconnect forKey:kAutoconnectEnabledDefaultsKey];
 }
 
 - (BOOL)showDesktopNotification {

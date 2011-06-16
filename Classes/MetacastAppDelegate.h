@@ -33,7 +33,6 @@
 @property (nonatomic, retain) NSNumber *alwaysNo;
 
 - (IBAction)toggleBroadcast:(id)sender;
-- (IBAction)toggleAutoconnect:(id)sender;
 - (IBAction)toggleShowDesktopNotifications:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
