@@ -5,7 +5,6 @@
 
 @implementation Broadcaster
 
-@synthesize info;
 @synthesize songData;
 
 + (Broadcaster*)broadcasterWithNetService:(NSNetService *)aNetService {
@@ -29,8 +28,7 @@
     NSString *json = [sender stringFromTXTRecordForKey:kBroadcasterInfoKey];
     NSLog(@"TXT record update by %@. contents: %@", [service name], json);
     
-    self.info = [TXTRecordPacket packetWithJson:json];
-    self.songData = [self.info songData];
+    self.songData = [[TXTRecordPacket packetWithJson:json] songData];
 }
 
 - (NSString*)name {
@@ -39,8 +37,6 @@
 
 - (void)dealloc
 {
-    self.info = nil;
-    
     [service release];
     service = nil;
     
