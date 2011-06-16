@@ -1,5 +1,7 @@
-extern NSString *const kAvailableServiceAddedNotification;
-extern NSString *const kAvailableServiceRemovedNotification;
+#import "Broadcaster.h"
+
+extern NSString *const kAvailableBroadcasterAddedNotification;
+extern NSString *const kAvailableBroadcasterRemovedNotification;
 
 @interface Browser : NSObject <NSNetServiceBrowserDelegate> {
     NSString *localName;
@@ -15,4 +17,5 @@ extern NSString *const kAvailableServiceRemovedNotification;
 - (void)stopBrowsing;
 - (NSNetService*)serviceWithName:(NSString*)name;
 
+- (Broadcaster*)availableBroadcasterWithName:(NSString*)name;
 @end

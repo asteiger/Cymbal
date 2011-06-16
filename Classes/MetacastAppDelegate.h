@@ -36,8 +36,8 @@
 - (IBAction)toggleShowDesktopNotifications:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
-- (void)availableServiceAdded:(NSNotification*)notification;
-- (void)availableServiceRemoved:(NSNotification*)notification;
+- (void)availableBroadcasterAdded:(NSNotification*)notification;
+- (void)availableBroadcasterRemoved:(NSNotification*)notification;
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 

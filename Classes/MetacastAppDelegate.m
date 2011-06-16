@@ -38,8 +38,8 @@
         [server setTXTRecord:packet];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceRemoved:) name:kAvailableServiceRemovedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableBroadcasterAdded:) name:kAvailableBroadcasterAddedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableBroadcasterRemoved:) name:kAvailableBroadcasterRemovedNotification object:nil];
     
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     
@@ -99,11 +99,10 @@
     return YES;
 }
 
-- (void)availableServiceAdded:(NSNotification*)notification {
-    NSNetService *service = [notification object];
-    Broadcaster *broadcaster = [Broadcaster broadcasterWithNetService:service];
+- (void)availableBroadcasterAdded:(NSNotification*)notification {
+    Broadcaster *broadcaster = [notification object];
     
-    NSMenuItem *item = [metacastersMenu addItemWithTitle:[service name] action:nil keyEquivalent:@""];
+    NSMenuItem *item = [metacastersMenu addItemWithTitle:[broadcaster name] action:nil keyEquivalent:@""];
     
     NSViewController *viewController = [[NSViewController alloc] initWithNibName:@"BroadcasterMenuItemView" bundle:nil];
     [item setRepresentedObject:broadcaster];
@@ -118,10 +117,10 @@
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 
-- (void)availableServiceRemoved:(NSNotification*)notification {
-    NSNetService *service = [notification object];
+- (void)availableBroadcasterRemoved:(NSNotification*)notification {
+    Broadcaster *broadcaster = [notification object];
     
-    [metacastersMenu removeItem:[metacastersMenu itemWithTitle:[service name]]];
+    [metacastersMenu removeItemAtIndex:[metacastersMenu indexOfItemWithRepresentedObject:broadcaster]];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 
@@ -142,8 +141,8 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceAddedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableServiceRemovedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableBroadcasterAddedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAvailableBroadcasterRemovedNotification object:nil];
     
     [server release];
     server = nil;

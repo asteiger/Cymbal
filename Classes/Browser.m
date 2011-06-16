@@ -1,8 +1,8 @@
 #import "Browser.h"
 #import "Broadcaster.h"
 
-NSString *const kAvailableServiceAddedNotification = @"AvailableServiceAddedNotification";
-NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemovedNotification";
+NSString *const kAvailableBroadcasterAddedNotification = @"AvailableServiceAddedNotification";
+NSString *const kAvailableBroadcasterRemovedNotification = @"AvailableServiceRemovedNotification";
 
 @implementation Browser
 
@@ -76,12 +76,11 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
     NSLog(@"Service discovered: %@, my server name is: %@", [aNetService name], [APP_DELEGATE.server name]);
     //if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
     
-    [services addObject:aNetService];
+    Broadcaster *broadcaster = [Broadcaster broadcasterWithNetService:aNetService];
+    [broadcasters addObject:broadcaster];
     
-    [broadcasters addObject:[Broadcaster broadcasterWithNetService:aNetService]];
     
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceAddedNotification object:aNetService userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableBroadcasterAddedNotification object:broadcaster userInfo:nil];
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveDomain:(NSString *)domainString moreComing:(BOOL)moreComing {
@@ -89,11 +88,27 @@ NSString *const kAvailableServiceRemovedNotification = @"AvailableServiceRemoved
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-    NSLog(@"Service disappeared: %@", [aNetService name]);
-    if (![services containsObject:aNetService]) return;
-	[services removeObject:aNetService];
+    NSString *serviceName = [aNetService name];
+    Broadcaster *broadcaster = [self availableBroadcasterWithName:serviceName];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableServiceRemovedNotification object:aNetService userInfo:nil];
+    NSLog(@"Service disappeared: %@", serviceName);
+    
+    if (nil == broadcaster) return;
+
+    [broadcasters removeObject:broadcaster];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAvailableBroadcasterRemovedNotification object:broadcaster userInfo:nil];
+}
+
+- (Broadcaster*)availableBroadcasterWithName:(NSString*)name {
+    for (Broadcaster* b in broadcasters) {
+        
+        if ([[b name] isEqualToString:name]) 
+            return [[b retain] autorelease];
+        
+    }
+    
+    return nil;
 }
 
 @end
