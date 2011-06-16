@@ -16,6 +16,6 @@ extern NSString *const kBroadcasterInfoKey;
 - (BOOL)start;
 - (void)stop;
 
-- (void)setBroadcasterInfo:(TXTRecordPacket*)info;
+- (void)setTXTRecord:(TXTRecordPacket*)info;
 
 @end

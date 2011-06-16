@@ -35,7 +35,7 @@
         TXTRecordPacket *packet = [[[TXTRecordPacket alloc] init] autorelease];
         [packet setSongData:self.mediaInfoSupplier.currentSongData];
         
-        [server setBroadcasterInfo:packet];
+        [server setTXTRecord:packet];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableServiceAdded:) name:kAvailableServiceAddedNotification object:nil];

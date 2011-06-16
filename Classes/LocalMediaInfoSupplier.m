@@ -45,7 +45,7 @@
             TXTRecordPacket *packet = [[[TXTRecordPacket alloc] init] autorelease];
             [packet setSongData:self.currentSongData];
             
-            [_server setBroadcasterInfo:packet];
+            [_server setTXTRecord:packet];
             
             [[NotificationController sharedInstance] postNotificationWithSong:self.currentSongData];
         }
