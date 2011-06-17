@@ -156,7 +156,7 @@
 					<object class="NSButton" id="117118556">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{210, 4}, {56, 25}}</string>
+						<string key="NSFrame">{{197, 4}, {69, 25}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="374093251"/>
@@ -205,7 +205,6 @@
 				<string key="NSFrameSize">{274, 104}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">BroadcasterMenuItemView</string>
 			</object>
 		</object>
@@ -259,6 +258,22 @@
 						<reference key="destination" ref="1003716876"/>
 					</object>
 					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">didClickFollow:</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="117118556"/>
+					</object>
+					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">followButton</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="117118556"/>
+					</object>
+					<int key="connectionID">33</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -445,7 +460,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">31</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -454,14 +469,35 @@
 					<string key="className">BroadcasterMenuItemView</string>
 					<string key="superclassName">NSView</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">searchForSongOnITunes:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>didClickFollow:</string>
+							<string>searchForSongOnITunes:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">searchForSongOnITunes:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">searchForSongOnITunes:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>didClickFollow:</string>
+							<string>searchForSongOnITunes:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">didClickFollow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">searchForSongOnITunes:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -470,6 +506,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>albumNameField</string>
 							<string>artistNameField</string>
+							<string>followButton</string>
 							<string>shareNameField</string>
 							<string>songNameField</string>
 						</object>
@@ -477,6 +514,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
+							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
 						</object>
@@ -487,6 +525,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>albumNameField</string>
 							<string>artistNameField</string>
+							<string>followButton</string>
 							<string>shareNameField</string>
 							<string>songNameField</string>
 						</object>
@@ -499,6 +538,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">artistNameField</string>
 								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">followButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">shareNameField</string>

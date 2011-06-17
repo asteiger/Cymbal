@@ -31,11 +31,6 @@
     if (preferences.allowBroadcasting && self.mediaInfoSupplier.mediaState != kMediaStateIdle) {
         [server start];
         [self.mediaInfoSupplier updateMediaProperties];
-        
-        TXTRecordPacket *packet = [[[TXTRecordPacket alloc] init] autorelease];
-        [packet setSongData:self.mediaInfoSupplier.currentSongData];
-        
-        [server setTXTRecord:packet];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(availableBroadcasterAdded:) name:kAvailableBroadcasterAddedNotification object:nil];
@@ -120,7 +115,10 @@
 - (void)availableBroadcasterRemoved:(NSNotification*)notification {
     Broadcaster *broadcaster = [notification object];
     
-    [metacastersMenu removeItemAtIndex:[metacastersMenu indexOfItemWithRepresentedObject:broadcaster]];
+    int itemIndex = [metacastersMenu indexOfItemWithRepresentedObject:broadcaster];
+    if (itemIndex == -1) return;
+    
+    [metacastersMenu removeItemAtIndex:itemIndex];
     [noMetacasters setHidden:[[metacastersMenu itemArray] count] > 1];
 }
 
@@ -136,6 +134,11 @@
         if (preferences.allowBroadcasting && !server.isRunning)
             [server start];
     }
+}
+
+- (void)follow:(NSString*)shareName {
+    Broadcaster *broadcaster = [browser availableBroadcasterWithName:shareName];
+    self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithBroadcaster:broadcaster] autorelease];
 }
 
 #pragma mark Dealloc

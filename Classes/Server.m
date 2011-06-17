@@ -19,13 +19,21 @@ NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
 }
 
 - (BOOL)start {
+    self.isRunning = YES;
+    
 	netService = [[NSNetService alloc] initWithDomain:@"" type:kCymbalNetServiceTypeName name:@"" port:42681];
 	[netService scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 	[netService setDelegate:self];
+    
+    TXTRecordPacket *txtRecord = [[[TXTRecordPacket alloc] init] autorelease];
+    [txtRecord setSongData:APP_DELEGATE.mediaInfoSupplier.currentSongData];
+    
+    [self setTXTRecord:txtRecord];
+    
 	[netService publish];
     
     [[NotificationController sharedInstance] postBroadcastStartedNotification];
-    return self.isRunning = YES;
+    return self.isRunning;
 }
 
 - (void)stop {
@@ -45,6 +53,7 @@ NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
 - (void)setTXTRecord:(TXTRecordPacket*)info {
     if (!self.isRunning) return;
     
+    NSLog(@"Setting TXT record");
     NSDictionary *txtRecord = [NSDictionary dictionaryWithObject:[[info toJson] dataUsingEncoding:NSUTF8StringEncoding] forKey:kBroadcasterInfoKey];
     [netService setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:txtRecord]];
 }

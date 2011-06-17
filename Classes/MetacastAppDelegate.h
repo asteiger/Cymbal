@@ -41,4 +41,6 @@
 
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 
+- (void)follow:(NSString*)shareName;
+
 @end

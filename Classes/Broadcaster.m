@@ -3,6 +3,8 @@
 #import "NSNetService+TXTRecord.h"
 #import "Server.h"
 
+NSString *const kBrodcasterTXTRecordUpdateNotification = @"BroadcasterUpdatedTXTRecord";
+
 @implementation Broadcaster
 
 @synthesize songData;
@@ -29,6 +31,7 @@
     NSLog(@"TXT record update by %@. contents: %@", [service name], json);
     
     self.songData = [[TXTRecordPacket packetWithJson:json] songData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBrodcasterTXTRecordUpdateNotification object:self];
 }
 
 - (NSString*)name {
@@ -37,6 +40,7 @@
 
 - (void)dealloc
 {
+    [service stopMonitoring];
     [service release];
     service = nil;
     

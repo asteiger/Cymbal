@@ -74,7 +74,7 @@ NSString *const kAvailableBroadcasterRemovedNotification = @"AvailableServiceRem
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"Service discovered: %@, my server name is: %@", [aNetService name], [APP_DELEGATE.server name]);
-    //if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
+    if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
     
     Broadcaster *broadcaster = [Broadcaster broadcasterWithNetService:aNetService];
     [broadcasters addObject:broadcaster];

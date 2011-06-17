@@ -1,6 +1,8 @@
 #import "BroadcasterInfo.h"
 #import "MCSongData.h"
 
+extern NSString *const kBrodcasterTXTRecordUpdateNotification;
+
 @interface Broadcaster : NSObject <NSNetServiceDelegate> {
     NSNetService *service;
     MCSongData *songData;
