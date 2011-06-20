@@ -11,7 +11,7 @@
         self.broadcaster = aBroadcaster;
         [self bind:@"currentSongData" toObject:self.broadcaster withKeyPath:@"songData" options:nil];
         
-        self.mediaState = kMediaStateListening;
+        self.mediaState = [kMediaStateListening stringByAppendingFormat:@" to %@", [self.broadcaster name]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(broadcaterInfoUpdated) name:kBrodcasterTXTRecordUpdateNotification object:self.broadcaster];
     }

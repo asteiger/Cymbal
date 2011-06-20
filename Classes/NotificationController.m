@@ -20,8 +20,8 @@ static NotificationController *instance;
     if ((self = [super init])) {
         notifications = [[NSMutableArray arrayWithCapacity:0] retain];
         
-        NSRect rect = [[NSScreen mainScreen] visibleFrame];
-        NSPoint point = NSMakePoint(rect.size.width, rect.size.height - 20);
+        NSRect rect = [[NSScreen mainScreen] frame];
+        NSPoint point = NSMakePoint(rect.size.width, rect.size.height - 90);
         
         nvc = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
         

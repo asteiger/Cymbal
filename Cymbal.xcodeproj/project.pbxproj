@@ -37,6 +37,7 @@
 		2FF1D094130CBC930001628E /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D093130CBC930001628E /* Server.m */; };
 		2FF1D09A130CBCAD0001628E /* Browser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D099130CBCAD0001628E /* Browser.m */; };
 		2FF1D112130CD64E0001628E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF1D111130CD64E0001628E /* JSONKit.m */; };
+		2FF2CE2313AFDB1D0010D2F0 /* magnifying_glass_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF2CE2213AFDB1D0010D2F0 /* magnifying_glass_icon.png */; };
 		2FFF23031361E62500CDA256 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFF23021361E62500CDA256 /* MAAttachedWindow.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -113,6 +114,7 @@
 		2FF1D099130CBCAD0001628E /* Browser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Browser.m; sourceTree = "<group>"; };
 		2FF1D110130CD64E0001628E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		2FF1D111130CD64E0001628E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		2FF2CE2213AFDB1D0010D2F0 /* magnifying_glass_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifying_glass_icon.png; sourceTree = "<group>"; };
 		2FFF23011361E62500CDA256 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		2FFF23021361E62500CDA256 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Cymbal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cymbal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +223,7 @@
 		2F1DA77112F6821200CAF45E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2FF2CE2213AFDB1D0010D2F0 /* magnifying_glass_icon.png */,
 				2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */,
 				2F1DA77812F682B900CAF45E /* icon-small.png */,
 				2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */,
@@ -388,6 +391,7 @@
 				2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */,
 				2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */,
 				2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */,
+				2FF2CE2313AFDB1D0010D2F0 /* magnifying_glass_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

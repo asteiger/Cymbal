@@ -49,26 +49,26 @@
 					<object class="NSButton" id="1003716876">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{241, 79}, {25, 19}}</string>
+						<string key="NSFrame">{{233, 58}, {33, 25}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="416877821"/>
+						<reference key="NSNextKeyView" ref="472082746"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="715678663">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents"/>
-							<object class="NSFont" key="NSSupport">
-								<string key="NSName">LucidaGrande-Bold</string>
-								<double key="NSSize">12</double>
-								<int key="NSfFlags">16</int>
+							<object class="NSFont" key="NSSupport" id="457679552">
+								<string key="NSName">LucidaGrande</string>
+								<double key="NSSize">13</double>
+								<int key="NSfFlags">1044</int>
 							</object>
 							<reference key="NSControlView" ref="1003716876"/>
-							<int key="NSButtonFlags">-1228652289</int>
-							<int key="NSButtonFlags2">173</int>
+							<int key="NSButtonFlags">-2030812929</int>
+							<int key="NSButtonFlags2">35</int>
 							<object class="NSCustomResource" key="NSNormalImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">cymbal-icon-small</string>
+								<string key="NSResourceName">magnifying_glass_icon</string>
 							</object>
 							<string key="NSAlternateContents"/>
 							<string key="NSKeyEquivalent"/>
@@ -79,19 +79,16 @@
 					<object class="NSTextField" id="374093251">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{4, 23}, {201, 17}}</string>
+						<string key="NSFrame">{{5, 7}, {265, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="379139310">
 							<int key="NSCellFlags">67239488</int>
 							<int key="NSCellFlags2">272632320</int>
 							<string key="NSContents">Albumname</string>
-							<object class="NSFont" key="NSSupport" id="457679552">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">13</double>
-								<int key="NSfFlags">1044</int>
-							</object>
+							<reference key="NSSupport" ref="457679552"/>
 							<reference key="NSControlView" ref="374093251"/>
 							<object class="NSColor" key="NSBackgroundColor" id="769650866">
 								<int key="NSColorSpace">6</int>
@@ -116,10 +113,10 @@
 					<object class="NSTextField" id="472082746">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{4, 44}, {265, 17}}</string>
+						<string key="NSFrame">{{5, 25}, {265, 17}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="117118556"/>
+						<reference key="NSNextKeyView" ref="374093251"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="856808328">
 							<int key="NSCellFlags">67239488</int>
@@ -134,10 +131,10 @@
 					<object class="NSTextField" id="853414225">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{4, 58}, {265, 26}}</string>
+						<string key="NSFrame">{{5, 41}, {265, 19}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1003716876"/>
+						<reference key="NSNextKeyView" ref="117118556"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="349378350">
 							<int key="NSCellFlags">67239488</int>
@@ -145,7 +142,7 @@
 							<string key="NSContents">Songname</string>
 							<object class="NSFont" key="NSSupport">
 								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">18</double>
+								<double key="NSSize">16</double>
 								<int key="NSfFlags">16</int>
 							</object>
 							<reference key="NSControlView" ref="853414225"/>
@@ -156,16 +153,16 @@
 					<object class="NSButton" id="117118556">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{197, 4}, {69, 25}}</string>
+						<string key="NSFrame">{{156, 58}, {69, 25}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="374093251"/>
+						<reference key="NSNextKeyView" ref="1003716876"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="35573257">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Follow</string>
-							<object class="NSFont" key="NSSupport">
+							<object class="NSFont" key="NSSupport" id="554215427">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">11</double>
 								<int key="NSfFlags">16</int>
@@ -182,29 +179,26 @@
 					<object class="NSTextField" id="416877821">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{4, 85}, {232, 13}}</string>
+						<string key="NSFrame">{{5, 64}, {146, 14}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="472082746"/>
+						<reference key="NSNextKeyView" ref="853414225"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="73173406">
 							<int key="NSCellFlags">67239488</int>
 							<int key="NSCellFlags2">272632320</int>
 							<string key="NSContents">Share</string>
-							<object class="NSFont" key="NSSupport">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">10</double>
-								<int key="NSfFlags">16</int>
-							</object>
+							<reference key="NSSupport" ref="554215427"/>
 							<reference key="NSControlView" ref="416877821"/>
 							<reference key="NSBackgroundColor" ref="769650866"/>
 							<reference key="NSTextColor" ref="393080223"/>
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{274, 104}</string>
+				<string key="NSFrameSize">{274, 88}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="416877821"/>
 				<string key="NSClassName">BroadcasterMenuItemView</string>
 			</object>
 		</object>
@@ -308,11 +302,11 @@
 						<reference key="object" ref="1005"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1003716876"/>
 							<reference ref="416877821"/>
+							<reference ref="1003716876"/>
+							<reference ref="117118556"/>
 							<reference ref="853414225"/>
 							<reference ref="472082746"/>
-							<reference ref="117118556"/>
 							<reference ref="374093251"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -569,8 +563,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">cymbal-icon-small</string>
-			<string key="NS.object.0">{23.2476, 15}</string>
+			<string key="NS.key.0">magnifying_glass_icon</string>
+			<string key="NS.object.0">{17, 11}</string>
 		</object>
 	</data>
 </archive>
