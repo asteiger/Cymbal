@@ -25,6 +25,14 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    
+    int pos = [APP_DELEGATE.browser positionOfBroadcasterWithName:self.shareName];
+    
+    if (pos % 2) {
+        [[NSColor colorWithPatternImage:[NSImage imageNamed:@"crosshatch.png"]] setFill];
+        NSRectFill(dirtyRect);
+    }
+    
     if (shareNameField == nil || self.currentSongData == nil) return;
     [shareNameField setStringValue:shareName];
     

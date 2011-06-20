@@ -105,6 +105,7 @@
     BroadcasterMenuItemView *view = (BroadcasterMenuItemView*)viewController.view;
     [view bind:@"shareName" toObject:broadcaster withKeyPath:@"name" options:nil];
     [view bind:@"currentSongData" toObject:broadcaster withKeyPath:@"songData" options:nil];
+    
 
     [item setView:view];
     [viewController release];

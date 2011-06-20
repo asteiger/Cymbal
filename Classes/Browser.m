@@ -111,4 +111,8 @@ NSString *const kAvailableBroadcasterRemovedNotification = @"AvailableServiceRem
     return nil;
 }
 
+- (int)positionOfBroadcasterWithName:(NSString*)name {
+    return [broadcasters indexOfObject:[self availableBroadcasterWithName:name]];
+}
+
 @end

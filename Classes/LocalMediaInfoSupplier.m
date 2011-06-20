@@ -56,7 +56,6 @@
 }
 
 - (void)updateMediaProperties {
-    
     self.mediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
 	
     if (self.mediaState == kMediaStateIdle) {

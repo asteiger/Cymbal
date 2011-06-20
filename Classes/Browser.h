@@ -18,4 +18,6 @@ extern NSString *const kAvailableBroadcasterRemovedNotification;
 - (NSNetService*)serviceWithName:(NSString*)name;
 
 - (Broadcaster*)availableBroadcasterWithName:(NSString*)name;
+- (int)positionOfBroadcasterWithName:(NSString*)name;
+
 @end
