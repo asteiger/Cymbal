@@ -1,5 +1,5 @@
 #import "LocalMediaInfoSupplier.h"
-#import "BroadcasterInfo.h"
+#import "TXTRecordPacket.h"
 #import "MCSongData.h"
 #import "NotificationController.h"
 #import "PreferencesController.h"

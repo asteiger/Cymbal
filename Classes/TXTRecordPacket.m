@@ -1,4 +1,4 @@
-#import "BroadcasterInfo.h"
+#import "TXTRecordPacket.h"
 #import "JSONKit.h"
 
 const float kProtocolVersion = 1.0;

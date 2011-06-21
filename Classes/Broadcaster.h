@@ -1,4 +1,4 @@
-#import "BroadcasterInfo.h"
+#import "TXTRecordPacket.h"
 #import "MCSongData.h"
 
 extern NSString *const kBrodcasterTXTRecordUpdateNotification;

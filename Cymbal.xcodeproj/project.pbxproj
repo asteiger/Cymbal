@@ -90,7 +90,7 @@
 		2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		2F30CDE9139452FB009DF94B /* NSNetService+TXTRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNetService+TXTRecord.h"; sourceTree = "<group>"; };
 		2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+TXTRecord.m"; sourceTree = "<group>"; };
-		2F35683E130DCB6A000EC787 /* BroadcasterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcasterInfo.h; sourceTree = "<group>"; };
+		2F35683E130DCB6A000EC787 /* TXTRecordPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; path = TXTRecordPacket.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* TXTRecordPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTRecordPacket.m; sourceTree = "<group>"; };
 		2F74F77D13AA9F8C008B252B /* NSString+CharacterRemoval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CharacterRemoval.h"; sourceTree = "<group>"; };
 		2F74F77E13AA9F8C008B252B /* NSString+CharacterRemoval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CharacterRemoval.m"; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 			children = (
 				2FB40CDE12F89163004A0363 /* MCSongData.h */,
 				2FB40CDF12F89163004A0363 /* MCSongData.m */,
-				2F35683E130DCB6A000EC787 /* BroadcasterInfo.h */,
+				2F35683E130DCB6A000EC787 /* TXTRecordPacket.h */,
 				2F35683F130DCB6A000EC787 /* TXTRecordPacket.m */,
 				2F30CDC91390653D009DF94B /* Broadcaster.h */,
 				2F30CDCA1390653D009DF94B /* Broadcaster.m */,

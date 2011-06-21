@@ -1,5 +1,5 @@
 #import "Server.h"
-#import "BroadcasterInfo.h"
+#import "TXTRecordPacket.h"
 #import "NotificationController.h"
 
 NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
