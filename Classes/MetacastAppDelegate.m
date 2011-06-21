@@ -145,6 +145,7 @@
 }
 
 - (void)follow:(NSString*)shareName {
+    [server stop];
     Broadcaster *broadcaster = [browser availableBroadcasterWithName:shareName];
     self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithBroadcaster:broadcaster] autorelease];
 }
