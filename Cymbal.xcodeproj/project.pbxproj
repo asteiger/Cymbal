@@ -15,6 +15,9 @@
 		2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FF2D0136396B600E4B57F /* NotificationView.xib */; };
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
 		2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F294AD713900F7600CA5122 /* PreferencesController.m */; };
+		2F2A412713B1081B009DC189 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F2A412613B1081B009DC189 /* Growl.framework */; };
+		2F2A412913B1083B009DC189 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F2A412613B1081B009DC189 /* Growl.framework */; };
+		2F2A412B13B10899009DC189 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 2F2A412A13B10899009DC189 /* Growl Registration Ticket.growlRegDict */; };
 		2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDCA1390653D009DF94B /* Broadcaster.m */; };
 		2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */; };
 		2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */; };
@@ -50,6 +53,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2F07C534138B0E3B000E816B /* Sparkle.framework in CopyFiles */,
+				2F2A412913B1083B009DC189 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +79,8 @@
 		2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalMediaInfoSupplier.m; sourceTree = "<group>"; };
 		2F294AD613900F7600CA5122 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		2F294AD713900F7600CA5122 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		2F2A412613B1081B009DC189 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		2F2A412A13B10899009DC189 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		2F30CDC91390653D009DF94B /* Broadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcaster.h; sourceTree = "<group>"; };
 		2F30CDCA1390653D009DF94B /* Broadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcaster.m; sourceTree = "<group>"; };
 		2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BroadcasterMenuItemView.xib; path = ../Classes/BroadcasterMenuItemView.xib; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */,
 				2F07C531138B0DC9000E816B /* Sparkle.framework in Frameworks */,
+				2F2A412713B1081B009DC189 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F2A412613B1081B009DC189 /* Growl.framework */,
 				2F07C530138B0DC9000E816B /* Sparkle.framework */,
 				2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
@@ -201,6 +209,7 @@
 				2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				2FB83DB512E0142300A9E754 /* Localizable.strings */,
+				2F2A412A13B10899009DC189 /* Growl Registration Ticket.growlRegDict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -332,6 +341,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				2F07C533138B0E17000E816B /* CopyFiles */,
+				2F2A412C13B10F30009DC189 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -382,10 +392,27 @@
 				2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */,
 				2FF2CE2313AFDB1D0010D2F0 /* magnifying_glass_icon.png in Resources */,
 				2FF2CE2613AFEF4B0010D2F0 /* crosshatch.png in Resources */,
+				2F2A412B13B10899009DC189 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F2A412C13B10F30009DC189 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto -arch i386 \"$TARGET_BUILD_DIR\" \"$TARGET_BUILD_DIR Intel\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -448,7 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,6 +494,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Cymbal;
 				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 			};
 			name = Debug;
 		};
@@ -474,7 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +518,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Cymbal;
 				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 			};
 			name = Release;
 		};

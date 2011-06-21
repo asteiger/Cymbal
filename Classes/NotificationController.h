@@ -1,8 +1,9 @@
 #import "MCSongData.h"
 #import "MAAttachedWindow.h"
 #import "NotificationViewController.h"
+#import <Growl/GrowlApplicationBridge.h>
 
-@interface NotificationController : NSObject  {
+@interface NotificationController : NSObject <GrowlApplicationBridgeDelegate> {
     NotificationViewController *nvc;
     MAAttachedWindow *notificationWindow;
     NSTimer *timer;

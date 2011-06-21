@@ -30,6 +30,7 @@ static NotificationController *instance;
         [notificationWindow setLevel:NSFloatingWindowLevel];
         
         originalViewFrame = nvc.view.frame;
+        [GrowlApplicationBridge setGrowlDelegate:self];
     }
     
     return self;
@@ -37,6 +38,12 @@ static NotificationController *instance;
 
 - (void)notificationWindowWithTitle:(NSString*)title Subject1:(NSString*)subject1 Subject2:(NSString*)subject2 {
     if ([title isEqualToString:@""]) title = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    
+    
+    if ([GrowlApplicationBridge isGrowlInstalled] && [GrowlApplicationBridge isGrowlRunning]) {
+        [GrowlApplicationBridge notifyWithTitle:title description:[subject1 stringByAppendingFormat:@"\n%@", subject2] notificationName:@"Cymbal Information" iconData:nil priority:1 isSticky:0 clickContext:nil];
+        return;
+    }
     
     NSDictionary *notification = [NSDictionary dictionaryWithObjectsAndKeys:
                                   title, @"title",
