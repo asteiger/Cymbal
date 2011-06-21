@@ -4,6 +4,8 @@
 #import "NotificationController.h"
 #import "PreferencesController.h"
 
+NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
+
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
 @end
@@ -13,7 +15,7 @@
 - (id)initWithServer:(Server*)server {
 	if ((self = [super init])) {
         _server = [server retain];
-        _iTunes = [[SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"] retain];
+        
         
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
 		NSLog(@"Registered iTunes listener");
@@ -56,12 +58,15 @@
 }
 
 - (void)updateMediaProperties {
+    self.mediaState = kMediaStateIdle;
+    self.currentSongData = nil;
+    if (![self iTunesIsRunning]) return;
+    
+    if (_iTunes == nil) _iTunes = [[SBApplication applicationWithBundleIdentifier:iTunesBundleIdentifier] retain];
+    
     self.mediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
-	
-    if (self.mediaState == kMediaStateIdle) {
-        self.currentSongData = nil;
-        
-    } else {
+
+    if (self.mediaState != kMediaStateIdle) {
         iTunesTrack *currentTrack = [_iTunes currentTrack];
         self.currentSongData = [MCSongData songDataWithArtist:[currentTrack artist] 
                                                     SongTitle:[currentTrack name]
@@ -69,6 +74,11 @@
                                 ];
     }
     
+}
+
+- (BOOL)iTunesIsRunning {
+    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:iTunesBundleIdentifier];
+    return [apps count] > 0;
 }
 
 - (void)dealloc {
@@ -83,7 +93,7 @@
 }
 
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning {
-    if (iTunesPlayerState != iTunesEPlSStopped && iTunesPlayerState != iTunesEPlSPaused) 
+    if (iTunesPlayerState != 0 && iTunesPlayerState != iTunesEPlSStopped && iTunesPlayerState != iTunesEPlSPaused) 
         return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
     
     return kMediaStateIdle;

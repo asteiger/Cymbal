@@ -11,5 +11,6 @@
 - (id)initWithServer:(Server*)server;
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 - (void)broadcastCurrentSongData;
+- (BOOL)iTunesIsRunning;
 
 @end
