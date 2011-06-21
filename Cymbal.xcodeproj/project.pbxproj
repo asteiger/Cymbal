@@ -12,14 +12,11 @@
 		2F07C534138B0E3B000E816B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F07C530138B0DC9000E816B /* Sparkle.framework */; };
 		2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2F07C535138B11A9000E816B /* dsa_pub.pem */; };
 		2F1DA6E912F676A600CAF45E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1DA6E812F676A600CAF45E /* NotificationController.m */; };
-		2F1DA77512F6824600CAF45E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77412F6824600CAF45E /* icon.png */; };
-		2F1DA77912F682B900CAF45E /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F1DA77812F682B900CAF45E /* icon-small.png */; };
 		2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F1FF2D0136396B600E4B57F /* NotificationView.xib */; };
 		2F232E2C12E2542000E14DF9 /* LocalMediaInfoSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F232E2B12E2542000E14DF9 /* LocalMediaInfoSupplier.m */; };
 		2F294AD813900F7600CA5122 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F294AD713900F7600CA5122 /* PreferencesController.m */; };
 		2F30CDCB1390653D009DF94B /* Broadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDCA1390653D009DF94B /* Broadcaster.m */; };
 		2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */; };
-		2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */; };
 		2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */; };
 		2F30CDE813944300009DF94B /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */; };
 		2F30CDEB139452FC009DF94B /* NSNetService+TXTRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */; };
@@ -72,8 +69,6 @@
 		2F07C535138B11A9000E816B /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		2F1DA6E712F676A600CAF45E /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		2F1DA6E812F676A600CAF45E /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
-		2F1DA77412F6824600CAF45E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		2F1DA77812F682B900CAF45E /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		2F1FF2D0136396B600E4B57F /* NotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationView.xib; sourceTree = "<group>"; };
 		2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Cymbal-Info.plist"; sourceTree = "<group>"; };
 		2F232E2A12E2542000E14DF9 /* LocalMediaInfoSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalMediaInfoSupplier.h; sourceTree = "<group>"; };
@@ -83,7 +78,6 @@
 		2F30CDC91390653D009DF94B /* Broadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcaster.h; sourceTree = "<group>"; };
 		2F30CDCA1390653D009DF94B /* Broadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcaster.m; sourceTree = "<group>"; };
 		2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BroadcasterMenuItemView.xib; path = ../Classes/BroadcasterMenuItemView.xib; sourceTree = "<group>"; };
-		2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar_placeholder.gif; sourceTree = "<group>"; };
 		2F30CDE213943AAB009DF94B /* BroadcasterMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcasterMenuItemView.h; sourceTree = "<group>"; };
 		2F30CDE313943AAB009DF94B /* BroadcasterMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroadcasterMenuItemView.m; sourceTree = "<group>"; };
 		2F30CDE613944300009DF94B /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
@@ -92,7 +86,6 @@
 		2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+TXTRecord.m"; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* BroadcasterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroadcasterInfo.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* TXTRecordPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTRecordPacket.m; sourceTree = "<group>"; };
-		2F356841130DCBA0000EC787 /* PacketSample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacketSample.json; sourceTree = "<group>"; };
 		2F74F77D13AA9F8C008B252B /* NSString+CharacterRemoval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CharacterRemoval.h"; sourceTree = "<group>"; };
 		2F74F77E13AA9F8C008B252B /* NSString+CharacterRemoval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CharacterRemoval.m"; sourceTree = "<group>"; };
 		2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cymbal-icon-small.png"; sourceTree = "<group>"; };
@@ -202,13 +195,12 @@
 				2F30CDDE1391C609009DF94B /* BroadcasterMenuItemView.xib */,
 				2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */,
 				2FC3B4F1135614D10003D3D4 /* MainMenu.xib */,
+				2F1FF2D0136396B600E4B57F /* NotificationView.xib */,
 				2F07C535138B11A9000E816B /* dsa_pub.pem */,
 				2F1DA77112F6821200CAF45E /* Images */,
 				2F232D9512E21A4400E14DF9 /* Cymbal-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				2FB83DB512E0142300A9E754 /* Localizable.strings */,
-				2F356841130DCBA0000EC787 /* PacketSample.json */,
-				2F1FF2D0136396B600E4B57F /* NotificationView.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -227,10 +219,7 @@
 			children = (
 				2FF2CE2513AFEF4B0010D2F0 /* crosshatch.png */,
 				2FF2CE2213AFDB1D0010D2F0 /* magnifying_glass_icon.png */,
-				2F30CDE01391CE72009DF94B /* avatar_placeholder.gif */,
-				2F1DA77812F682B900CAF45E /* icon-small.png */,
 				2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */,
-				2F1DA77412F6824600CAF45E /* icon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -385,15 +374,12 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2FB83DB612E0142300A9E754 /* Localizable.strings in Resources */,
-				2F1DA77512F6824600CAF45E /* icon.png in Resources */,
-				2F1DA77912F682B900CAF45E /* icon-small.png in Resources */,
 				2FC3B4F3135614D10003D3D4 /* MainMenu.xib in Resources */,
 				2F1FF2D1136396B600E4B57F /* NotificationView.xib in Resources */,
 				2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */,
 				2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */,
 				2F07C536138B11A9000E816B /* dsa_pub.pem in Resources */,
 				2F30CDDF1391C609009DF94B /* BroadcasterMenuItemView.xib in Resources */,
-				2F30CDE11391CE72009DF94B /* avatar_placeholder.gif in Resources */,
 				2FF2CE2313AFDB1D0010D2F0 /* magnifying_glass_icon.png in Resources */,
 				2FF2CE2613AFEF4B0010D2F0 /* crosshatch.png in Resources */,
 			);
