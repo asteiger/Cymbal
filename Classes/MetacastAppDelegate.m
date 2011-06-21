@@ -116,6 +116,13 @@
 - (void)availableBroadcasterRemoved:(NSNotification*)notification {
     Broadcaster *broadcaster = [notification object];
     
+    if ([self.mediaInfoSupplier isKindOfClass:[RemoteMediaInfoSupplier class]]) {
+        RemoteMediaInfoSupplier *remote = (RemoteMediaInfoSupplier*)self.mediaInfoSupplier;
+        if (remote.broadcaster == broadcaster) {
+            self.mediaInfoSupplier = [[[LocalMediaInfoSupplier alloc] initWithServer:server] autorelease];
+        }
+    }
+    
     int itemIndex = [metacastersMenu indexOfItemWithRepresentedObject:broadcaster];
     if (itemIndex == -1) return;
     
