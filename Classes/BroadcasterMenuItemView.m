@@ -36,9 +36,13 @@
     if (shareNameField == nil || self.currentSongData == nil) return;
     [shareNameField setStringValue:shareName];
     
-    [songNameField setStringValue:currentSongData.songTitle];
-    [artistNameField setStringValue:currentSongData.artist];
-    [albumNameField setStringValue:currentSongData.album];
+    NSString *songTitle = [self.currentSongData.songTitle length] != 0 ? self.currentSongData.songTitle : @"";
+    NSString *songArtist = [self.currentSongData.artist length] != 0 ? self.currentSongData.artist : @"";
+    NSString *songAlbum = [self.currentSongData.album length] != 0 ? self.currentSongData.album : @"";
+    
+    [songNameField setStringValue:songTitle];
+    [artistNameField setStringValue:songArtist];
+    [albumNameField setStringValue:songAlbum];
     
     [followButton setEnabled:YES];
     [followButton setTitle:@"Follow"];
