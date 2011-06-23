@@ -37,6 +37,7 @@ static NotificationController *instance;
 }
 
 - (void)notificationWindowWithTitle:(NSString*)title Subject1:(NSString*)subject1 Subject2:(NSString*)subject2 {
+    if (![PreferencesController sharedInstance].showDesktopNotification) return;
     if ([title isEqualToString:@""]) title = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
     
     
