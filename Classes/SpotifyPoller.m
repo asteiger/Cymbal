@@ -8,11 +8,9 @@
 
 @implementation SpotifyPoller
 
-NSString *const SpotifyBundleIdentifier = @"com.spotify.client";
-
 - (id)init {
     if ((self = [super init])) {
-        _spotify = [[SBApplication applicationWithBundleIdentifier:SpotifyBundleIdentifier] retain];
+        _spotify = [[SBApplication applicationWithBundleIdentifier:kSpotifyBundleIdentifier] retain];
         _pollEnabled = YES;
         
         static dispatch_once_t onceToken;
@@ -27,7 +25,7 @@ NSString *const SpotifyBundleIdentifier = @"com.spotify.client";
 - (void)poll {
     if (!_pollEnabled) return;
     
-    if (_spotify.playerState != _playerState || ![_currentTrackUrl isEqualToString:_spotify.currentTrack.spotifyUrl]) {
+    if (_spotify.playerState != _playerState || (_currentTrackUrl != nil && ![_currentTrackUrl isEqualToString:_spotify.currentTrack.spotifyUrl])) {
         _playerState = _spotify.playerState;
         
         if (nil != _currentTrackUrl) [_currentTrackUrl release];

@@ -44,6 +44,7 @@
 		BAB550D41435590A0003C8A4 /* cymbal.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAB550D31435590A0003C8A4 /* cymbal.icns */; };
 		BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */; };
 		BAD9F6441454E0A100CFB1E7 /* RdioPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6431454E0A100CFB1E7 /* RdioPoller.m */; };
+		BAD9F64D14561D0F00CFB1E7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F64C14561D0E00CFB1E7 /* CoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -125,6 +126,7 @@
 		BAD9F6411454E07500CFB1E7 /* Rdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rdio.h; sourceTree = "<group>"; };
 		BAD9F6421454E0A100CFB1E7 /* RdioPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RdioPoller.h; sourceTree = "<group>"; };
 		BAD9F6431454E0A100CFB1E7 /* RdioPoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RdioPoller.m; sourceTree = "<group>"; };
+		BAD9F64C14561D0E00CFB1E7 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD9F64D14561D0F00CFB1E7 /* CoreServices.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */,
 				2F2A412713B1081B009DC189 /* Growl.framework in Frameworks */,
@@ -144,6 +147,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BAD9F648145586E600CFB1E7 /* Scripting Bridges */,
 				2F30CDE5139442CE009DF94B /* Additions */,
 				2F27ACDB12F3D03F008E1BDD /* Model */,
 				2F27ACDD12F3D04B008E1BDD /* Control */,
@@ -163,6 +167,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAD9F64C14561D0E00CFB1E7 /* CoreServices.framework */,
 				2F2A412613B1081B009DC189 /* Growl.framework */,
 				2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
@@ -331,14 +336,21 @@
 			isa = PBXGroup;
 			children = (
 				2FFF23011361E62500CDA256 /* MAAttachedWindow.h */,
-				BAD9F633145247BB00CFB1E7 /* Spotify.h */,
-				BAD9F6411454E07500CFB1E7 /* Rdio.h */,
 				2FFF23021361E62500CDA256 /* MAAttachedWindow.m */,
-				2FC3B4F413568D9F0003D3D4 /* iTunes.h */,
 				2FF1D110130CD64E0001628E /* JSONKit.h */,
 				2FF1D111130CD64E0001628E /* JSONKit.m */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		BAD9F648145586E600CFB1E7 /* Scripting Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				BAD9F633145247BB00CFB1E7 /* Spotify.h */,
+				BAD9F6411454E07500CFB1E7 /* Rdio.h */,
+				2FC3B4F413568D9F0003D3D4 /* iTunes.h */,
+			);
+			name = "Scripting Bridges";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

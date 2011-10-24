@@ -9,6 +9,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
 - (NSString*)spotifyMediaStateWithPlayerState:(SpotifyEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
+- (NSString*)rdioMediaStateWithPlayerState:(RdioEPSS)rdioPlayerState ServerIsRunning:(BOOL)isRunning; 
 @end
 
 @implementation LocalMediaInfoSupplier
@@ -29,7 +30,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 }
 
 - (void)receivedMediaNotification:(NSNotification *)mediaNotification {
-	NSLog(@"Got iTunes notification");
+	NSLog(@"Got media notification");
     
 	[self updateMediaProperties];
     
@@ -57,13 +58,29 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 - (void)updateMediaProperties {
     self.mediaState = kMediaStateIdle;
     self.currentSongData = nil;
-    //if (![self iTunesIsRunning]) return;
+
+    NSString *iTunesMediaState = kMediaStateIdle;
+    NSString *spotifyMediaState = kMediaStateIdle;
+    NSString *rdioMediaState = kMediaStateIdle;
     
-    if (_iTunes == nil) _iTunes = [[SBApplication applicationWithBundleIdentifier:iTunesBundleIdentifier] retain];
-    if (_spotify == nil) _spotify = [[SBApplication applicationWithBundleIdentifier:@"com.spotify.client"] retain];
+    if ([self applicationIsRunning:kItunesBundleIdentifier]) {
+        if (_iTunes == nil) _iTunes = [[SBApplication applicationWithBundleIdentifier:kItunesBundleIdentifier] retain];
+
+        iTunesMediaState = [self mediaStateWithPlayerState:_iTunes.playerState ServerIsRunning:_server.isRunning];
+    }
     
-    NSString *iTunesMediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
-    NSString *spotifyMediaState = [self spotifyMediaStateWithPlayerState:_spotify.playerState ServerIsRunning:_server.isRunning];
+    if ([self applicationIsRunning:kSpotifyBundleIdentifier]) {
+        if (_spotify == nil) _spotify = [[SBApplication applicationWithBundleIdentifier:kSpotifyBundleIdentifier] retain];
+        
+        spotifyMediaState = [self spotifyMediaStateWithPlayerState:_spotify.playerState ServerIsRunning:_server.isRunning];
+    }
+    
+    if ([self applicationIsRunning:kRdioBundleIdentifier]) {
+        if (_rdio == nil) _rdio = [[SBApplication applicationWithBundleIdentifier:kRdioBundleIdentifier] retain];
+        
+        rdioMediaState = [self rdioMediaStateWithPlayerState:_rdio.playerState ServerIsRunning:_server.isRunning];
+    }
+    
     
     if (![iTunesMediaState isEqualToString:kMediaStateIdle]) {
         self.mediaState = iTunesMediaState;
@@ -73,13 +90,11 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
         if (nil != _iTunes.currentStreamTitle) {
             self.currentSongData = [MCSongData songDataWithArtist:currentTrack.name 
                                                         SongTitle:_iTunes.currentStreamTitle
-                                                            Album:@""
-                                    ];
+                                                            Album:@""];
         } else {
             self.currentSongData = [MCSongData songDataWithArtist:currentTrack.artist 
                                                         SongTitle:currentTrack.name
-                                                            Album:currentTrack.album
-                                    ];
+                                                            Album:currentTrack.album];
         }
         
     } else if (![spotifyMediaState isEqualToString:kMediaStateIdle]) {
@@ -88,13 +103,19 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
                                                     SongTitle:_spotify.currentTrack.name 
                                                         Album:_spotify.currentTrack.album];
         
-    } else {
+    } else if (![rdioMediaState isEqualToString:kMediaStateIdle]) {
+        self.mediaState = rdioMediaState;
+        self.currentSongData = [MCSongData songDataWithArtist:_rdio.currentTrack.artist 
+                                                    SongTitle:_rdio.currentTrack.name 
+                                                        Album:_rdio.currentTrack.album];
+    }
+    else {
         self.mediaState = kMediaStateIdle;
     }
 }
 
-- (BOOL)iTunesIsRunning {
-    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:iTunesBundleIdentifier];
+- (BOOL)applicationIsRunning:(NSString*)bundleIdentifer {
+    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifer];
     return [apps count] > 0;
 }
 
@@ -119,6 +140,13 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
 - (NSString*)spotifyMediaStateWithPlayerState:(SpotifyEPlS)spotifyPlayerState ServerIsRunning:(BOOL)isRunning {
     if (spotifyPlayerState != 0 && spotifyPlayerState != SpotifyEPlSStopped && spotifyPlayerState != SpotifyEPlSPaused) 
+        return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
+    
+    return kMediaStateIdle;
+}
+
+- (NSString*)rdioMediaStateWithPlayerState:(RdioEPSS)rdioPlayerState ServerIsRunning:(BOOL)isRunning {
+    if (rdioPlayerState != 0 && rdioPlayerState != RdioEPSSStopped && rdioPlayerState != RdioEPSSPaused) 
         return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
     
     return kMediaStateIdle;

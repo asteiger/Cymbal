@@ -1,7 +1,5 @@
 #import "RdioPoller.h"
 
-NSString *const RdioBundleIdentifier = @"com.rdio.desktop";
-
 @interface RdioPoller (Private)
 
 - (void)poll;
@@ -12,7 +10,7 @@ NSString *const RdioBundleIdentifier = @"com.rdio.desktop";
 
 - (id)init {
     if ((self = [super init])) {
-        _rdio = [[SBApplication applicationWithBundleIdentifier:RdioBundleIdentifier] retain];
+        _rdio = [[SBApplication applicationWithBundleIdentifier:kRdioBundleIdentifier] retain];
         _pollingEnabled = YES;
         
         static dispatch_once_t onceToken;
@@ -27,7 +25,7 @@ NSString *const RdioBundleIdentifier = @"com.rdio.desktop";
 - (void)poll {
     if (!_pollingEnabled) return;
     
-    if (_playerState != _rdio.playerState || ![_currentTrackUrl isEqualToString:_rdio.currentTrack.rdioUrl]) {
+    if (_playerState != _rdio.playerState || (_currentTrackUrl != nil && ![_currentTrackUrl isEqualToString:_rdio.currentTrack.rdioUrl])) {
         _playerState = _rdio.playerState;
 
         if (nil != _currentTrackUrl) [_currentTrackUrl release];

@@ -1,14 +1,13 @@
-//
-// Prefix header for all source files of the 'MetaCast' target in the 'MetaCast' project
-//
-
 #ifdef __OBJC__
 
 #import <Cocoa/Cocoa.h>
 #import "MetacastAppDelegate.h"
 
 #define APP_DELEGATE ((MetacastAppDelegate*)[NSApp delegate])
-#define kGrowlNotifier @"MCGrowlController"
 #define kCymbalNetServiceTypeName @"_cymbalapp._tcp."
+
+#define kItunesBundleIdentifier @"com.apple.itunes"
+#define kSpotifyBundleIdentifier @"com.spotify.client"
+#define kRdioBundleIdentifier @"com.rdio.desktop"
 
 #endif
