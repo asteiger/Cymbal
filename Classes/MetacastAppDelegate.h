@@ -2,6 +2,8 @@
 #import "Server.h"
 #import "Browser.h"
 #import "PreferencesController.h"
+#import "RdioPoller.h"
+#import "SpotifyPoller.h"
 
 @interface MetacastAppDelegate : NSObject <NSApplicationDelegate> {
     Server *server;
@@ -20,6 +22,9 @@
     NSNumber *alwaysNo;
     
     PreferencesController *preferences;
+    
+    RdioPoller *rdioPoller;
+    SpotifyPoller *spotifyPoller;
 }
 
 @property (nonatomic, readonly) Server *server;
@@ -31,6 +36,8 @@
 @property (nonatomic, retain) IBOutlet NSMenuItem *noListeners;
 @property (nonatomic, retain) IBOutlet NSMenuItem *noMetacasters;
 @property (nonatomic, retain) NSNumber *alwaysNo;
+@property (nonatomic, retain) RdioPoller *rdioPoller;
+@property (nonatomic, retain) SpotifyPoller *spotifyPoller;
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (IBAction)toggleShowDesktopNotifications:(id)sender;

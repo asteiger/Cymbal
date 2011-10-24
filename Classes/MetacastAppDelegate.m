@@ -16,6 +16,8 @@
 @synthesize noListeners;
 @synthesize noMetacasters;
 @synthesize alwaysNo;
+@synthesize rdioPoller;
+@synthesize spotifyPoller;
 
 #pragma mark App Delegate Methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -39,6 +41,9 @@
     [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
     
     self.alwaysNo = [NSNumber numberWithBool:NO];
+    
+    self.rdioPoller = [[RdioPoller alloc] init];
+    self.spotifyPoller = [[SpotifyPoller alloc] init];
 }
 
 - (void)awakeFromNib {
@@ -165,6 +170,9 @@
     self.statusMenu = nil;
 	self.mediaInfoSupplier = nil;
     self.alwaysNo = nil;
+    
+    self.rdioPoller = nil;
+    self.spotifyPoller = nil;
     
 	[super dealloc];
 
