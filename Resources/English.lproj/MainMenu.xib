@@ -42,9 +42,6 @@
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
-			<object class="NSCustomObject" id="281014474">
-				<string key="NSClassName">SUUpdater</string>
-			</object>
 			<object class="NSMenu" id="301681542">
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
@@ -729,11 +726,6 @@
 						<reference key="parent" ref="301681542"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">683</int>
-						<reference key="object" ref="281014474"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">684</int>
 						<reference key="object" ref="987141077"/>
 						<reference key="parent" ref="301681542"/>
@@ -765,7 +757,6 @@
 					<string>556.IBPluginDependency</string>
 					<string>557.IBPluginDependency</string>
 					<string>682.IBPluginDependency</string>
-					<string>683.IBPluginDependency</string>
 					<string>684.IBPluginDependency</string>
 					<string>687.IBPluginDependency</string>
 				</object>
@@ -781,7 +772,6 @@
 							<string key="toolTip">Connected to ...</string>
 						</object>
 					</object>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
