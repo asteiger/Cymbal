@@ -8,6 +8,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
 @interface LocalMediaInfoSupplier (Private)
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
+- (NSString*)spotifyMediaStateWithPlayerState:(SpotifyEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning;
 @end
 
 @implementation LocalMediaInfoSupplier
@@ -17,8 +18,8 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
         _server = [server retain];
         
         
-		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedItunesNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
-		NSLog(@"Registered iTunes listener");
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedMediaNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedMediaNotification:) name:@"SpotifyPlayerStateChanged" object:nil];
         
         [self updateMediaProperties];
         
@@ -27,11 +28,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 	return self;
 }
 
-- (void)broadcastCurrentSongData {
-    
-}
-
-- (void)receivedItunesNotification:(NSNotification *)mediaNotification {
+- (void)receivedMediaNotification:(NSNotification *)mediaNotification {
 	NSLog(@"Got iTunes notification");
     
 	[self updateMediaProperties];
@@ -60,20 +57,40 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 - (void)updateMediaProperties {
     self.mediaState = kMediaStateIdle;
     self.currentSongData = nil;
-    if (![self iTunesIsRunning]) return;
+    //if (![self iTunesIsRunning]) return;
     
     if (_iTunes == nil) _iTunes = [[SBApplication applicationWithBundleIdentifier:iTunesBundleIdentifier] retain];
+    if (_spotify == nil) _spotify = [[SBApplication applicationWithBundleIdentifier:@"com.spotify.client"] retain];
     
-    self.mediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
-
-    if (self.mediaState != kMediaStateIdle) {
+    NSString *iTunesMediaState = [self mediaStateWithPlayerState:[_iTunes playerState] ServerIsRunning:_server.isRunning];
+    NSString *spotifyMediaState = [self spotifyMediaStateWithPlayerState:_spotify.playerState ServerIsRunning:_server.isRunning];
+    
+    if (![iTunesMediaState isEqualToString:kMediaStateIdle]) {
+        self.mediaState = iTunesMediaState;
         iTunesTrack *currentTrack = [_iTunes currentTrack];
-        self.currentSongData = [MCSongData songDataWithArtist:[currentTrack artist] 
-                                                    SongTitle:[currentTrack name]
-                                                        Album:[currentTrack album]
-                                ];
+        
+        
+        if (nil != _iTunes.currentStreamTitle) {
+            self.currentSongData = [MCSongData songDataWithArtist:currentTrack.name 
+                                                        SongTitle:_iTunes.currentStreamTitle
+                                                            Album:@""
+                                    ];
+        } else {
+            self.currentSongData = [MCSongData songDataWithArtist:currentTrack.artist 
+                                                        SongTitle:currentTrack.name
+                                                            Album:currentTrack.album
+                                    ];
+        }
+        
+    } else if (![spotifyMediaState isEqualToString:kMediaStateIdle]) {
+        self.mediaState = spotifyMediaState;
+        self.currentSongData = [MCSongData songDataWithArtist:_spotify.currentTrack.artist 
+                                                    SongTitle:_spotify.currentTrack.name 
+                                                        Album:_spotify.currentTrack.album];
+        
+    } else {
+        self.mediaState = kMediaStateIdle;
     }
-    
 }
 
 - (BOOL)iTunesIsRunning {
@@ -87,6 +104,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
     
     [_iTunes release];
+    [_spotify release];
     [_server release];
     
 	[super dealloc];
@@ -94,6 +112,13 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
 - (NSString*)mediaStateWithPlayerState:(iTunesEPlS)iTunesPlayerState ServerIsRunning:(BOOL)isRunning {
     if (iTunesPlayerState != 0 && iTunesPlayerState != iTunesEPlSStopped && iTunesPlayerState != iTunesEPlSPaused) 
+        return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
+    
+    return kMediaStateIdle;
+}
+
+- (NSString*)spotifyMediaStateWithPlayerState:(SpotifyEPlS)spotifyPlayerState ServerIsRunning:(BOOL)isRunning {
+    if (spotifyPlayerState != 0 && spotifyPlayerState != SpotifyEPlSStopped && spotifyPlayerState != SpotifyEPlSPaused) 
         return isRunning ? kMediaStateBroadcasting : kMediaStatePlaying;
     
     return kMediaStateIdle;
