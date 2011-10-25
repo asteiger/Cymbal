@@ -41,6 +41,7 @@
 
 - (IBAction)toggleBroadcast:(id)sender;
 - (IBAction)toggleShowDesktopNotifications:(id)sender;
+- (IBAction)toggleRunAtLogin:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
 - (void)availableBroadcasterAdded:(NSNotification*)notification;

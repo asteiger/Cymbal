@@ -86,6 +86,10 @@
     preferences.showDesktopNotification = !preferences.showDesktopNotification;
 }
 
+- (IBAction)toggleRunAtLogin:(id)sender {
+    preferences.startAtLogin = !preferences.startAtLogin;
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     SEL action = [menuItem action];
     
@@ -94,6 +98,8 @@
     
     } else if (action == @selector(toggleShowDesktopNotifications:)) {
         [menuItem setState:preferences.showDesktopNotification];
+    } else if (action == @selector(toggleRunAtLogin:)) {
+        [menuItem setState:preferences.startAtLogin];
     }
     
     return YES;

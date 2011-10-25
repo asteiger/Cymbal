@@ -1,5 +1,5 @@
 #import "BroadcasterMenuItemView.h"
-#import "NSString+CharacterRemoval.h"
+#import "NSString+CymbalAdditions.h"
 #import "MediaInfoSupplier.h"
 #import "RemoteMediaInfoSupplier.h"
 

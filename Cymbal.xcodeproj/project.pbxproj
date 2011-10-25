@@ -21,7 +21,7 @@
 		2F30CDE813944300009DF94B /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */; };
 		2F30CDEB139452FC009DF94B /* NSNetService+TXTRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */; };
 		2F356840130DCB6A000EC787 /* TXTRecordPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F35683F130DCB6A000EC787 /* TXTRecordPacket.m */; };
-		2F74F77F13AA9F8C008B252B /* NSString+CharacterRemoval.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74F77E13AA9F8C008B252B /* NSString+CharacterRemoval.m */; };
+		2F74F77F13AA9F8C008B252B /* NSString+CymbalAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F74F77E13AA9F8C008B252B /* NSString+CymbalAdditions.m */; };
 		2F8F138F1381DFC9009B221C /* cymbal-icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */; };
 		2F9B8B7F1365CB5F000CDB68 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */; };
 		2F9B8B801365CB5F000CDB68 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9B8B7E1365CB5F000CDB68 /* NotificationViewController.xib */; };
@@ -41,6 +41,7 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BA4E4C68141F0275009E2DA1 /* img_magglass.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4E4C67141F0275009E2DA1 /* img_magglass.png */; };
+		BA5291C61456502100BFE12E /* LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5291C51456502100BFE12E /* LoginItem.m */; };
 		BAB550D41435590A0003C8A4 /* cymbal.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAB550D31435590A0003C8A4 /* cymbal.icns */; };
 		BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */; };
 		BAD9F6441454E0A100CFB1E7 /* RdioPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6431454E0A100CFB1E7 /* RdioPoller.m */; };
@@ -91,8 +92,8 @@
 		2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNetService+TXTRecord.m"; sourceTree = "<group>"; };
 		2F35683E130DCB6A000EC787 /* TXTRecordPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXTRecordPacket.h; sourceTree = "<group>"; };
 		2F35683F130DCB6A000EC787 /* TXTRecordPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTRecordPacket.m; sourceTree = "<group>"; };
-		2F74F77D13AA9F8C008B252B /* NSString+CharacterRemoval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CharacterRemoval.h"; sourceTree = "<group>"; };
-		2F74F77E13AA9F8C008B252B /* NSString+CharacterRemoval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CharacterRemoval.m"; sourceTree = "<group>"; };
+		2F74F77D13AA9F8C008B252B /* NSString+CymbalAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CymbalAdditions.h"; sourceTree = "<group>"; };
+		2F74F77E13AA9F8C008B252B /* NSString+CymbalAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CymbalAdditions.m"; sourceTree = "<group>"; };
 		2F8F138E1381DFC9009B221C /* cymbal-icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cymbal-icon-small.png"; sourceTree = "<group>"; };
 		2F9B8B7C1365CB5F000CDB68 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2F9B8B7D1365CB5F000CDB68 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
@@ -119,6 +120,8 @@
 		2FFF23021361E62500CDA256 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Cymbal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cymbal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4E4C67141F0275009E2DA1 /* img_magglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_magglass.png; sourceTree = "<group>"; };
+		BA5291C41456502100BFE12E /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LoginItem.h; sourceTree = "<group>"; };
+		BA5291C51456502100BFE12E /* LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItem.m; sourceTree = "<group>"; };
 		BAB550D31435590A0003C8A4 /* cymbal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cymbal.icns; sourceTree = "<group>"; };
 		BAD9F633145247BB00CFB1E7 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		BAD9F6351452480A00CFB1E7 /* SpotifyPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPoller.h; sourceTree = "<group>"; };
@@ -274,8 +277,8 @@
 				2F30CDE713944300009DF94B /* NSMutableArray+QueueAdditions.m */,
 				2F30CDE9139452FB009DF94B /* NSNetService+TXTRecord.h */,
 				2F30CDEA139452FB009DF94B /* NSNetService+TXTRecord.m */,
-				2F74F77D13AA9F8C008B252B /* NSString+CharacterRemoval.h */,
-				2F74F77E13AA9F8C008B252B /* NSString+CharacterRemoval.m */,
+				2F74F77D13AA9F8C008B252B /* NSString+CymbalAdditions.h */,
+				2F74F77E13AA9F8C008B252B /* NSString+CymbalAdditions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -287,6 +290,8 @@
 				256AC3D90F4B6AC300CF3369 /* MetacastAppDelegate.m */,
 				2F294AD613900F7600CA5122 /* PreferencesController.h */,
 				2F294AD713900F7600CA5122 /* PreferencesController.m */,
+				BA5291C41456502100BFE12E /* LoginItem.h */,
+				BA5291C51456502100BFE12E /* LoginItem.m */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -444,9 +449,10 @@
 				2F30CDE413943AAB009DF94B /* BroadcasterMenuItemView.m in Sources */,
 				2F30CDE813944300009DF94B /* NSMutableArray+QueueAdditions.m in Sources */,
 				2F30CDEB139452FC009DF94B /* NSNetService+TXTRecord.m in Sources */,
-				2F74F77F13AA9F8C008B252B /* NSString+CharacterRemoval.m in Sources */,
+				2F74F77F13AA9F8C008B252B /* NSString+CymbalAdditions.m in Sources */,
 				BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */,
 				BAD9F6441454E0A100CFB1E7 /* RdioPoller.m in Sources */,
+				BA5291C61456502100BFE12E /* LoginItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

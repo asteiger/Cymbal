@@ -65,7 +65,7 @@ static NotificationController *instance;
     nvc.subjectLine1 = [headObject objectForKey:@"subject1"];
     nvc.subjectLine2 = [headObject objectForKey:@"subject2"];
     
-    if ([nvc.subjectLine2 isEqualToString:@""]) {
+    if (nvc.subjectLine2 == nil || [nvc.subjectLine2 isEqualToString:@""]) {
         NSRect newFrame = originalViewFrame;
         newFrame.size.height = originalViewFrame.size.height-20;
         

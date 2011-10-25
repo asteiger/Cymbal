@@ -1,4 +1,5 @@
 #import "PreferencesController.h"
+#import "LoginItem.h"
 
 static NSString *const kRanBeforeDefaultsKey = @"DefaultsRanBefore";
 static NSString *const kBrodcastEnabledDefaultsKey = @"DefaultsBroadcastEnabled";
@@ -44,6 +45,23 @@ static PreferencesController *sharedInstance;
 
 - (void)setShowDesktopNotification:(BOOL)showDesktopNotification {
     [[NSUserDefaults standardUserDefaults] setBool:showDesktopNotification forKey:kShowDesktopNotificationDefaultsKey];
+}
+
+- (BOOL)startAtLogin
+{
+    return [LoginItem willStartAtLogin:[self appURL]];
+}
+
+- (void)setStartAtLogin:(BOOL)enabled
+{
+    [self willChangeValueForKey:@"startAtLogin"];
+    [LoginItem setStartAtLogin:[self appURL] enabled:enabled];
+    [self didChangeValueForKey:@"startAtLogin"];
+}
+
+- (NSURL *)appURL
+{
+    return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 }
 
 - (void)dealloc {

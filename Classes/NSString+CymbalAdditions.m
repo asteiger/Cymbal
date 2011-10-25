@@ -1,5 +1,14 @@
 
-@implementation NSString (CharacterRemoval)
+@implementation NSString (CymbalAdditions)
+
+- (NSString*)stringOrNilForBlankString {
+    int strLen = [self length];
+    
+    if (self == nil || strLen == 0)
+        return nil;
+    
+    return self;
+}
 
 - (NSString*)stringByRemovingSpecialCharacters {
     NSMutableString *tmp = [NSMutableString string];

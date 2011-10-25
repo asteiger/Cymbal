@@ -3,6 +3,7 @@
 #import "MCSongData.h"
 #import "NotificationController.h"
 #import "PreferencesController.h"
+#import "NSString+CymbalAdditions.h"
 
 NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
@@ -21,6 +22,7 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
         
 		[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedMediaNotification:) name:@"com.apple.iTunes.playerInfo" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedMediaNotification:) name:@"SpotifyPlayerStateChanged" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedMediaNotification:) name:@"RdioPlayerStateChanged" object:nil];
         
         [self updateMediaProperties];
         
@@ -88,26 +90,31 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
         
         
         if (nil != _iTunes.currentStreamTitle) {
-            self.currentSongData = [MCSongData songDataWithArtist:currentTrack.name 
-                                                        SongTitle:_iTunes.currentStreamTitle
-                                                            Album:@""];
+            self.currentSongData = [MCSongData songDataWithArtist:[currentTrack.name stringOrNilForBlankString]
+                                                        SongTitle:[_iTunes.currentStreamTitle stringOrNilForBlankString]
+                                                            Album:nil];
         } else {
-            self.currentSongData = [MCSongData songDataWithArtist:currentTrack.artist 
-                                                        SongTitle:currentTrack.name
-                                                            Album:currentTrack.album];
+            self.currentSongData = [MCSongData songDataWithArtist:[currentTrack.artist stringOrNilForBlankString]
+                                                        SongTitle:[currentTrack.name stringOrNilForBlankString]
+                                                            Album:[currentTrack.album stringOrNilForBlankString]];
         }
         
     } else if (![spotifyMediaState isEqualToString:kMediaStateIdle]) {
         self.mediaState = spotifyMediaState;
-        self.currentSongData = [MCSongData songDataWithArtist:_spotify.currentTrack.artist 
-                                                    SongTitle:_spotify.currentTrack.name 
-                                                        Album:_spotify.currentTrack.album];
+        
+        NSRange httpRange = [_spotify.currentTrack.album rangeOfString:@"http://"];
+        NSRange spotifyRange = [_spotify.currentTrack.album rangeOfString:@"spotify:"];
+        BOOL isSpotifyAd = httpRange.location == 0 || spotifyRange.location == 0;
+        
+        self.currentSongData = [MCSongData songDataWithArtist:[_spotify.currentTrack.artist stringOrNilForBlankString]
+                                                    SongTitle:[_spotify.currentTrack.name stringOrNilForBlankString]
+                                                        Album:isSpotifyAd ? nil : [_spotify.currentTrack.album stringOrNilForBlankString]];
         
     } else if (![rdioMediaState isEqualToString:kMediaStateIdle]) {
         self.mediaState = rdioMediaState;
-        self.currentSongData = [MCSongData songDataWithArtist:_rdio.currentTrack.artist 
-                                                    SongTitle:_rdio.currentTrack.name 
-                                                        Album:_rdio.currentTrack.album];
+        self.currentSongData = [MCSongData songDataWithArtist:[_rdio.currentTrack.artist stringOrNilForBlankString]
+                                                    SongTitle:[_rdio.currentTrack.name stringOrNilForBlankString]
+                                                        Album:[_rdio.currentTrack.album stringOrNilForBlankString]];
     }
     else {
         self.mediaState = kMediaStateIdle;
@@ -118,6 +125,8 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
     NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifer];
     return [apps count] > 0;
 }
+
+
 
 - (void)dealloc {
     NSLog(@"dealloc localmediainfosupplier");
