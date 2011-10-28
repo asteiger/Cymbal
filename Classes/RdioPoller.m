@@ -1,4 +1,5 @@
 #import "RdioPoller.h"
+#import "ApplicationHelper.h"
 
 @interface RdioPoller (Private)
 
@@ -25,15 +26,19 @@
 - (void)poll {
     if (!_pollingEnabled) return;
     
-    if (_playerState != _rdio.playerState || (_currentTrackUrl != nil && ![_currentTrackUrl isEqualToString:_rdio.currentTrack.rdioUrl])) {
-        _playerState = _rdio.playerState;
-
-        if (nil != _currentTrackUrl) [_currentTrackUrl release];
-        _currentTrackUrl = [_rdio.currentTrack.rdioUrl copy];
+    if ([ApplicationHelper applicationIsRunning:kRdioBundleIdentifier]) {
+        if (nil == _rdio) _rdio = [[SBApplication applicationWithBundleIdentifier:kRdioBundleIdentifier] retain];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"RdioPlayerStateChanged" object:nil];
-        NSLog(@"%i, %@", _playerState, _currentTrackUrl);
-    } 
+        if (_playerState != _rdio.playerState || (_currentTrackUrl != nil && ![_currentTrackUrl isEqualToString:_rdio.currentTrack.rdioUrl])) {
+            _playerState = _rdio.playerState;
+
+            if (nil != _currentTrackUrl) [_currentTrackUrl release];
+            _currentTrackUrl = [_rdio.currentTrack.rdioUrl copy];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RdioPlayerStateChanged" object:nil];
+            NSLog(@"%i, %@", _playerState, _currentTrackUrl);
+        } 
+    }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self poll];

@@ -4,6 +4,7 @@
 #import "NotificationController.h"
 #import "PreferencesController.h"
 #import "NSString+CymbalAdditions.h"
+#import "ApplicationHelper.h"
 
 NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
@@ -65,19 +66,19 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
     NSString *spotifyMediaState = kMediaStateIdle;
     NSString *rdioMediaState = kMediaStateIdle;
     
-    if ([self applicationIsRunning:kItunesBundleIdentifier]) {
+    if ([ApplicationHelper applicationIsRunning:kItunesBundleIdentifier]) {
         if (_iTunes == nil) _iTunes = [[SBApplication applicationWithBundleIdentifier:kItunesBundleIdentifier] retain];
 
         iTunesMediaState = [self mediaStateWithPlayerState:_iTunes.playerState ServerIsRunning:_server.isRunning];
     }
     
-    if ([self applicationIsRunning:kSpotifyBundleIdentifier]) {
+    if ([ApplicationHelper applicationIsRunning:kSpotifyBundleIdentifier]) {
         if (_spotify == nil) _spotify = [[SBApplication applicationWithBundleIdentifier:kSpotifyBundleIdentifier] retain];
         
         spotifyMediaState = [self spotifyMediaStateWithPlayerState:_spotify.playerState ServerIsRunning:_server.isRunning];
     }
     
-    if ([self applicationIsRunning:kRdioBundleIdentifier]) {
+    if ([ApplicationHelper applicationIsRunning:kRdioBundleIdentifier]) {
         if (_rdio == nil) _rdio = [[SBApplication applicationWithBundleIdentifier:kRdioBundleIdentifier] retain];
         
         rdioMediaState = [self rdioMediaStateWithPlayerState:_rdio.playerState ServerIsRunning:_server.isRunning];
@@ -120,12 +121,6 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
         self.mediaState = kMediaStateIdle;
     }
 }
-
-- (BOOL)applicationIsRunning:(NSString*)bundleIdentifer {
-    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifer];
-    return [apps count] > 0;
-}
-
 
 
 - (void)dealloc {

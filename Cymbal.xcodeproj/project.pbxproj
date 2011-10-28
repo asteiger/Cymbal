@@ -43,6 +43,7 @@
 		BA4E4C68141F0275009E2DA1 /* img_magglass.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4E4C67141F0275009E2DA1 /* img_magglass.png */; };
 		BA5291C61456502100BFE12E /* LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5291C51456502100BFE12E /* LoginItem.m */; };
 		BAB550D41435590A0003C8A4 /* cymbal.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAB550D31435590A0003C8A4 /* cymbal.icns */; };
+		BACD028F145A3E1800658BD7 /* ApplicationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BACD028E145A3E1800658BD7 /* ApplicationHelper.m */; };
 		BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */; };
 		BAD9F6441454E0A100CFB1E7 /* RdioPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6431454E0A100CFB1E7 /* RdioPoller.m */; };
 		BAD9F64D14561D0F00CFB1E7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F64C14561D0E00CFB1E7 /* CoreServices.framework */; };
@@ -120,9 +121,11 @@
 		2FFF23021361E62500CDA256 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Cymbal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cymbal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4E4C67141F0275009E2DA1 /* img_magglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_magglass.png; sourceTree = "<group>"; };
-		BA5291C41456502100BFE12E /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LoginItem.h; sourceTree = "<group>"; };
+		BA5291C41456502100BFE12E /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItem.h; sourceTree = "<group>"; };
 		BA5291C51456502100BFE12E /* LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItem.m; sourceTree = "<group>"; };
 		BAB550D31435590A0003C8A4 /* cymbal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cymbal.icns; sourceTree = "<group>"; };
+		BACD028D145A3E1800658BD7 /* ApplicationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationHelper.h; sourceTree = "<group>"; };
+		BACD028E145A3E1800658BD7 /* ApplicationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationHelper.m; sourceTree = "<group>"; };
 		BAD9F633145247BB00CFB1E7 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
 		BAD9F6351452480A00CFB1E7 /* SpotifyPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPoller.h; sourceTree = "<group>"; };
 		BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPoller.m; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */,
 				BAD9F6421454E0A100CFB1E7 /* RdioPoller.h */,
 				BAD9F6431454E0A100CFB1E7 /* RdioPoller.m */,
+				BACD028D145A3E1800658BD7 /* ApplicationHelper.h */,
+				BACD028E145A3E1800658BD7 /* ApplicationHelper.m */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */,
 				BAD9F6441454E0A100CFB1E7 /* RdioPoller.m in Sources */,
 				BA5291C61456502100BFE12E /* LoginItem.m in Sources */,
+				BACD028F145A3E1800658BD7 /* ApplicationHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

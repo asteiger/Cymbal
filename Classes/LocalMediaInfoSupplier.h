@@ -14,6 +14,5 @@
 
 - (id)initWithServer:(Server*)server;
 - (void)receivedMediaNotification:(NSNotification *)mediaNotification;
-- (BOOL)applicationIsRunning:(NSString*)bundleIdentifer;
 
 @end
