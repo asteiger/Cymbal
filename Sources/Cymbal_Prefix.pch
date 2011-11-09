@@ -6,7 +6,7 @@
 #define APP_DELEGATE ((MetacastAppDelegate*)[NSApp delegate])
 #define kCymbalNetServiceTypeName @"_cymbalapp._tcp."
 
-#define kItunesBundleIdentifier @"com.apple.itunes"
+#define kItunesBundleIdentifier @"com.apple.iTunes"
 #define kSpotifyBundleIdentifier @"com.spotify.client"
 #define kRdioBundleIdentifier @"com.rdio.desktop"
 
