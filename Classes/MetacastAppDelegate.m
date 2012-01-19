@@ -4,6 +4,7 @@
 #import "NotificationController.h"
 #import "BroadcasterMenuItemView.h"
 #import "Broadcaster.h"
+#import <ObjectiveMetrics/ObjectiveMetrics.h>
 
 @implementation MetacastAppDelegate
 
@@ -44,6 +45,8 @@
     
     self.rdioPoller = [[RdioPoller alloc] init];
     self.spotifyPoller = [[SpotifyPoller alloc] init];
+    
+    [[DMTracker defaultTracker] startApp];
 }
 
 - (void)awakeFromNib {

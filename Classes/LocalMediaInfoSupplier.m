@@ -5,6 +5,7 @@
 #import "PreferencesController.h"
 #import "NSString+CymbalAdditions.h"
 #import "ApplicationHelper.h"
+#import <ObjectiveMetrics/ObjectiveMetrics.h>
 
 NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
@@ -86,6 +87,8 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
     
     
     if (![iTunesMediaState isEqualToString:kMediaStateIdle]) {
+        [[DMTracker defaultTracker] trackCustomDataRealtimeWithName:@"Broadcast Started" value:@"iTunes"];
+        
         self.mediaState = iTunesMediaState;
         iTunesTrack *currentTrack = [_iTunes currentTrack];
         
