@@ -40,10 +40,12 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		BA2AC16D14C8BF3B009A2C88 /* ObjectiveMetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2AC16C14C8BF3B009A2C88 /* ObjectiveMetrics.framework */; };
-		BA2AC16E14C8BF48009A2C88 /* ObjectiveMetrics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA2AC16C14C8BF3B009A2C88 /* ObjectiveMetrics.framework */; };
 		BA4E4C68141F0275009E2DA1 /* img_magglass.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4E4C67141F0275009E2DA1 /* img_magglass.png */; };
 		BA5291C61456502100BFE12E /* LoginItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5291C51456502100BFE12E /* LoginItem.m */; };
+		BAA05C1814CF4FBE003ACD3A /* ObjectiveMetrics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA05C1714CF4FBE003ACD3A /* ObjectiveMetrics.framework */; };
+		BAA05C1914CF4FCD003ACD3A /* ObjectiveMetrics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAA05C1714CF4FBE003ACD3A /* ObjectiveMetrics.framework */; };
+		BAA05C1B14CF5182003ACD3A /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAA05C1A14CF5182003ACD3A /* SBJson.framework */; };
+		BAA05C1C14CF5198003ACD3A /* SBJson.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BAA05C1A14CF5182003ACD3A /* SBJson.framework */; };
 		BAB550D41435590A0003C8A4 /* cymbal.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAB550D31435590A0003C8A4 /* cymbal.icns */; };
 		BACD028F145A3E1800658BD7 /* ApplicationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BACD028E145A3E1800658BD7 /* ApplicationHelper.m */; };
 		BAD9F6371452480B00CFB1E7 /* SpotifyPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F6361452480A00CFB1E7 /* SpotifyPoller.m */; };
@@ -59,7 +61,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2F2A412913B1083B009DC189 /* Growl.framework in CopyFiles */,
-				BA2AC16E14C8BF48009A2C88 /* ObjectiveMetrics.framework in CopyFiles */,
+				BAA05C1914CF4FCD003ACD3A /* ObjectiveMetrics.framework in CopyFiles */,
+				BAA05C1C14CF5198003ACD3A /* SBJson.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,10 +126,11 @@
 		2FFF23011361E62500CDA256 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		2FFF23021361E62500CDA256 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Cymbal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cymbal.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2AC16C14C8BF3B009A2C88 /* ObjectiveMetrics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveMetrics.framework; sourceTree = "<group>"; };
 		BA4E4C67141F0275009E2DA1 /* img_magglass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_magglass.png; sourceTree = "<group>"; };
 		BA5291C41456502100BFE12E /* LoginItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItem.h; sourceTree = "<group>"; };
 		BA5291C51456502100BFE12E /* LoginItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItem.m; sourceTree = "<group>"; };
+		BAA05C1714CF4FBE003ACD3A /* ObjectiveMetrics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ObjectiveMetrics.framework; sourceTree = "<group>"; };
+		BAA05C1A14CF5182003ACD3A /* SBJson.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SBJson.framework; sourceTree = "<group>"; };
 		BAB550D31435590A0003C8A4 /* cymbal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cymbal.icns; sourceTree = "<group>"; };
 		BACD028D145A3E1800658BD7 /* ApplicationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationHelper.h; sourceTree = "<group>"; };
 		BACD028E145A3E1800658BD7 /* ApplicationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationHelper.m; sourceTree = "<group>"; };
@@ -148,7 +152,8 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2FC3B4F613568F620003D3D4 /* ScriptingBridge.framework in Frameworks */,
 				2F2A412713B1081B009DC189 /* Growl.framework in Frameworks */,
-				BA2AC16D14C8BF3B009A2C88 /* ObjectiveMetrics.framework in Frameworks */,
+				BAA05C1814CF4FBE003ACD3A /* ObjectiveMetrics.framework in Frameworks */,
+				BAA05C1B14CF5182003ACD3A /* SBJson.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +183,8 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BA2AC16C14C8BF3B009A2C88 /* ObjectiveMetrics.framework */,
+				BAA05C1A14CF5182003ACD3A /* SBJson.framework */,
+				BAA05C1714CF4FBE003ACD3A /* ObjectiveMetrics.framework */,
 				BAD9F64C14561D0E00CFB1E7 /* CoreServices.framework */,
 				2F2A412613B1081B009DC189 /* Growl.framework */,
 				2FC3B4F513568F620003D3D4 /* ScriptingBridge.framework */,
@@ -534,6 +540,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Resources/Cymbal-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Cymbal;
 				SDKROOT = macosx;
@@ -562,6 +569,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Resources/Cymbal-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Cymbal;
 				SDKROOT = macosx;
@@ -587,6 +595,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Resources/Cymbal-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = Cymbal;
 				SDKROOT = macosx;

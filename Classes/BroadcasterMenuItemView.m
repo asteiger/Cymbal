@@ -62,6 +62,7 @@
 
 - (IBAction)searchForSongOnITunes:(id)sender {
     NSString *strippedArtist = self.currentSongData.artist;
+    [APP_DELEGATE trackEventWithName:@"iTunes Search" value:strippedArtist];
 
     strippedArtist = [strippedArtist stringByReplacingOccurrencesOfString:@"&" withString:@"And"];
     strippedArtist = [strippedArtist stringByRemovingSpecialCharacters];

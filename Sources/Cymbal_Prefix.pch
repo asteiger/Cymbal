@@ -2,6 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "MetacastAppDelegate.h"
+#import <ObjectiveMetrics/ObjectiveMetrics.h>
 
 #define APP_DELEGATE ((MetacastAppDelegate*)[NSApp delegate])
 #define kCymbalNetServiceTypeName @"_cymbalapp._tcp."

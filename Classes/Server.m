@@ -19,6 +19,8 @@ NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
 }
 
 - (BOOL)start {
+    [APP_DELEGATE trackEventWithName:@"Server" value:@"Started"];
+    
     self.isRunning = YES;
     
 	netService = [[NSNetService alloc] initWithDomain:@"" type:kCymbalNetServiceTypeName name:@"" port:42681];
@@ -38,6 +40,8 @@ NSString *const kBroadcasterInfoKey = @"BroadcasterInfo";
 
 - (void)stop {
     if (!self.isRunning) return;
+    
+    [APP_DELEGATE trackEventWithName:@"Server" value:@"Stopped"];
     
 	[netService stop];
 	[netService removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];

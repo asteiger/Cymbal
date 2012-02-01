@@ -42,8 +42,18 @@ static NotificationController *instance;
     
     
     if ([GrowlApplicationBridge isGrowlInstalled] && [GrowlApplicationBridge isGrowlRunning]) {
+        static dispatch_once_t growlToken;
+        dispatch_once(&growlToken, ^{
+            [APP_DELEGATE trackEventWithName:@"Using Growl" value:@"True"];
+        });
+        
         [GrowlApplicationBridge notifyWithTitle:title description:[subject1 stringByAppendingFormat:@"\n%@", subject2] notificationName:@"Cymbal Information" iconData:nil priority:1 isSticky:0 clickContext:nil];
         return;
+    } else {
+        static dispatch_once_t noGrowlToken;
+        dispatch_once(&noGrowlToken, ^{
+            [APP_DELEGATE trackEventWithName:@"Using Growl" value:@"False"];
+        });
     }
     
     NSDictionary *notification = [NSDictionary dictionaryWithObjectsAndKeys:

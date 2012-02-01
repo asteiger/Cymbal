@@ -159,9 +159,19 @@
 }
 
 - (void)follow:(NSString*)shareName {
+    [self trackEventWithName:@"Follow" value:@"Click"];
+    
     [server stop];
     Broadcaster *broadcaster = [browser availableBroadcasterWithName:shareName];
     self.mediaInfoSupplier = [[[RemoteMediaInfoSupplier alloc] initWithBroadcaster:broadcaster] autorelease];
+}
+
+- (void)trackEventWithName:(NSString*)name value:(NSString*)value {
+    NSLog(@"track %@ %@", name, value);
+    [[DMTracker defaultTracker] trackEventInCategory:@"Cymbal" withName:[name stringByAppendingFormat:@" %@", value] value:value];
+    NSLog(@"Done track, now flush");
+    [[DMTracker defaultTracker] flushQueue];
+    NSLog(@"Done flush");
 }
 
 #pragma mark Dealloc

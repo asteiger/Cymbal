@@ -5,7 +5,6 @@
 #import "PreferencesController.h"
 #import "NSString+CymbalAdditions.h"
 #import "ApplicationHelper.h"
-#import <ObjectiveMetrics/ObjectiveMetrics.h>
 
 NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
 
@@ -87,23 +86,27 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
     
     
     if (![iTunesMediaState isEqualToString:kMediaStateIdle]) {
-        [[DMTracker defaultTracker] trackCustomDataRealtimeWithName:@"Broadcast Started" value:@"iTunes"];
-        
         self.mediaState = iTunesMediaState;
         iTunesTrack *currentTrack = [_iTunes currentTrack];
         
         
         if (nil != _iTunes.currentStreamTitle) {
+            [APP_DELEGATE trackEventWithName:@"Play Started" value:@"iTunes Radio"];
+            
             self.currentSongData = [MCSongData songDataWithArtist:[currentTrack.name stringOrNilForBlankString]
                                                         SongTitle:[_iTunes.currentStreamTitle stringOrNilForBlankString]
                                                             Album:nil];
         } else {
+            [APP_DELEGATE trackEventWithName:@"Play Started" value:@"iTunes"];
+            
             self.currentSongData = [MCSongData songDataWithArtist:[currentTrack.artist stringOrNilForBlankString]
                                                         SongTitle:[currentTrack.name stringOrNilForBlankString]
                                                             Album:[currentTrack.album stringOrNilForBlankString]];
         }
         
     } else if (![spotifyMediaState isEqualToString:kMediaStateIdle]) {
+        [APP_DELEGATE trackEventWithName:@"Play Started" value:@"Spotify"];
+        
         self.mediaState = spotifyMediaState;
         
         NSRange httpRange = [_spotify.currentTrack.album rangeOfString:@"http://"];
@@ -115,6 +118,8 @@ NSString *const iTunesBundleIdentifier = @"com.apple.iTunes";
                                                         Album:isSpotifyAd ? nil : [_spotify.currentTrack.album stringOrNilForBlankString]];
         
     } else if (![rdioMediaState isEqualToString:kMediaStateIdle]) {
+        [APP_DELEGATE trackEventWithName:@"Play Started" value:@"Rdio"];
+        
         self.mediaState = rdioMediaState;
         self.currentSongData = [MCSongData songDataWithArtist:[_rdio.currentTrack.artist stringOrNilForBlankString]
                                                     SongTitle:[_rdio.currentTrack.name stringOrNilForBlankString]

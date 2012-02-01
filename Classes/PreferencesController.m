@@ -36,6 +36,8 @@ static PreferencesController *sharedInstance;
 }
 
 - (void)setAllowBroadcasting:(BOOL)allowBroadcasting {
+    [APP_DELEGATE trackEventWithName:@"Preference" value:[NSString stringWithFormat:@"Broadcasting %@", allowBroadcasting ? @"Enabled" : @"Disabled"]];
+    
     [[NSUserDefaults standardUserDefaults] setBool:allowBroadcasting forKey:kBrodcastEnabledDefaultsKey];
 }
 
@@ -44,6 +46,8 @@ static PreferencesController *sharedInstance;
 }
 
 - (void)setShowDesktopNotification:(BOOL)showDesktopNotification {
+    [APP_DELEGATE trackEventWithName:@"Preference" value:[NSString stringWithFormat:@"Notifications %@", showDesktopNotification ? @"Enabled" : @"Disabled"]];
+     
     [[NSUserDefaults standardUserDefaults] setBool:showDesktopNotification forKey:kShowDesktopNotificationDefaultsKey];
 }
 
@@ -54,6 +58,8 @@ static PreferencesController *sharedInstance;
 
 - (void)setStartAtLogin:(BOOL)enabled
 {
+    [APP_DELEGATE trackEventWithName:@"Preference" value:[NSString stringWithFormat:@"Login Startup %@", enabled ? @"Enabled" : @"Disabled"]];
+     
     [self willChangeValueForKey:@"startAtLogin"];
     [LoginItem setStartAtLogin:[self appURL] enabled:enabled];
     [self didChangeValueForKey:@"startAtLogin"];

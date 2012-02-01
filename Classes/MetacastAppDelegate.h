@@ -50,5 +50,6 @@
 - (void)receivedItunesNotification:(NSNotification *)mediaNotification;
 
 - (void)follow:(NSString*)shareName;
+- (void)trackEventWithName:(NSString*)name value:(NSString*)value;
 
 @end

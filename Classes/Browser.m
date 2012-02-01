@@ -76,6 +76,8 @@ NSString *const kAvailableBroadcasterRemovedNotification = @"AvailableServiceRem
     NSLog(@"Service discovered: %@, my server name is: %@", [aNetService name], [APP_DELEGATE.server name]);
     if ([[aNetService name] isEqualToString:[APP_DELEGATE.server name]]) return;
     
+    [APP_DELEGATE trackEventWithName:@"Broadcaster" value:@"Found"];
+    
     Broadcaster *broadcaster = [Broadcaster broadcasterWithNetService:aNetService];
     [broadcasters addObject:broadcaster];
     
@@ -94,6 +96,8 @@ NSString *const kAvailableBroadcasterRemovedNotification = @"AvailableServiceRem
     NSLog(@"Service disappeared: %@", serviceName);
     
     if (nil == broadcaster) return;
+    
+    [APP_DELEGATE trackEventWithName:@"Broadcaster" value:@"Disappeard"];
 
     [broadcasters removeObject:broadcaster];
     
